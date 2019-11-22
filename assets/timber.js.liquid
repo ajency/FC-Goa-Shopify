@@ -580,3 +580,28 @@ $(timber.init);
   function hidePopup(selector) {
     $(selector).removeClass('active');
   }
+
+  $(document).ready(function($){
+    $('.owl-home-banner').owlCarousel({
+        nav:true,
+        autoplay:true,
+        dots: false,
+        margin:10,
+        loop:true,
+        responsiveClass:true,
+        responsive:{
+          0:{
+              items:1,
+              nav: true,
+              dots: false,
+              dotsData: false
+          },
+          768:{
+              items:1,
+              nav: true,
+              dots: false,
+              dotsData: false
+          }
+        }
+    });
+  });
