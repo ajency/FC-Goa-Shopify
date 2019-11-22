@@ -1,0 +1,135 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-shopnow-v3" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %} {% if section.settings.sections_layout == "dark" %}background: {{section.settings.sections_bg_color}};{% endif %}">
+  <div class="section-shopnow-v3">
+    <div class="background_section">
+    </div>
+    <div class="container">
+      <div class="row box-content">
+        {% if section.settings.enable_info_left %}
+        <div class="col-lg-6 text-left boxtop col-12 col-sm-6 col-md-6">
+          {% if section.settings.section_title != blank %}
+          	<h3>{{section.settings.section_title}}</h3>
+          {% endif %}
+          {% if section.settings.section_description != blank %}
+          	<p>{{section.settings.section_description}}</p>
+          {% endif %}
+          {% if section.settings.button_name != blank %}
+          	<a href="{{ section.settings.button_url }}" >{{section.settings.button_name}}</a>
+          {% endif %}
+        </div>
+        {% endif %}
+        <div class="col-lg-1 col-sm-1 col-md-1">
+
+        </div>
+        {% if section.settings.enable_info_right %}
+        <div class="col-lg-5 text-right col-12 col-sm-5 col-md-5">
+          <div class="picture">
+            <a href="{{section.settings.banner_url}}">
+              {% if section.settings.image_banner != blank %}
+                  <img src="{{section.settings.image_banner|img_url:'master'}}" class="img-fluid" alt="">
+              {% else %}
+                  {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}
+            </a>
+          </div>
+        </div>
+        {% endif %}
+        
+      </div>
+      <div class="clearfix">    			
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Banner v7 H4",
+  "class": "index-section",
+  "settings": [
+	{
+      "type": "header",
+      "content": "Info Left"
+    },
+	{
+      "type": "checkbox",
+      "id": "enable_info_left",
+      "label": "Enable Info Left",
+      "default": true
+    },
+	{
+      "type": "text",
+      "id": "section_title",
+      "label": "Title",
+      "default": "BEAUTY IS EVERY WHERE"
+    },
+	{
+      "type": "text",
+      "id": "section_description",
+      "label": "Description ",
+      "default": "Donec sed odio dui. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo. condimentum nibh, ut fermentum massa justo. Donec sed odio dui. Fusce dapibus, tellus ac cursus commodo. "
+    },
+	{
+      "type": "text",
+      "id": "button_name",
+      "label": "Button name",
+      "default": "SHOP NOW"
+    },
+	{
+      "type": "url",
+      "id": "button_url",
+      "label": "URL Button name",
+      "default": "/collections/all"
+    },
+	{
+      "type": "header",
+      "content": "Info right"
+    },
+	{
+      "type": "checkbox",
+      "id": "enable_info_right",
+      "label": "Enable Image Right",
+      "default": true
+    },
+	{
+      "type": "image_picker",
+      "id": "image_banner",
+      "label": "Image right ",
+	  "info": "502 x 703px recommended"
+    },
+	{
+      "type": "url",
+      "id": "banner_url",
+      "label": "URL image right ",
+      "default": "/collections/all"
+    },	
+	{
+      "type": "header",
+      "content": "Section Space"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner v7 H4",
+      "category": "Banner"
+    }
+  ]
+}
+{% endschema %}
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

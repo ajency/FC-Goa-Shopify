@@ -1,0 +1,14 @@
+<div class="filter_price colors filter-tag">
+  <div class="title_general_sidebar">
+    <h3 class="mb-0" style=color:{{section.settings.title_sidebar_color}}; background-color:{{section.settings.background_title_sidebar_color}};>{{section.settings.shop_by_brand_title}}</h3>
+  </div>
+  <div class="content_sidebar">
+    <ul class="list-unstyled">
+      {% for product_vendor in collection.all_vendors %}
+      <li>
+        {{ product_vendor | link_to_vendor }}
+      </li>
+    {% endfor %}
+    </ul>
+  </div>
+</div>

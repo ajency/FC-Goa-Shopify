@@ -1,0 +1,39 @@
+<div class="content-section-product-v1">
+  <div class="picrure">
+    <a href="/admin/products">
+      {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+      {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+    </a>
+    <span>SALE</span>
+    <ul class="list-icon list-unstyled d-flex text-center mb-0">
+      <li><a href="/admin/products" class="ti-zoom-in"></a></li>
+      <li><a href="/admin/products" class="ti-bag"></a></li>
+    </ul>
+  </div>
+  <div class="info_new">
+    <div class="title_pr_wishlist w-100">
+      <div class="title">
+        <h4 class="mb-0"><a href="/admin/products">Example Product</a></h4>
+      </div>
+      <div class="listwishlist text-right">
+        <a href="/admin/products" class="ti-heart"></a>
+      </div>
+    </div>
+    <div class="clearfix">
+    </div>
+    <div class="price_product">
+      <span class="price_nosale">$105.50</span>
+      <span class="price_sale">$79.28</span>
+    </div>
+    <div class="star_product">
+      <ul class="list-inline list-unstyled mb-0">
+        <li class="list-inline-item"><a href="#" title="" class="ti-star"></a></li>
+        <li class="list-inline-item"><a href="#" title="" class="ti-star"></a></li>
+        <li class="list-inline-item"><a href="#" title="" class="ti-star"></a></li>
+        <li class="list-inline-item"><a href="#" title="" class="ti-star"></a></li>
+        <li class="list-inline-item"><a href="#" title="" class="ti-star"></a></li>
+        <li class="list-inline-item"><a href="#" title="" class="ti-star"></a></li>
+      </ul>
+    </div>
+  </div>
+</div>

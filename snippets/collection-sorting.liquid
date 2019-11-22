@@ -1,0 +1,82 @@
+<!-- /snippets/collection-sorting.liquid -->
+{% comment %}
+Toggle between collection.liquid and collection.list.liquid with the
+?view= parameter.
+{% endcomment %}
+
+<ul class="sort-pagi-bar list-inline-block pull-right">
+  <li>
+    <div class="sort-by">
+      <span class="gray">{{ 'collections.sorting.title' | t }}</span>
+      <div class="select-box inline-block">
+        <select name="SortBy" id="SortBy" class="orderby">
+          <option value="manual">{{ 'collections.sorting.featured' | t }}</option>
+          <option value="best-selling">{{ 'collections.sorting.best_selling' | t }}</option>
+          <option value="title-ascending">{{ 'collections.sorting.az' | t }}</option>
+          <option value="title-descending">{{ 'collections.sorting.za' | t }}</option>
+          <option value="price-ascending">{{ 'collections.sorting.price_ascending' | t }}</option>
+          <option value="price-descending">{{ 'collections.sorting.price_descending' | t }}</option>
+          <option value="created-descending">{{ 'collections.sorting.date_descending' | t }}</option>
+          <option value="created-ascending">{{ 'collections.sorting.date_ascending' | t }}</option>
+        </select>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class="select-box show-by">
+      {% if settings.nb_per_page != blank %}
+      {% assign product_per_page = settings.nb_per_page %}
+      {% else %}
+      {% assign product_per_page = 12 %}
+      {% endif %}
+      {% assign current_page_size = paginate.page_size %}
+      <span class="gray" style="margin-right: 15px;">{{ 'collections.showby.show' | t }}</span>
+      <input type="hidden" name="engoj_current_page_size" value="{{current_page_size}}"/>
+      <select name="showby" id="showby" style="width: auto;">
+        <option value="{{settings.nb_per_page}}" {% if current_page_size == settings.nb_per_page %} selected="selected" {% endif %}> {{settings.nb_per_page}} </option>
+        <option value="24"{% if current_page_size == 24 %} selected="selected" {% endif %}> 24 </option>
+        <option value="48"{% if current_page_size == 48 %} selected="selected" {% endif %}> 48 </option>
+      </select>
+    </div>
+  </li>
+  <li>
+    <div class="view-type">
+      <span class="gray">{{ 'collections.viewas.view' | t }}</span>
+      <a href="javascript:void(0)" class="engoj-view-mode grid-view{% if template contains 'collection' %} active change-view--active{% endif %}" data-view="grid" data-layout="grid" data-remove="list"><i class="fa fa-th-large"></i></a>
+      <a href="javascript:void(0)" class="engoj-view-mode list-view{% if template contains 'list' %} active change-view--active{% endif %}" data-view="list" data-layout="list" data-remove="grid"><i class="fa fa-reorder"></i></a>
+    </div>
+  </li>
+</ul>
+
+<script>
+  /*============================================================================
+    Inline JS because collection liquid object is only available
+    on collection pages and not external JS files
+  ==============================================================================*/
+  Shopify.queryParams = {};
+  if (location.search.length) {
+    for (var aKeyValue, i = 0, aCouples = location.search.substr(1).split('&'); i < aCouples.length; i++) {
+      aKeyValue = aCouples[i].split('=');
+      if (aKeyValue.length > 1) {
+        Shopify.queryParams[decodeURIComponent(aKeyValue[0])] = decodeURIComponent(aKeyValue[1]);
+      }
+    }
+  }
+
+  $(function() {
+    $('#SortBy')
+    .val('{{ collection.sort_by | default: collection.default_sort_by }}')
+         .bind('change', function() {
+      Shopify.queryParams.sort_by = jQuery(this).val();
+      location.search = jQuery.param(Shopify.queryParams);
+    }
+    );
+    $('#showby')
+    .val('{{ collection.limit | default: settings.nb_per_page }}')
+         .bind('change', function() {
+      Shopify.queryParams.view = jQuery(this).val();
+      location.search = jQuery.param(Shopify.queryParams);
+    }
+    );
+  });
+</script>

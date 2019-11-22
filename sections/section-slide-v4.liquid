@@ -1,0 +1,182 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-slide-v4" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %} {% if section.settings.sections_layout == "dark" %}background: {{section.settings.sections_bg_color}};{% endif %}">
+  <div class="section-slide-v4">
+    <div class="container-fluid px-0">
+      <div class="side-v4">       
+        {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+        {% if block.type == "image" %}
+        <div class="itemv4">
+          <div class="picture-side3">
+            {% if block.settings.block_banerimage != blank %}
+            <img src="{{block.settings.block_banerimage | img_url: 'master'}}" class="img-fluid" alt="">
+            {% else %}
+            <img src="//placehold.it/1920x990" class="img-fluid" alt="slideshow">
+            {% endif %}
+            <ul class="list-unstyled mb-0">
+              <li><a href="" class="ti-twitter-alt"></a></li>
+              <li><a href="" class="ti-facebook"></a></li>
+              <li><a href="" class="ti-google"></a></li>
+              <li><a href="" class="ti-dribbble"></a></li>
+            </ul>
+            <div class="box-content">              
+              {% if block.settings.block_description_top != blank %}
+              <span style="color:{{block.settings.block_color_description_top}}">{{ block.settings.block_description_top }}</span>
+              {% endif %}
+              
+              {% if block.settings.block_title != blank %}              
+              <h3 style="color:{{block.settings.block_color_description}};" class="mb-0">{{block.settings.block_title}}</h3>
+              {% endif %}
+              
+              {% if block.settings.block_description_bottom != blank %}
+              <p style="color:{{block.settings.block_color_description}};">{{block.settings.block_description_bottom}}</p>
+              {% endif %}
+              
+              {% if block.settings.block_buton != blank %}
+              <a style="color:{{block.settings.block_color_description}};" href="{{block.settings.block_url}}">{{ block.settings.block_buton }}</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  
+</style>
+{% schema %}
+{
+  "name": "Slide v4",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Space"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "block_banerimage",
+          "label": "Image slideshow",
+          "info": "1920 x 1080px recommended"
+        },
+		
+        {
+          "type": "text",
+          "id": "block_description_top",
+          "label": "Description sideshow top",
+          "default": "FAYE SHOULDER BAG"
+        },
+		{
+           "type": "color",
+           "id": "block_color_description_top",
+           "label": "Color description top and hover button",
+           "default": "#ddc4a0"
+        },
+		{
+           "type": "color",
+           "id": "block_color_description",
+           "label": "Color description, title and button",
+           "default": "#000"
+        },
+        {
+          "type": "text",
+          "id": "block_title",
+          "label": "Title sideshow",
+          "default": "Chloé"
+        },
+		{
+          "type": "text",
+          "id": "block_description_bottom",
+          "label": "Description sideshow bottom",
+          "default": "Street style seamlessly meets athleticwear with this bag from the Montana Cans X Reebok collaboration"
+        },
+        {
+          "type": "text",
+          "id": "block_buton",
+          "label": "Button slideshow",
+          "default": "view more"
+        },
+        {
+          "type": "url",
+          "id": "block_url",
+          "label": "URL button slideshow",
+          "default": "/collections/all"
+        }      
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Slide v4",
+      "category": "Slide",
+	  "blocks": [
+        {
+          "type": "image",
+          "settings": {
+            "block_description_top": "FAYE SHOULDER BAG",
+            "block_title": "Chloé",
+            "block_description_bottom": "Street style seamlessly meets athleticwear with this bag from the Montana Cans X Reebok collaboration",
+			"block_buton": "view more"
+          }
+        },
+		{
+          "type": "image",
+          "settings": {
+            "block_description_top": "FAYE SHOULDER BAG",
+            "block_title": "Chloé",
+            "block_description_bottom": "Street style seamlessly meets athleticwear with this bag from the Montana Cans X Reebok collaboration",
+			"block_buton": "view more"
+          }
+        },
+		{
+          "type": "image",
+          "settings": {
+            "block_description_top": "FAYE SHOULDER BAG",
+            "block_title": "Chloé",
+            "block_description_bottom": "Street style seamlessly meets athleticwear with this bag from the Montana Cans X Reebok collaboration",
+			"block_buton": "view more"
+          }
+        },
+		{
+          "type": "image",
+          "settings": {
+            "block_description_top": "FAYE SHOULDER BAG",
+            "block_title": "Chloé",
+            "block_description_bottom": "Street style seamlessly meets athleticwear with this bag from the Montana Cans X Reebok collaboration",
+			"block_buton": "view more"
+          }
+        }	
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

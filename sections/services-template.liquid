@@ -1,0 +1,431 @@
+<section class="page_aboutus_v1 page_services">
+  {% if section.settings.enable_slide %}
+  <div class="slide" style="background-image: url({% if section.settings.backgroud_slide != blank %}{{section.settings.backgroud_slide |img_url:'master'}}{% else %}//placehold.it/1920x500{% endif %})">
+    <div class="container text-center">
+      <span class="text-uppercase" >{{page.title}}</span>
+      {% if section.settings.title_slide != blank %}
+      	<h1>{{section.settings.title_slide}}</h1>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+  {% if section.settings.enable_service%}
+  <div class="list_services">
+    <div class="container">      
+      <div class="row justify-content-center">
+        <div class="col-lg-12">
+          <div class="js_listservicespage">
+            {% if section.blocks.size > 0 %}
+            {% for block in section.blocks %}
+            {% if block.type == "service" %}
+            <div class="text-center content">
+              <span class="icon">
+                <i class="{{block.settings.block_icon}}"></i>
+              </span>
+              {% if block.settings.block_title != blank %}
+              <p class="mb-0">{{block.settings.block_title}}</p>
+              {% endif %}
+              {% if block.settings.block_content != blank %}          	
+              <span>{{block.settings.block_content}}</span>
+              {% endif %}
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  
+  {% if section.settings.enable_video %}
+  <div class="video">
+    <div class="container-fluid my-container">
+      <div class="row text-center">
+        <div class="col-lg-12">        
+          <div class= "box-video"> 
+            <a data-fancybox href="{{ section.settings.url_section_video }} ">              
+              {% if section.settings.image_video != blank %}
+              <img src="{{section.settings.image_video|img_url:'master'}}" class="img-fluid" alt="">
+              {% else %}
+              <img src="https://placehold.it/1170x500" class="img-fluid" alt="">
+              {% endif %}
+              <i class="ti-control-play"></i>
+            </a>            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  
+  
+  {% if section.settings.enable_creative %}
+  <div class="creative">
+    <div class="container">
+      {% if section.settings.title_creative %}
+      <h3 class="text-center title_creative">
+      	{{section.settings.title_creative}}
+      </h3>
+      {% endif %}
+      {% if section.settings.description_creative %}
+      <p class="text-center p_creative mb-0">{{ section.settings.description_creative}}</p>
+      {% endif %}
+      <div class="row">
+        {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+        {% if block.type == "creative" %}
+        <div class="col-lg-6 col-md-6">
+          <div class="box_content">
+            <div class="title_box_creative">
+              {% if block.settings.block_title_creative != blank %}
+              <h3 class="mb-0">{{ block.settings.block_title_creative }}
+                <span>{{block.settings.block_span_creative}}</span>
+              </h3>
+              {% endif %}
+            </div>
+            <div class="paragrap_creative">
+              {% if block.settings.block_description_creative != blank %}
+              <p class="mb-0" >{{block.settings.block_description_creative}}</p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  {% if section.settings.enable_question %}
+  <div class="question">
+    <div class="container">
+      {% if section.settings.title_question%}
+      <h3 class="text-center title_question mb-0">
+        {{section.settings.title_question}}
+      </h3>
+      {% endif %}
+      {% if section.settings.description_question %}
+      <p class="text-center p_question mb-0">{{section.settings.description_question}}</p>
+      {% endif %}
+      <div class="row">
+        <div class="col-lg-12">
+          {% form 'contact' %}
+          {% if form.posted_successfully? %}
+          <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <p style="margin-bottom: 5px;">
+              {{ 'contact.form.post_success' | t }}
+            </p>
+          </div>
+          {% endif %}
+          {% if form.errors %}
+          <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <!-- {{ form.errors.size }} or {{ form.errors | size }} -->
+            <p style="margin-bottom: 5px;">Your contact form has {{ form.errors | size | pluralize: "an error", "a few errors" }}. To submit your form, make the following changes and try again:</p>
+            {% for field in form.errors %}
+            <p style="margin-bottom: 5px;">The {{ field | capitalize | replace: 'Body', 'Message' }} field {{ form.errors.messages[field] }}.</p>
+            {% endfor %}
+          </div>
+          {% endif %}
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <input type="text" class="form-control" placeholder="{{section.settings.contactform_name}}" type="text"  name="contact[name]" required>
+              </div>
+              <div class="form-group col-md-4">
+                <input type="email" class="form-control" placeholder="{{section.settings.contactform_email}}" type="email"  name="contact[email]" required>
+              </div>
+              <div class="form-group col-md-4">
+                <input type="text" class="form-control" placeholder="{{section.settings.contactform_subject}}" type="text" name="contact[subject]" >
+              </div>
+            </div>
+            <div class="form-group">
+              <textarea  type="text" rows="8" class="form-control" placeholder="{{section.settings.contactform_content}}"  name="contact[body]" required></textarea>
+            </div>
+            <button class="btn btn-primary w-100" type="submit" value="{{section.settings.contactform_btn}}">{{section.settings.contactform_btn}}</button>
+          {% endform %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</section>
+{% schema %}
+  {
+    "name": "service page",
+    "settings": [
+	{
+      "type": "header",
+      "content": "Section Slide"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_slide",
+      "label": "Enable?",
+      "default": true
+    },
+	{
+      "type": "image_picker",
+      "id": "backgroud_slide",
+      "label": "Backgroud Slide ",
+	  "info": "1920 x 500px recommended"
+    },
+
+	{
+      "type": "text",
+      "id": "title_slide",
+      "label": "Title Slide",
+      "default": "We propose"
+    },
+	{
+      "type": "header",
+      "content": "Section SERVICE"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_service",
+      "label": "Enable?",
+      "default": true
+    },
+	{
+      "type": "header",
+      "content": "Section Video"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_video",
+      "label": "Enable?",
+      "default": true
+    },
+	{
+      "type": "image_picker",
+      "id": "image_video",
+      "label": "Image video",
+	  "info": "1170 x 500px recommended"
+    },
+
+	{
+      "type": "url",
+      "id": "url_section_video",
+      "label": "URL Video",
+      "info": "[Upload video .mp4 in here](/admin/settings/files)"
+		
+    },
+
+
+	{
+      "type": "header",
+      "content": "Section Creative Process"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_creative",
+      "label": "Enable?",
+      "default": true
+    },
+	{
+      "type": "text",
+      "id": "title_creative",
+      "label": "Title Creative",
+      "default": "Creative Process"
+    },
+	{
+      "type": "text",
+      "id": "description_creative",
+      "label": "Description Creative",
+      "default": "Your Satisfaction defines our Success"
+    },
+	{
+      "type": "header",
+      "content": "Section Question"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_question",
+      "label": "Enable?",
+      "default": true
+    },
+	{
+      "type": "text",
+      "id": "title_question",
+      "label": "Title Question",
+      "default": "Do You Have Any Question?"
+    },
+	{
+      "type": "text",
+      "id": "description_question",
+      "label": "Description Question",
+      "default": "Your Satisfaction defines our Success"
+    },
+    {
+      "type": "text",
+      "id": "contactform_name",
+      "label": "Placeholder name",
+      "default": "First name*"
+    },
+    {
+      "type": "text",
+      "id": "contactform_email",
+      "label": "Placeholder email",
+      "default": "Email*"
+    },
+    {
+      "type": "text",
+      "id": "contactform_subject",
+      "label": "Placeholder email",
+      "default": "Subject"
+    },
+    {
+      "type": "text",
+      "id": "contactform_content",
+      "label": "Placeholder Message",
+      "default": "Message*"
+    },
+
+    {
+      "type": "text",
+      "id": "contactform_btn",
+      "label": "Button name",
+      "default": "send a message"
+    }
+	],
+	"blocks": [
+    {
+      "type": "service",
+      "name": "Service",
+      "settings": [
+        {
+          "type": "text",
+          "id": "block_icon",
+          "label": "Icon",
+          "default": "ti-credit-card",
+          "info": "[Get icon in here](https://themify.me/themify-icons)"
+        },
+        {
+          "type": "text",
+          "id": "block_title",
+          "label": "Title",
+          "default": "SECURED PAYMENT"
+        },
+        {
+          "type": "text",
+          "id": "block_content",
+          "label": "Content",
+          "default": "Visa, Mastercard, Amex, Paypal"
+        }
+      ]
+    },
+	{
+      "type": "creative",
+      "name": "creative",
+      "settings": [
+        {
+          "type": "text",
+          "id": "block_title_creative",
+          "label": "Title Creative",
+          "default": "01."
+        },
+		{
+          "type": "text",
+          "id": "block_span_creative",
+          "label": "Title Span Creative",
+          "default": "SERVICE"
+        },
+        {
+          "type": "text",
+          "id": "block_description_creative",
+          "label": "Description Creative",
+          "default": "I did not even know that there were any better conditions to escape to, but I was more than willing to take my chances among people fashioned after. Typi non habent claritatem insitam."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Services",
+      "blocks": [
+        {
+          "type": "service",
+          "settings": {
+            "block_icon": "ti-credit-card",
+            "block_title": "SECURED PAYMENT",
+            "block_content": "Visa, Mastercard, Amex, Paypal"
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "block_icon": "ti-truck icon",
+            "block_title": "FREE DELIVERY",
+            "block_content": "Within 24 hours ~ 48 hours"
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "block_icon": "ti-package",
+            "block_title": "30 DAYS RETURN",
+            "block_content": "Free, 12 days after delivery"
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "block_icon": "ti-settings",
+            "block_title": "CUSTOMER SERVICE",
+            "block_content": "Frequently asked questions"
+          }
+        }
+      ]
+    },
+	{
+      "name": "Creative",
+      "blocks": [
+        {
+          "type": "creative",
+          "settings": {
+            "block_title_creative": "01.",
+            "block_span_creative": "SERVICE",
+            "block_description_creative": "I did not even know that there were any better conditions to escape to, but I was more than willing to take my chances among people fashioned after. Typi non habent claritatem insitam."
+          }
+        },
+		{
+          "type": "creative",
+          "settings": {
+            "block_title_creative": "02.",
+            "block_span_creative": "SELECTIONT",
+            "block_description_creative": "I did not even know that there were any better conditions to escape to, but I was more than willing to take my chances among people fashioned after. Typi non habent claritatem insitam."
+          }
+        },
+		{
+          "type": "creative",
+          "settings": {
+            "block_title_creative": "03.",
+            "block_span_creative": "SATISFACTION",
+            "block_description_creative": "I did not even know that there were any better conditions to escape to, but I was more than willing to take my chances among people fashioned after. Typi non habent claritatem insitam."
+          }
+        },
+		{
+          "type": "creative",
+          "settings": {
+            "block_title_creative": "04.",
+            "block_span_creative": "DELIVERY",
+            "block_description_creative": "I did not even know that there were any better conditions to escape to, but I was more than willing to take my chances among people fashioned after. Typi non habent claritatem insitam."
+          }
+        }
+
+
+      ]
+    }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

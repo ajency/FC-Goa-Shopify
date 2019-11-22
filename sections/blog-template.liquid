@@ -1,0 +1,372 @@
+{% paginate blog.articles by section.settings.blog_post_limit %}
+{% if section.settings.blog_template == "blog_v1" %}
+<section class="page_aboutus_v1 page_blog02 page_blog01 page_product_v2">
+  {% if section.settings.show_slide %}
+  <div class="slide" style="background-image: url({% if section.settings.backgroud_slide_image != blank %}{{section.settings.backgroud_slide_image|img_url:'master'}}{% else %}//placehold.it/1920x500{% endif %})">
+    <div class="container text-center">
+      {% if section.settings.idname_collection != blank %}
+      <span class="text-uppercase" >{{section.settings.idname_collection}}</span>
+      {% endif %}
+      <h1>{{ blog.title }}</h1>
+    </div>
+  </div>
+  {% endif %}
+  <div class="category_blog">
+    <div class="container">
+      <div class="row">
+        {% unless section.settings.blog_layout == "blog_layo_none" %}
+        {% if section.settings.blog_layout == "blog_layo_left" %}
+        <div class="col-lg-4">
+          {% include 'blog-sidebar' %}
+        </div>
+        {% endif %}
+        {% endunless %}
+        <div class="bloglist {% if section.settings.blog_layout == "blog_layo_none" %}col-lg-12 col-sm-12  {% else %}col-lg-8 col-sm-12 {% endif %} col-xs-12">
+          <div class="row">
+            {% for article in blog.articles %}
+            <div class="col-lg-6 col-sm-12 col-md-6">
+              <div class="box_blog height">
+                {% if section.settings.show_cate or section.settings.show_datetime %}
+                <div class="top_box">
+                  <p class="mb-0">{% if section.settings.show_cate %}{{blog.title}}{% endif %}
+                    <span>{% if section.settings.show_datetime %} / {{article.published_at | date: "%B %d, %Y" }}</span>{% endif %}
+                  </p>
+                </div>
+                {% endif %}
+                <div class="picrure_box text-center">
+                  <a href="{{ article.url }}">
+                    <img src="{{ article.image.src | img_url: 'original' }}" alt="{{ article.title  }}" class="img-fluid">
+                  </a>
+                </div>
+                <div class="info_new">
+                  <h4 class="mb-0"><a href="{{ article.url }}" title="">{{ article.title}}</a></h4>
+                  {% if section.settings.show_summary %}
+                  <p class="mb-0">{{ article.content | strip_html | truncate: 60 }}</p>
+                  {% endif %}
+                  {% if section.settings.show_btn %}
+                  <div class="readmore">
+                    <a href="{{ article.url }}" title="" >{{ 'blogs.article.read_more' | t }}</a>
+                  </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            {% else %}
+            
+            {% for i in (1..3) %}
+            <div class="col-lg-6 col-sm-12 col-md-6">
+              <div class="box_blog">
+                <div class="top_box">
+                  <p class="mb-0">Fashion<span> /  {{ 'now' | date: "%B %d, %Y" }}</span></p>
+                </div>
+                <div class="picrure_box">
+                  <a href="/admin/articles">
+                    {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                  </a>
+                </div>
+                <div class="info_new">
+                  <h4 class="mb-0"><a href="/admin/articles" title="">A Novel Idea: This Summer's Best Sun Hats </a></h4>
+                  <p class="mb-0">Based on collective work and shared knowledge, Architecture...</p>
+                  <div class="readmore">
+                    <a href="/admin/articles" title="" >Read more</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            {% endfor %}            
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              {% if paginate.pages > 1 %}
+              <div class="pagi-nav text-center">
+                {{ paginate | default_pagination | replace: '&laquo; Previous', '' | replace: 'Next &raquo;', '' }}
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% unless section.settings.blog_layout == "blog_layo_none" %}
+        {% if section.settings.blog_layout == "blog_layo_right" %}
+        <div class="col-lg-4 col-md-12">
+          {% include 'blog-sidebar' %}
+        </div>
+        {% endif %}
+        {% endunless %}
+      </div>
+    </div>
+  </div>  
+</section>
+{% elsif section.settings.blog_template == "blog_v2" %}
+<section class="page_aboutus_v1 page_blog03">
+  {% if section.settings.show_slide %}
+  <div class="slide" style="background-image: url({% if section.settings.backgroud_slide_image != blank %}{{section.settings.backgroud_slide_image|img_url:'master'}}{% else %}//placehold.it/1920x500{% endif %})">
+    <div class="container text-center">
+      <span class="text-uppercase">{{section.settings.idname_collection}}</span>
+      <h1>{{ blog.title }}</h1>
+    </div>
+  </div>
+  {% endif %}       
+  <div class="category_blog">
+    <div class="container">
+      <div class="row">
+		{% for article in blog.articles %}         
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="content_blog height">
+            <div class="picrure">
+              <a href="{{ article.url }}">
+                <img src="{{ article.image.src | img_url: 'original' }}" alt="{{ article.title  }}" class="img-fluid">
+              </a>			
+            </div>
+            <div class="info_new">
+              {% if section.settings.show_cate or section.settings.show_datetime %}
+              <p>{% if section.settings.show_cate %}{{blog.title}}{% endif %}<span>{% if section.settings.show_datetime %} / {{article.published_at | date: "%B %d, %Y" }}</span>{% endif %}</p>
+              {% endif %}
+              <h4><a href="{{ article.url }}" title="">{{ article.title}}</a></h4>
+              {% if section.settings.show_btn %}
+              <div class="readmore">
+                <a href="{{ article.url }}" title="" >{{ 'blogs.article.read_more' | t }}</a>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% else %}
+        {% for i in (1..3) %}
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="content_blog">
+            <div class="picrure">
+              <a href="/admin/articles">
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              </a>			
+            </div>
+            <div class="info_new">
+              <p>Fashion<span> / {{ 'now' | date: "%B %d, %Y" }}</span></p>
+              <h4><a href="" title="">A Novel Idea: This Summer's Best Sun Hats </a></h4>
+              <a href="/admin/articles" title="" class="readmore">Read more</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        {% endfor %}
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          {% if paginate.pages > 1 %}
+          <div class="pagi-nav text-center">
+            {{ paginate | default_pagination | replace: '&laquo; Previous', '' | replace: 'Next &raquo;', '' }}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>        
+</section>
+{% endif %}
+{% endpaginate %}
+
+
+{% schema %}
+{
+  "name": "Blog page",
+  "settings": [
+    {
+      "type": "select",
+      "id": "blog_layout",
+      "options": [
+        {
+          "value": "blog_layo_left",
+          "label": "Sidebar Left"
+        },
+        {
+          "value": "blog_layo_right",
+          "label": "Sidebar Right"
+        },
+        {
+          "value": "blog_layo_none",
+          "label": "No Sidebar"
+        }
+      ],
+      "label": "Select Layout",
+      "default": "blog_layo_left",
+		"info": "Only Blog V1"
+    },
+    {
+      "type": "select",
+      "id": "blog_template",
+      "options": [
+		{
+          "value": "blog_v1",
+          "label": "Blog v1"
+        },
+		{
+          "value": "blog_v2",
+          "label": "Blog v2"
+        }
+      ],
+      "label": "Select Template",
+      "default": "blog_v1"
+    },
+	{
+      "type": "range",
+      "id": "blog_post_limit",
+      "label": "Limit posts",
+      "min": 2,
+      "max": 50,
+      "step": 1,
+      "default": 8
+    },
+	{
+      "type": "checkbox",
+      "id": "show_slide",
+      "label": "Show slide?",
+      "default": true
+    },
+	{
+      "type": "text",
+      "id": "idname_collection",
+      "label": "Name collection",
+      "default": "BLOGS"
+    },
+	{
+      "type": "image_picker",
+      "id": "backgroud_slide_image",
+      "label": "Background image slide",
+      "info": "1920 x 500px recommended"
+    },
+    {
+      "type": "header",
+      "content": "Blog posts"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_datetime",
+      "label": "Show date?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cate",
+      "label": "Show category?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_summary",
+      "label": "Show summary?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_btn",
+      "label": "Show button?",
+      "default": true
+    },	
+    {
+      "type": "header",
+      "content": "Sidebar Config"
+    },
+	{
+      "type": "header",
+      "content": "Search"
+    },
+ 	{
+      "type": "checkbox",
+      "id": "enable_widget_search",
+      "label": "Enable?",
+      "default": true
+    },
+	 {
+      "type": "text",
+      "id": "shop_by_search_title",
+      "label": "Widget Title",
+      "default": "Search"
+    },
+    {
+      "type": "text",
+      "id": "shop_by_search_placeholder",
+      "label": "Input placeholder",
+      "default": "Search"
+    },
+    {
+      "type": "header",
+      "content": "Widget Related Post"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_widget_related",
+      "label": "Enable?",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "widget_related_title",
+      "label": "Title Widget",
+      "default": "RECENT POSTS"
+    },
+    {
+      "type": "blog",
+      "id": "select_blog",
+      "label": "Select Blog"
+    },
+    {
+      "type": "range",
+      "id": "blogs_limit",
+      "label": "Limit blogs",
+      "min": 2,
+      "max": 50,
+      "step": 1,
+      "default": 8
+    },
+
+
+
+	 {
+      "type": "header",
+      "content": "Widget Categories"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_widget_cate",
+      "label": "Enable?",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "widget_cate_title",
+      "label": "Title Widget",
+      "default": "Categories"
+    },
+    {
+      "type": "link_list",
+      "id": "widget_cate_menu",
+      "label": "Menu for Categories"
+    },
+
+
+	{
+      "type": "header",
+      "content": "Widget Meta"
+    },
+	{
+      "type": "checkbox",
+      "id": "enable_widget_meta",
+      "label": "Enable?",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "widget_meta_title",
+      "label": "Title Widget",
+      "default": "Meta"
+    },
+    {
+      "type": "link_list",
+      "id": "widget_meta_menu",
+      "label": "Menu for Meta"
+    }
+    
+   
+  ]
+}
+{% endschema %}

@@ -1,0 +1,120 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-newsletter-v1" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %} {% if section.settings.sections_layout == "dark" %}background: {{section.settings.sections_bg_color}};{% endif %}">
+  <div class="section-contact-v1">
+    <div class="container">
+      <div class="row justify-content-center">
+        {% if section.settings.enable_infotitle %}
+        <div class="col-lg-8 col-sm-10 text-center box-content">
+          {% if section.settings.section_title != blank %}
+          	<h3>{{section.settings.section_title}}</h3>
+          {% endif%}
+          {% if section.settings.section_description != blank %}
+          	<p> {{section.settings.section_description}}</p>
+          {% endif %}          
+        </div> 
+        {% endif %}
+        <div class="col-lg-8 col-sm-10 text-center box-email">          
+           	{% if settings.newsletter_form_action != blank %}
+            {% assign form_action = settings.newsletter_form_action %}
+            {% else %}
+            {% assign form_action = '#' %}
+            {% endif %}          
+          <form class="needs-validation" action="{{form_action}}" method="post">
+            <div class="input-group mb-2 mr-sm-2">                            
+              <input type="email" name="EMAIL" class="form-control" id="mail" placeholder="{{section.settings.newsletter_placeholder_input}}">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="{{section.settings.iconmail}}"></i></div>
+              </div>
+            </div>
+            {% if section.settings.button_name != blank %}            
+            	<button class="btn btn-primary w-100" type="submit">{{section.settings.button_name}}</button>
+            {% endif %}
+          </form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Newsletter v1 H3",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "header",
+      "info": "MailChimp form action URL: Setting in Login Store > Customize theme > Theme settings tab > Mailchimp",
+      "content": "Newsletter"
+    },
+	{
+      "type": "header",
+      "content": "Info Title Newsletter"
+    },
+	{
+      "type": "checkbox",
+      "id": "enable_infotitle",
+      "label": "Show Info Title Newsletter",
+      "default": true
+    },
+	{
+	"type":"text",
+	"id": "section_title",
+	"label": "Title Newsletter",
+	"default": "Never miss our updates about new arrivals and special offers"
+	},
+	{
+	"type":"text",
+	"id": "section_description",
+	"label": "Description",
+	"default": "Get the latest news & updates from Maxcolt"
+	},
+	{
+      "type": "header",
+      "content": "Info Email Newsletter"
+    },
+	{
+      "type": "text",
+      "id": "newsletter_placeholder_input",
+      "label": "Placeholder input",
+      "default": "EMAIL ADDRESS"
+    },
+	{
+      "type": "text",
+      "id": "iconmail",
+      "label": "Icon right",
+      "default": "ti-email",
+      "info": "[Get icon in here](https://themify.me/themify-icons)"
+     },
+	{
+	"type":"text",
+	"id": "button_name",
+	"label": "Button name",
+	"default": "SUBCRIBE NOW"
+	},
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter v1 H3",
+      "category": "Newsletter"
+    }
+  ]
+}
+{% endschema %}
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,413 @@
+<section class="page_aboutus_v1">
+  {% if section.settings.enable_slide %}
+  <div class="slide" style="background-image: url({% if section.settings.backgroud_slide != blank %}{{section.settings.backgroud_slide |img_url:'master'}}{% else %}//placehold.it/1920x500{% endif %})">
+    <div class="container text-center">
+      <span class="text-uppercase" >{{page.title}}</span>
+      {% if section.settings.title_slide != blank %}
+      	<h1>{{section.settings.title_slide}}</h1>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+  
+  {% if section.settings.enable_banner %}
+  <div class="baner">
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="col-lg-6 col-12 col-md-5 text-center">
+          <div class="box_img">            
+            <a href="{{section.settings.bannner_image_url}}">
+              {% if section.settings.bannner_image != blank %}
+              	<img src="{{section.settings.bannner_image|img_url:'master'}}" class="img-fluid" alt="banner">
+              {% else %}
+              	{{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}
+            </a>            
+          </div>
+        </div>        
+        <div class="col-lg-5 col-11 col-md-7 right_banner">
+          {% if section.settings.title_bannner != blank %}
+          <h3 >
+            {{section.settings.title_bannner}}
+          </h3>
+          {% endif %}
+          {% if section.settings.description_bannner1 != blank %}                    
+          <p class="mb-0 content_1">
+            {{section.settings.description_bannner1}}
+          </p>
+          {% endif %}
+          {% if section.settings.description_bannner2 != blank %}                    
+          <p class="mb-0">
+            {{section.settings.description_bannner2}}
+          </p>
+          {% endif %}
+
+          {% if section.settings.author_image != blank %}
+          <img src="{{section.settings.author_image|img_url:'master'}}" class="img-fluid" alt="author">
+          {% else %}
+          <img src="//placehold.it/178x132" class="img-fluid" alt="">
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  
+  {%  if section.settings.enable_tabpage %}
+  <div class="tab_page">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <div class="title_tab">
+            <ul class="list-unstyled list-inline mb-0">              
+              {% if section.blocks.size > 0 %}
+              {%- assign i = 1 -%}
+              {% for block in section.blocks %}
+              {% if block.type == "tab" %}
+              <li class="list-inline-item mr-0 {% if forloop.first %}active{% endif %}">
+                <a href="javascript:void(0)" data-target="{{i}}">{{block.settings.tab_title}}</a>
+              </li>
+              {% endif %}
+              {%- assign i = i | plus : 1 -%}
+              {% endfor %}
+              {% endif %}            
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        {% if section.blocks.size > 0 %}
+        {%- assign i = 1 -%}
+        {% for block in section.blocks %}
+        {% if block.type == "tab" %}
+        <div class="content_tab jscontent_tab" id="{{i}}" class=" {% if forloop.first %}active{% endif %}">
+          <div class="col-lg-12 text-center top_tab">
+            {% if block.settings.tab_description != blank %}
+            <p class="mb-0">{{ block.settings.tab_description }}</p>
+            {% endif %}
+            
+            {% if section.settings.enable_img_tab %}
+              {% if block.settings.tab_image != blank %}            
+              <img src="{{block.settings.tab_image|img_url:'master'}}" class="img-fluid" alt="banner">
+              {% else %}
+                 {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}
+            {% endif %}           
+            
+          </div>
+        </div>
+        {% endif %}
+        {%- assign i = i | plus : 1 -%}
+        {% endfor %}
+        {% endif %}
+
+      </div>               
+    </div>
+  </div>
+  {% endif %}
+  
+  {% if section.settings.enable_feature %}
+  <div class="feature">
+    <div class="container">
+      <div class="row">
+        {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+        {% if block.type == "feature" %}
+        <div class="col-lg-6 col-sm-6 col-md-6">
+          <div class="box-content">
+            {% if block.settings.block_title_feature != blank %}
+            <p class="mb-0 text-uppercase">{{ block.settings.block_title_feature }}</p>
+            {% endif %}
+            {% if block.settings.block_description_feature != blank %}
+            <h3>{{ block.settings.block_description_feature}}</h3>
+            {%  endif %}
+            <div class="ruler"></div>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  {% if section.settings.enable_newsletter %}
+  <div class="newsletter">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 text-center box-content">
+          {% if section.settings.section_title_newsletter != blank %}
+          	<h3>{{section.settings.section_title_newsletter}}</h3>
+          {% endif%}
+          {% if section.settings.section_description_newsletter != blank %}
+          	<p class="mb-0"> {{section.settings.section_description_newsletter}}</p>
+          {% endif %} 
+        </div>
+        <div class="col-lg-8 col-md-10 text-center box-email">
+          {% if settings.newsletter_form_action != blank %}
+            {% assign form_action = settings.newsletter_form_action %}
+            {% else %}
+            {% assign form_action = '#' %}
+            {% endif %}
+          <form class="needs-validation" action="{{form_action}}" method="post">
+            <div class="input-group mb-2 mr-sm-2">                            
+              <input type="email" name="EMAIL" class="form-control" id="mail" placeholder="{{section.settings.newsletter_placeholder_input}}">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="{{section.settings.iconmail}}"></i></div>
+              </div>
+            </div>
+            {% if section.settings.button_name_newsletter != blank %}            
+            	<button class="btn btn-primary w-100" type="submit">{{section.settings.button_name_newsletter}}</button>
+            {% endif %}
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "About Us page",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Banner"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_slide",
+      "label": "Enable?",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title_slide",
+      "label": "Title Slide",
+      "default": "Minimal Design Agency."
+    },
+    {
+      "type": "image_picker",
+      "id": "backgroud_slide",
+      "label": "Backgroud Slide ",
+      "info": "1920 x 600px recommended"
+    },
+    {
+      "type": "header",
+      "content": "Section Content"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_banner",
+      "label": "Enable?",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "bannner_image",
+      "label": "Image Bannner",
+      "info": "570 x 780px recommended"
+    },
+    {
+      "type": "url",
+      "id": "bannner_image_url",
+      "label": "URL bannner_image",
+      "default": "/collections/all"
+    },
+	{
+      "type": "header",
+      "content": "Info right"
+    },
+    {
+      "type": "text",
+      "id": "title_bannner",
+      "label": "Title Bannner",
+      "default": "Hey!<br>I'm Rian"
+    },
+    {
+      "type": "textarea",
+      "id": "description_bannner1",
+      "label": "Description Bannner 1",
+      "default": "I am a highly organised and motivated professional Fashion Designer with a wealth of experience in a range of photographic styles and services."
+    },
+    {
+      "type": "textarea",
+      "id": "description_bannner2",
+      "label": "Description Bannner 2",
+      "default": "Just run your Fashion Store which will be a reflection of you a sexy and confident woman that shines with her unique style. Our goal is to make fashion as easy as possible. We bring you the best of glam and sexy clothes while keeping in mind that high quality things arent always too expensive. Our goal is to make fashion as easy as possible, that is why we add carefully selected products on a daily basis, and this is essential for us. This is how you keep up with the times in style! We ship worldwide & space!"
+    },
+    {
+      "type": "image_picker",
+      "id": "author_image",
+      "label": "Image author",
+      "info": "178 x 132px recommended"
+    },
+    {
+      "type": "header",
+      "content": "Section Tab page"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_tabpage",
+      "label": "Enable?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_img_tab",
+      "label": "Enable images in tab?",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Section feature"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_feature",
+      "label": "Enable?",
+      "default": true
+    },
+    {
+      "type": "header",
+      "info": "MailChimp form action URL: Setting in Login Store > Customize theme > Theme settings tab > Mailchimp",
+      "content": "Newsletter"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_newsletter",
+      "label": "Enable?",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "section_title_newsletter",
+      "label": "Title section newsletter",
+      "default": "Never miss our updates about new<br> arrivals and special offers"
+    },
+    {
+      "type": "text",
+      "id": "section_description_newsletter",
+      "label": "Description newsletter",
+      "default": "Get the latest news & updates from Maxcolt"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_placeholder_input",
+      "label": "Placeholder input newsletter",
+      "default": "EMAIL ADDRESS"
+    },
+    {
+      "type": "text",
+      "id": "iconmail",
+      "label": "Icon right newsletter",
+      "default": "ti-email",
+      "info": "[Get icon in here](https://themify.me/themify-icons)"
+    },
+    {
+      "type": "text",
+      "id": "button_name_newsletter",
+      "label": "Button name newsletter",
+      "default": "SUBCRIBE NOW"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "FEATURE",
+      "settings": [
+        {
+          "type": "text",
+          "id": "block_title_feature",
+          "label": "Title feature",
+          "default": "FEATURE #1"
+        },
+        {
+          "type": "text",
+          "id": "block_description_feature",
+          "label": "description feature",
+          "default": "We Are Offering Quality Services To Clients Worldwide"
+        }
+      ]
+    },
+    {
+      "type": "tab",
+      "name": "About v1 page",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_title",
+          "label": "Title tab",
+          "default": "VISION"
+        },
+        {
+          "type": "text",
+          "id": "tab_description",
+          "label": "Title description",
+          "default": "Fila is our private label thats designed by us, and owned by you. If youre looking for head-turning styles that are one of a kind, Fila is what you should stock up on. Fila is our private label thats designed by us, and owned by you. If youre looking for head"
+        },
+        {
+          "type": "image_picker",
+          "id": "tab_image",
+          "label": "Image tab",
+          "info": "1170 x 650px recommended"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Us page v1",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "block_title_feature": "FEATURE #1",
+            "block_description_feature": "We Are Offering Quality Services To Clients Worldwide"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "block_title_feature": "FEATURE #2",
+            "block_description_feature": "Meet Our Creative Team That Does Amazing Things"
+          }
+        }
+      ]
+    },
+    {
+      "name": "About v1 page",
+      "blocks": [
+        {
+          "type": "tab",
+          "settings": {
+            "tab_title": "VISION",
+            "tab_description": "Fila is our private label thats designed by us, and owned by you. If youre looking for head-turning styles that are one of a kind, Fila is what you should stock up on. Fila is our private label thats designed by us, and owned by you. If youre looking for hea"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "tab_title": "MANIFESTO",
+            "tab_description": "Fila is our private label thats designed by us, and owned by you. If youre looking for head-turning styles that are one of a kind, Fila is what you should stock up on. Fila is our private label thats designed by us, and owned by you. If youre looking for hea"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "tab_title": "MISSION",
+            "tab_description": "Fila is our private label thats designed by us, and owned by you. If youre looking for head-turning styles that are one of a kind, Fila is what you should stock up on. Fila is our private label thats designed by us, and owned by you. If youre looking for hea"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

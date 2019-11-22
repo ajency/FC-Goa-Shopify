@@ -1,0 +1,176 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-shopnow-v2" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %} {% if section.settings.sections_layout == "dark" %}background: {{section.settings.sections_bg_color}};{% endif %}">
+  <div class="section-shopnow-v2">
+    <div class="container">
+      <div class="row justify-content-end">
+        <div class="col-lg-4 col-md-4">
+          {% if section.settings.enable_info_left %}
+          <div class="box_one text-center">
+            {% if section.settings.oversized != blank %}
+            <p class="mb-0">{{section.settings.oversized}}</p> 
+            {% endif %}
+            <div class="picture">              
+              <a href="{{section.settings.banner_url1}}">
+                {% if section.settings.image_shopnow1 != blank %}
+                <img src="{{section.settings.image_shopnow1|img_url:'master'}}" class="img-fluid" alt="">
+                {% else %}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                {% endif %}
+              </a>
+            </div>
+          </div>
+          {% endif %}
+          
+        </div>
+        <div class="col-lg-1 col-md-1">               
+        </div>
+        {% if section.settings.enable_info_right %}
+        <div class="col-lg-6 col-md-7">
+          {% if section.settings.enable_img_right %}
+          <div class="picture">
+            <a href="{{section.settings.banner_url2}}">
+                {% if section.settings.image_shopnow2 != blank %}
+                <img src="{{section.settings.image_shopnow2|img_url:'master'}}" class="img-fluid" alt="">
+                {% else %}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                {% endif %}
+              </a>
+          </div>
+          {% endif %}          
+          <div class="box_content">
+            {% if section.settings.section_title_shopnow != blank %}
+            <h3>{{section.settings.section_title_shopnow}}</h3>
+            {% endif %}
+            
+            {% if section.settings.section_p != blank %}
+            <p class="mb-0">{{section.settings.section_p}}</p> 
+            {% endif %}
+            
+            {% if section.settings.buttom_shop_now != blank %}
+              <a href="{{ section.settings.button_url }}" >{{section.settings.buttom_shop_now}}</a>
+             {% endif %}
+          </div>
+        </div>
+        {% endif %}
+        
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Banner v2 H1",
+  "class": "index-section",
+  "settings": [
+	{
+      "type": "header",
+      "content": "Info Left"
+    },
+	{
+      "type": "checkbox",
+      "id": "enable_info_left",
+      "label": "Enable Info Left",
+      "default": true
+    },
+	{
+      "type": "text",
+      "id": "oversized",
+      "label": "Text above image",
+      "default": "Oversized Down T-Shirt"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_shopnow1",
+      "label": "Image left",
+	  "info": "400 x 700px recommended"
+    },
+	{
+      "type": "url",
+      "id": "banner_url1",
+      "label": "URL Image left",
+      "default": "/collections/all"
+    },
+	{
+      "type": "header",
+      "content": "Info right"
+    },
+	{
+      "type": "checkbox",
+      "id": "enable_info_right",
+      "label": "Enable Info Right",
+      "default": true
+    },
+	{
+      "type": "checkbox",
+      "id": "enable_img_right",
+      "label": "Enable Image",
+      "default": true
+    },
+	{
+      "type": "image_picker",
+      "id": "image_shopnow2",
+      "label": "Image right",
+	  "info": "570 x 300px recommended"
+    },
+	{
+      "type": "url",
+      "id": "banner_url2",
+      "label": "URL Image right",
+      "default": "/collections/all"
+    },
+    {
+      "type": "text",
+      "id": "section_title_shopnow",
+      "label": "Title",
+      "default": "Designed For Woman, Just For You."
+    },
+    {
+      "type": "text",
+      "id": "section_p",
+      "label": "Description",
+      "default": "Donec sed odio dui. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo."
+    },
+    {
+      "type": "text",
+      "id": "buttom_shop_now",
+      "label": "Button name",
+      "default": "SHOP NOW"
+    },
+	{
+      "type": "url",
+      "id": "button_url",
+      "label": "URL button",
+      "default": "/collections/all"
+    },
+ 	{
+      "type": "header",
+      "content": "Section Space"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner v2 H1",
+      "category": "Banner"
+    }
+  ]
+}
+
+{% endschema %}
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

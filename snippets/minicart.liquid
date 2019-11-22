@@ -1,0 +1,56 @@
+
+<div class="minicart">
+  <div class="bg_minicart">
+  </div>
+  <div class="content_minicart">
+    <div class="top_cart d-flex">
+      <span class="close_minicart">{{ 'minicart.general.close' | t }}</span>
+    </div>
+    <div class="bottom11 enj-minicart-ajax">
+      {% if cart.item_count > 0 %}
+      <div class="list_product_minicart">
+        {% for item in cart.items %}
+        <ol class="minicart_item list-unstyled mb-0">
+          <li class="d-flex">
+            <div class="thumb_img_cartmini">
+            	<a href="{{item.url}}" title="" class=""><img alt="{{item.title}}" src="{{ item.image | product_img_url: 'small' }}"></a>
+            </div>
+             <div class="product-detail">
+              <h3 class="product_name_mini">
+                <a href="{{item.url}}">{{item.title}}</a>
+              </h3>
+              <div class="product_info">
+                <div class="product_quanity">QTY : {{ item.quantity }} </div>
+                <div class="product_price">
+                  <span class="price_sale">{{ item.price | money }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="produc_remove">
+              <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="remove-product"><i class="ti-close"></i></a>
+            </div>
+          </li>
+        </ol>
+        {% endfor %}
+      </div>
+      <div class="bottom_minicarts ">
+        <div class="total_price">
+          <span class="total_mini">{{ 'minicart.general.total_price' | t }}</span>
+          <span class="total_price_mini">{{cart.total_price | money}}</span>
+        </div>
+        <div class="view_check_minicart d-flex">
+          <a href="/cart" class="button button-viewcart">{{ 'minicart.general.view_cart' | t }}</a>
+          <a href="/checkout" class="button button-checkout">{{ 'minicart.general.checkout' | t }}</a>
+        </div>
+      </div>
+      {% else %}
+      	<div class="list_product_minicart empty">
+          <div class="empty-product_minicart">
+            <p class="mb-0">{{ 'minicart.general.empty' | t }}</p>
+            <a href="/collections/all" class="to-cart">{{ 'minicart.general.shop_now' | t }}</a>
+          </div>
+        </div>      
+  	  {% endif %}
+    </div>
+  </div>
+</div>

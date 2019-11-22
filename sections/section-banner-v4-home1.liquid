@@ -1,0 +1,89 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-banner-v4" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %} {% if section.settings.sections_layout == "dark" %}background: {{section.settings.sections_bg_color}};{% endif %}">
+  
+  <div class="section-banner-v6" style="background-image: url({% if section.settings.backgroud_image_banner != blank %}{{section.settings.backgroud_image_banner|img_url:'master'}}{% else %}//placehold.it/1920x645{% endif %})">
+    <div class="container-fluid">            
+      <div class="row justify-content-center text-center">
+        {% if section.settings.enable_image_top %}
+        <div class="col-lg-10 col-12">
+          <a href="{{section.settings.banner_url}}">
+            {% if section.settings.image_banner != blank %}
+            <img src="{{section.settings.image_banner|img_url:'master'}}" class="img-fluid" alt="">
+            {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+          </a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Banner v4 H1",
+  "class": "index-section",
+  "settings": [   
+    {
+      "type": "header",
+      "content": "Image Top"
+    },
+	{
+      "type": "checkbox",
+      "id": "enable_image_top",
+      "label": "Enable Image top?",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "image_banner",
+      "label": "Image",
+	  "info": "960 x 200px recommended"
+    },
+	{
+      "type": "header",
+      "content": "Image Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "backgroud_image_banner",
+      "label": "Backgroud Image",
+	  "info": "1920 x 600px recommended"
+    },
+    {
+      "type": "url",
+      "id": "banner_url",
+      "label": "URL",
+      "default": "/collections/all"
+    },
+	{
+      "type": "header",
+      "content": "Section Space"
+    },
+	{
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner v4 H1",
+      "category": "Banner"
+    }
+  ]
+}
+{% endschema %}
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

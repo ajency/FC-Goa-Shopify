@@ -1,0 +1,190 @@
+<footer id="footer_v4" class="footer_v4">
+  <div class="container">
+    <div class="top_footer">
+      <div class="row">
+        <div class="col-lg-4 col-md-12">
+          
+          <div class="logo_footer text-center text-lg-left">
+            <a href="{{shop.url}}">
+              {% if settings.fv4_main_logo != blank %}
+              <img src="{{settings.fv4_main_logo | img_url:'master'}}"  width="{{settings.fv4_main_logo_maxwidth}}" alt="logo">
+              {% else %}
+              <img src="//placehold.it/140x22" width="{{settings.fv4_main_logo_maxwidth}}" alt="logo">
+              {% endif %}
+            </a>
+          </div>
+          
+          
+          {% if settings.fv4_bottom_copyright != blank %}
+          <p class="mb-0 copyright text-center text-lg-left">{{settings.fv4_bottom_copyright}}</p>
+          {% else %}
+          <p class="mb-0 copyright text-center text-lg-left">Copyright &copy; {{ 'now' | date: "%Y" }} by <a  class="white" href="https://maxcolt-store-demo.myshopify.com" title="maxcolt" target="_blank">Maxcolt</a>. All Rights Reserved.</p>
+          {% endif %}
+          
+          
+          <ul class="list-inline list-unstyled mb-0 icon text-center text-lg-left">
+            {% if settings.icon_tw_vf4 !=blank %}
+            <li class="list-inline-item mr-0">
+              <a href="{{settings.icon_tw_vf1_url4}}" title="" target="_blank" class="{{settings.icon_tw_vf4}}"></a>
+            </li>
+            {% endif %}
+            {% if settings.icon_facebook_vf4 !=blank %}
+            <li class="list-inline-item mr-0">
+              <a href="{{settings.icon_facebook_vf4_url}}" title="" target="_blank" class="{{settings.icon_facebook_vf4}}"></a>
+            </li>
+            {% endif %}
+            {% if settings.icon_google_vf4 !=blank %}
+            <li class="list-inline-item mr-0">
+              <a href="{{settings.icon_google_vf4_url}}" title="" target="_blank" class="{{settings.icon_google_vf4}}"></a>
+            </li>
+            {% endif %}
+            {% if settings.icon_linkedin_vf4 !=blank %}
+            <li class="list-inline-item mr-0">
+              <a href="{{settings.icon_linkedin_vf4_url}}" title="" target="_blank" class="{{settings.icon_linkedin_vf4}}"></a>
+            </li>
+            {% endif %}
+            {% if settings.icon_dribbble_vf4 !=blank %}
+            <li class="list-inline-item mr-0">
+              <a href="{{settings.icon_dribbble_vf4_url}}" title="" target="_blank" class="{{settings.icon_dribbble_vf4}}"></a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+        <div class="col-md-6 d-none footer-padding-top d-md-block d-lg-none">
+          <div class="contact_footer_padding text-center text-md-left">
+            <div class="title_footer">
+              {% if settings.fv4_titlecolum2_fv4 != blank %}
+              <h4 class="mb-0">{{settings.fv4_titlecolum2_fv4}}</h4>
+              {% endif %}
+            </div>
+            <div class="address_content_footer">
+              <address class="mb-0">
+                {% if settings.fv4_children_fv4 !=blank %}
+                <p class="mb-0">{{settings.fv4_children_fv4}}</p>
+                {% endif %}
+                {% if settings.fv4_phone_fv4 != blank %}
+                <p class="tell_footer mb-0">{{settings.fv4_phone_fv4}}</p>
+                {% endif %}
+                {% if settings.fv4_children2_fv4 !=blank %}
+                <p class="mb-0 title_white">{{settings.fv4_children2_fv4}}</p>
+                {% endif %}
+                {% if settings.fv4_trebol_fv4 !=blank %}
+                <p class="mb-0 padd_add">{{ settings.fv4_trebol_fv4 }}</p>
+                {% endif %}
+                
+              </address>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 footer-padding-top d-none d-md-block d-lg-none">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 towcol text-center text-md-left">
+              <div class="towcol_padding">
+                <div class="title_footer">
+                  {% if settings.fv4_titlecolum3_fv4 != blank%}
+                  <h4 class="mb-0">{{settings.fv4_titlecolum3_fv4}}</h4>
+                  {% endif %}
+                </div>
+                <ul class="list-unstyled mb-0">
+                  {% for link in linklists[settings.menu_fv4_center].links %}
+                  <li><a href="{{link.url}}" title="{{link.title}}">{{link.title}}</a></li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 towcol text-center text-md-left">
+              <div class="float-md-right">
+                <div class="title_footer">
+                  {% if settings.fv4_titlecolum4_fv4 !=blank %}
+                  <h4 class="mb-0">{{settings.fv4_titlecolum4_fv4}}</h4>
+                  {% endif %}
+                </div>
+                <ul class="list-unstyled mb-0">
+                  {% for link in linklists[settings.menu_fv4_center4].links %}
+                  <li><a href="{{link.url}}" title="{{link.title}}">{{link.title}}</a></li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 footer-padding-top d-md-none d-lg-block">
+          <div class="contact_footer_padding text-center text-md-left">
+            <div class="title_footer">
+              {% if settings.fv4_titlecolum2_fv4 != blank %}
+              <h4 class="mb-0">{{settings.fv4_titlecolum2_fv4}}</h4>
+              {% endif %}
+            </div>
+            <div class="address_content_footer">
+              <address class="mb-0">
+                {% if settings.fv4_children_fv4 !=blank %}
+                <p class="mb-0">{{settings.fv4_children_fv4}}</p>
+                {% endif %}
+                {% if settings.fv4_phone_fv4 != blank %}
+                <p class="tell_footer mb-0">{{settings.fv4_phone_fv4}}</p>
+                {% endif %}
+                {% if settings.fv4_children2_fv4 !=blank %}
+                <p class="mb-0 title_white">{{settings.fv4_children2_fv4}}</p>
+                {% endif %}
+                {% if settings.fv4_trebol_fv4 !=blank %}
+                <p class="mb-0 padd_add">{{ settings.fv4_trebol_fv4 }}</p>
+                {% endif %}
+                
+              </address>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4  footer-padding-top d-md-none d-lg-block">
+          <div class="row">
+            <div class="col-lg-6 col-md-4 towcol text-center text-md-left">
+              <div class="towcol_padding">
+                <div class="title_footer">
+                  {% if settings.fv4_titlecolum3_fv4 %}
+                  <h4 class="mb-0">{{settings.fv4_titlecolum3_fv4}}</h4>
+                  {% endif %}
+                </div>
+                <ul class="list-unstyled mb-0">
+                  {% for link in linklists[settings.menu_fv4_center].links %}
+                  <li><a href="{{link.url}}" title="{{link.title}}">{{link.title}}</a></li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-4 towcol text-center text-md-left">
+              <div class="float-xl-right">
+                <div class="title_footer">
+                  {% if settings.fv4_titlecolum4_fv4 !=blank %}
+                  <h4 class="mb-0">{{settings.fv4_titlecolum4_fv4}}</h4>
+                  {% endif %}
+                </div>
+                <ul class="list-unstyled mb-0">
+                  {% for link in linklists[settings.menu_fv4_center4].links %}
+                  <li><a href="{{link.url}}" title="{{link.title}}">{{link.title}}</a></li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom_footer text-center ">
+      <div class="row">
+        <div class="col-lg-6 col-md-6">
+          <ul class="list-unstyled list-inline mb-0 text-center text-md-left">
+            {% for link in linklists[settings.menu_fv4_bottom_fv4].links %}
+            <li class="list-inline-item mr-0"><a href="{{link.url}}" title="{{link.title}}">{{link.title}}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="col-lg-6 col-md-6 text-center text-md-right">
+          <a href="{{settings.fv4_bottom_payment_url}}">
+            {% if settings.fv4_bottom_payment_img != blank %}
+            <img src="{{settings.fv4_bottom_payment_img|img_url:'master'}}" alt="payment" />
+            {% endif %}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,158 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-shopnow-v1" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %} {% if section.settings.sections_layout == "dark" %}background: {{section.settings.sections_bg_color}};{% endif %}">
+  <div class="section-shopnow-v1">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 text-center left col-12 col-md-5">
+          <div class="picture_big">
+            <a href="{{section.settings.banner_url1}}">
+              {% if section.settings.image_shopnow1 != blank %}
+              <img src="{{section.settings.image_shopnow1|img_url:'master'}}" class="img-fluid" alt="">
+              {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}
+            </a>
+          </div>
+          {% if section.settings.oversized != blank %}
+            <p>{{section.settings.oversized}}</p> 
+           {% endif %}
+        </div>
+        <div class="col-lg-1 col-md-1">
+        </div>
+        <div class="col-lg-5 right col-12 col-md-6">
+          <div class="box-content">
+            {% if section.settings.section_title_shopnow != blank %}
+            <h3>{{section.settings.section_title_shopnow}}</h3>
+            {% endif %}
+            
+            {% if section.settings.section_p != blank %}
+            <p>{{section.settings.section_p}}</p> 
+            {% endif %}
+            
+            {% if section.settings.buttom_shop_now != blank %}
+              <a href="{{ section.settings.button_url2 }}" >{{section.settings.buttom_shop_now}}</a>
+             {% endif %}
+          </div>
+          <div class="box-picture d-flex">
+            <div class="picture_big">
+              <a href="{{section.settings.banner_url3}}">
+                {% if section.settings.image_shopnow2 != blank %}
+                <img src="{{section.settings.image_shopnow2|img_url:'master'}}" class="img-fluid" alt="">
+                {% else %}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                {% endif %}
+              </a>
+            </div>
+            {% if section.settings.section_text_span != blank %}
+            <span>{{section.settings.section_text_span}}</span>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Banner v1 H1",
+  "class": "index-section",
+  "settings": [
+	{
+      "type": "image_picker",
+      "id": "image_shopnow1",
+      "label": "Image left",
+	  "info": "570 x 700px recommended"
+    },
+	{
+      "type": "url",
+      "id": "banner_url1",
+      "label": "URL Image left",
+      "default": "/collections/all"
+    },
+	{
+      "type": "text",
+      "id": "oversized",
+      "label": "Text left",
+      "default": "Oversized Down T-Shirt"
+    },
+	{
+      "type": "header",
+      "content": "Info right"
+    },
+    {
+      "type": "text",
+      "id": "section_title_shopnow",
+      "label": "Title ",
+      "default": "Designed for men, just for you."
+    },
+    {
+      "type": "text",
+      "id": "section_p",
+      "label": "Description",
+      "default": "Donec sed odio dui. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo."
+    },
+    {
+      "type": "text",
+      "id": "buttom_shop_now",
+      "label": "Button name",
+      "default": "SHOP NOW"
+    },
+	{
+      "type": "url",
+      "id": "button_url2",
+      "label": "URL button",
+      "default": "/collections/all"
+    },
+	{
+      "type": "header",
+      "content": "Image bottom"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_shopnow2",
+      "label": "Image right",
+	  "info": "400 x 400px recommended"
+    },
+	{
+      "type": "url",
+      "id": "banner_url3",
+      "label": "URL Image right",
+      "default": "/collections/all"
+    },
+	{
+      "type": "text",
+      "id": "section_text_span",
+      "label": "Text vertical right",
+      "default": "All New OVER Collections 2018"
+    },
+	{
+      "type": "header",
+      "content": "Section Space"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner V1 H1",
+      "category": "Banner"
+    }
+  ]
+}
+{% endschema %}
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

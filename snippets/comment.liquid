@@ -1,0 +1,62 @@
+<!-- /snippets/comment.liquid -->
+{% comment %}
+
+This snippet generates the structure of a comment.
+It is used to show not only recent comments, but also comments that were
+just published but not yet approved.
+
+More information:
+- http://docs.shopify.com/themes/liquid-variables/comment
+
+{% endcomment %}
+
+{% if section.settings.blog_template == "blogdetail_v1" %}
+<li class="media">
+  {% if section.settings.enabledimage_comments_v1 %}
+    {% if section.settings.image_comments_v1 != blank %}
+    <a href="{{section.settings.url_image_comments_v1}}">
+      <img src="{{section.settings.image_comments_v1|img_url:'master'}}" class="img-fluid" alt="banner">
+    </a>
+  	{% else %}
+    <a href="">
+        <img src="https://placehold.it/70x70" alt="customer">
+      </a>
+  	{% endif %}
+  {% endif %}
+  
+  <div class="media-body">
+    <h5 class="mb-0"><a href="/" class="author-name font-bold black">{{ comment.author }}</a></h5><span class="black">{{ 'blogs.article.says' | t}}:</span>
+    <span>{{ comment.created_at | date: ' %b %d, %Y' }}</span>
+    <p>{{ comment.content }}</p>
+    <a href="#comments" title="">{{ 'blogs.comments.reply' | t}}</a>
+  </div>
+</li>
+{% elsif section.settings.blog_template == "blogdetail_v2" %}
+<div class="media">
+  {% if section.settings.enabledimage_comments_v2 %}
+    {% if section.settings.image_comments_v2 != blank %}
+    <a href="{{section.settings.url_image_comments_v2}}">
+      <img src="{{section.settings.image_comments_v2|img_url:'master'}}" class="img-fluid" alt="banner">
+    </a>
+  	{% else %}
+    <a href="">
+        <img src="https://placehold.it/70x70" alt="customer">
+      </a>
+  	{% endif %}
+  {% endif %}
+  <div class="media-body">
+    <h5 class="mb-0"><a href="/" class="author-name font-bold black">{{ comment.author }}</a></h5><span class="black">{{ 'blogs.article.says' | t}}:</span>
+    <div class="date_reply_paren d-flex justify-content-between">
+      <div class="date_box">
+        <span>{{ comment.created_at | date: ' %b %d, %Y' }}</span>
+      </div>
+      <div class="reply">
+        <a href="#comments" title="">{{ 'blogs.comments.reply' | t}}</a>
+      </div>
+    </div>
+    <div class="paragr_dv">
+      <p class="mb-0">{{ comment.content }}</p>
+    </div>
+  </div>
+</div>
+{% endif %}

@@ -1,0 +1,18 @@
+<!-- /templates/404.liquid -->
+<section class="page_404" style="background-image: url({% if settings.error_bg_img != blank %}{{settings.error_bg_img|img_url:'master'}}{% else %}//placehold.it/1920x1080{% endif %})">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-12 col-12  text-center box_content">
+        {% if settings.title_error != blank %}
+        <h3 class="mb-0" style="color:{{settings.color_title_error}};">{{settings.title_error}}</h3>
+        {% endif %}
+        {%if settings.description_error != blank%}
+        <p class="mb-0" style="color:{{settings.color_description_error}};">{{settings.description_error}}</p>
+        {% endif %}
+        {% if settings.button_name_error != blank %}
+        <a href="{{settings.button_error_url}}" title="" style="color:{{settings.color_button_name_error}};background-color:{{settings.bgcolor_button_name_error}};">{{settings.button_name_error}}</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,656 @@
+<!-- /sections/article-template.liquid -->
+{% paginate article.comments by 5 %}
+<section class="page_aboutus_v1 page_blog02 page_blogdetail01">
+  {% if section.settings.show_slide %}
+  <div class="slide" style="background-image: url({% if section.settings.backgroud_slide_image != blank %}{{section.settings.backgroud_slide_image|img_url:'master'}}{% else %}//placehold.it/1920x500{% endif %})">
+    <div class="container ">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          {% if section.settings.idname_collection != blank %}
+          <span class="text-uppercase" >{{section.settings.idname_collection}}</span>
+          {% endif %}
+          <h1 >{{article.title}}</h1> 
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  {% if section.settings.blog_template == "blogdetail_v1" %}
+
+  <div class="category_blog blogdetai">
+    <div class="container">
+      <div class="row">
+        {% unless section.settings.blog_layout == "blog_layo_none" %}
+        {% if section.settings.blog_layout == "blog_layo_left" %}
+        <div class="col-lg-4 col-md-4">
+          {% include 'article-sidebar' %}
+        </div>
+        {% endif %}
+        {% endunless %}
+        <div class="bloglist {% if section.settings.blog_layout == "blog_layo_none" %}col-md-12 col-sm-12{% else %}col-md-8 col-sm-12{% endif %} col-xs-12">
+          <div class="row">
+            <div class="col-lg-12">
+              {% if section.settings.show_image_top %}
+              <div class="box_picture">
+                <img src="{{ article.image | img_url:'master' }}" alt="{{ article.title }}" />
+              </div>
+              {% endif %}
+              
+              <div class="title_blogdetai">
+                <h1 class="mb-0">{{article.title}}</h1>
+              </div>
+              <div class="info">
+                <p class="mb-0" >{% if section.settings.show_datetime%}<span>{{article.published_at | date: "%B %d, %Y" }} &nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;</span>{% endif %}{% if section.settings.show_admin%}&nbsp;&nbsp;&nbsp;{{ article.author }} &nbsp;&nbsp;&nbsp;/ &nbsp;&nbsp;&nbsp;{% endif %}{% if section.settings.show_number_comment_top %}{{ article.comments_count }} comments {% endif %}</p>
+              </div>
+              <div class="content">
+                {{article.content}}
+              </div>
+              
+              
+              {% if section.settings.enable_author_v1 or section.settings.enable_share_blogv1 %}
+              <div class="info_admin d-flex justify-content-between" >
+                {% if section.settings.enable_author_v1 %}
+                <div class="info_admin_left">
+                  {% if section.settings.title_author_v1 != blank %}
+                  <p class="mb-0 text-uppercase" >{{section.settings.title_author_v1}}</p>
+                  {% endif %}
+                  <a href="{{ article.url }}" >{{ article.author }}</a>
+                </div>
+                {% endif %}
+                
+                
+                {% if section.settings.enable_share_blogv1 %}
+                <div class="info_admin_right">
+                  {% if section.settings.title_share_v1 != blank %}
+                  <p class="mb-0 text-uppercase" >{{section.settings.title_share_v1}}</p>
+                  {% endif %}
+              		{% include 'social-share-blog' %}
+                </div>
+                {% endif %}
+                
+              </div>
+              {% endif %}
+              {% if section.settings.enable_categories_blogv1 %}
+              <div class="tag_category">
+                <p class="mb-0">CATEGORIES:</p>
+                <a href="{{blog.url}}" title="">{{blog.title}}</a>
+              </div>
+              {% endif %}
+              {% if section.settings.enable_tag_blogv1 %}
+              <div class="tag_category tag_name">
+                <p class="mb-0">TAGS:</p>
+                {% for tag in article.tags %}
+                <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }} {% unless forloop.last%},{% endunless %}</a> 
+                {% endfor %}
+               
+                
+              </div>
+              {% endif %}
+              
+            </div>
+          </div>
+          {% if section.settings.comments_enabled %}
+          <div class="comment_submit">
+            <div class="row">
+              {% include 'comment-article' %}
+            </div>
+          </div>
+          {% endif %}
+        </div>
+        {% unless section.settings.blog_layout == "blog_layo_none" %}
+        {% if section.settings.blog_layout == "blog_layo_right" %}
+        <div class="col-lg-4 col-md-4">
+          {% include 'article-sidebar' %}
+        </div>
+        {% endif %}
+        {% endunless %}
+      </div>
+    </div>
+  </div>
+
+  {% elsif section.settings.blog_template == "blogdetail_v2" %}
+
+  <div class="page_aboutus_v1 page_blogdetail02">
+  	<div class="content_page_blogdetail02">
+    <div class="container">
+      <div class="library_images">
+        <div class="row">
+          <div class="col-lg-12">
+            {% if section.settings.show_image_top %}
+             <div class="box_picture">
+                <img src="{{ article.image | img_url:'master' }}" alt="{{ article.title }}" />
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="title_blogdetai">
+              <h1 class="mb-0">{{article.title}}</h1>
+            </div>
+            <div class="info">
+              <p class="mb-0" style="color:{{section.settings.comment_admin_color}};">{% if section.settings.show_datetime%}<span>{{article.published_at | date: "%B %d, %Y" }} &nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;</span>{% endif %}{% if section.settings.show_admin%}&nbsp;&nbsp;&nbsp;{{ article.author }} &nbsp;&nbsp;&nbsp;/ &nbsp;&nbsp;&nbsp;{% endif %}{% if section.settings.show_number_comment_top %}{{ article.comments_count }} comments {% endif %}</p>
+            </div>
+            <div class="paragrap">
+              {{article.content}}
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+      
+      {% if section.settings.enable_tag_blogv2 or section.settings.enable_share_blogv2 %}
+      <div class="tags_share">
+        <div class="row justify-content-between">
+          {% if section.settings.enable_tag_blogv2 %}
+          <div class="col-lg-8 col-md-8">
+            <div class="tags">
+              <p class="mb-0" >{{section.settings.title_tag_v2}}</p>
+              <div class="rowlist_tags">
+                 {% for tag in article.tags %}
+                <a href="{{ blog.url }}/tagged/{{ tag | handle }}" >{{ tag }}</a> 
+                {% endfor %}        
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          {% if section.settings.enable_share_blogv2 %}
+          <div class="col-lg-3 col-md-4">
+            <div class="share">
+              <p class="mb-0" >{{section.settings.title_share_v2}}</p>
+              {% include 'social-share-blog' %}
+              
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      {% endif %}
+      
+      {% if section.settings.show_related_post %}
+      <div class="new">
+        <div class="row justify-content-center">
+          <div class="col-lg-7 col-sm-10 col-md-8 text-center">
+            <div class="title-section-blog-v2">
+              {% if section.settings.section_title != blank %}
+              <h3 class="title_section_all" >{{section.settings.section_title}}</h3>
+              {% endif %}
+
+              {% if section.settings.section_description != blank %}
+              <p class="mb-0" >{{section.settings.section_description}}</p> 
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="row">     
+        {%- assign related_posts_limit = section.settings.related_post_blogs_limit -%}
+        {%- assign related_blog_selected = section.settings.related_post_select_blog -%}    
+        {% for article in blogs[related_blog_selected].articles limit: related_posts_limit %}
+        <div class="col-lg-4 col-sm-4 col-md-4">
+          <div class="content-section-blog-v2">
+            <div class="picrure text-center one">
+              <a href="{{ article.url }}">
+                <img src="{{ article.image.src | img_url: 'original' }}" alt="{{ article.title  }}" class="img-fluid">
+              </a>
+            </div>
+            <div class="info-img height">
+              {% if section.settings.enable_info %}
+              <p class="mb-0">{{blog.title}}<span> / {{article.published_at | date: "%B %d, %Y" }}</span></p>
+              {% endif %}
+              {% if section.settings.enable_title %}
+              <h4 class="mb-0"><a href="{{ article.url }}" >{{ article.title  }}</a></h4>
+              {% endif %}
+              {% if section.settings.button_name != blank %}
+              <div class="readmore">
+              <a href="{{ article.url }}" >{{section.settings.button_name}}</a>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+      
+      {% if section.settings.enable_comment_article %}
+      {% include 'comment-article' %}
+      {% endif %}
+     
+    </div>
+  </div>
+  </div>
+  
+  {% endif %}  
+</section>
+{% endpaginate %}
+
+
+{% schema %}
+{
+  "name": "Article page",
+  "settings": [
+    {
+      "type": "select",
+      "id": "blog_layout",
+      "options": [
+        {
+          "value": "blog_layo_left",
+          "label": "Sidebar Left"
+        },
+        {
+          "value": "blog_layo_right",
+          "label": "Sidebar Right"
+        },
+        {
+          "value": "blog_layo_none",
+          "label": "No Sidebar"
+        }
+      ],
+      "label": "Select Layout",
+      "default": "blog_layo_left",
+	  "info": "Only Blog detail v1"
+    },
+    {
+      "type": "select",
+      "id": "blog_template",
+      "options": [
+		{
+          "value": "blogdetail_v1",
+          "label": "Blog detail v1"
+        },
+		{
+          "value": "blogdetail_v2",
+          "label": "Blog detail v2"
+        }
+      ],
+      "label": "Select Template",
+      "default": "blogdetail_v1"
+    },
+	{
+      "type": "checkbox",
+      "id": "show_slide",
+      "label": "Show slide?",
+      "default": true
+    },
+	
+	{
+      "type": "text",
+      "id": "idname_collection",
+      "label": "Name collection",
+      "default": "Blog detail"
+    },
+	{
+      "type": "image_picker",
+      "id": "backgroud_slide_image",
+      "label": "Background image slide",
+      "info": "1920 x 500px recommended"
+    },
+
+
+	{
+      "type": "header",
+      "content": "Blog Detail"
+    },
+	{
+      "type": "checkbox",
+      "id": "show_image_top",
+      "label": "Show Avatar blog?",
+      "default": true
+    },
+	{
+      "type": "checkbox",
+      "id": "show_datetime",
+      "label": "Show date?",
+      "default": true
+    },
+
+
+    {
+      "type": "checkbox",
+      "id": "show_admin",
+      "label": "Show Admin?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_number_comment_top",
+      "label": "Show comment?",
+      "default": true
+    },
+
+	{
+      "type": "header",
+      "content": "Blogdetail posts v1"
+    },
+	{
+      "type": "checkbox",
+      "id": "enable_author_v1",
+      "label": "Enable autor v1?",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title_author_v1",
+      "label": "Title Author V1",
+      "default": "CREATED BY"
+    },
+	{
+      "type": "checkbox",
+      "id": "enable_share_blogv1",
+      "label": "Enable share v1?",
+      "default": true
+    },
+	{
+      "type": "text",
+      "id": "title_share_v1",
+      "label": "Title Share V1",
+      "default": "SHARE TO"
+    },
+	{
+      "type": "checkbox",
+      "id": "enable_categories_blogv1",
+      "label": "Enable categories v1?",
+      "default": true
+    },
+	{
+      "type": "checkbox",
+      "id": "enable_tag_blogv1",
+      "label": "Enable tag v1?",
+      "default": true
+    },
+	{
+      "type": "checkbox",
+      "id": "comments_enabled",
+      "label": "Enable comments v1?",
+      "default": true
+    },
+	{
+      "type": "checkbox",
+      "id": "enabledimage_comments_v1",
+      "label": "Enable Image comments v1?",
+      "default": true
+    },	
+    {
+      "type": "image_picker",
+      "id": "image_comments_v1",
+      "label": "Image comments v1",
+      "info": "70 x 7px recommended"
+    },
+	{	
+      "type": "url",
+      "id": "url_image_comments_v1",
+      "label": "URL Image comments v1",
+      "default": "/collections/all"
+    },
+   
+   
+
+
+
+    {
+      "type": "header",
+      "content": "Blogdetail posts v2"
+    },
+		
+    {
+      "type": "header",
+      "content": "Tag posts v2"
+    },
+	{
+      "type": "checkbox",
+      "id": "enable_tag_blogv2",
+      "label": "Enable Tag blog V2?",
+      "default": true
+    },
+	{
+      "type": "text",
+      "id": "title_tag_v2",
+      "label": "Title tag v2",
+      "default": "Tags"
+    },
+
+	{
+      "type": "header",
+      "content": "Share posts v2"
+    },
+	{
+      "type": "checkbox",
+      "id": "enable_share_blogv2",
+      "label": "Enable share blog V2?",
+      "default": true
+    },
+	{
+      "type": "text",
+      "id": "title_share_v2",
+      "label": "Title share v2",
+      "default": "SHARE PROJECT"
+    },
+	{
+      "type": "header",
+      "content": "Blog related posts"
+    },
+	{
+      "type": "checkbox",
+      "id": "show_related_post",
+      "label": "Enable blog related in bog V2?",
+      "default": true
+    },
+	{
+      "type": "text",
+      "id": "section_title",
+      "label": "Title",
+      "default": "Fashion News & Tips"
+    },
+
+    {
+      "type": "text",
+      "id": "section_description",
+      "label": "Description ",
+      "default": "Donec sed odio dui. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,"
+    },
+	{
+      "type": "blog",
+      "id": "related_post_select_blog",
+      "label": "Select Blog Related"
+    },
+    {
+      "type": "range",
+      "id": "related_post_blogs_limit",
+      "label": "Limit blogs",
+      "min": 2,
+      "max": 50,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_info",
+      "label": "Show info",
+      "default": true
+    },
+	{
+      "type": "checkbox",
+      "id": "enable_title",
+      "label": "Show Title",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_name",
+      "label": "Button name",
+      "default": "Read More"
+    },
+
+	{
+      "type": "header",
+      "content": "comment_article"
+    },
+	{
+      "type": "checkbox",
+      "id": "enable_comment_article",
+      "label": "Enable Comment Article v2?",
+      "default": true
+    },
+	{
+      "type": "text",
+      "id": "iconmail",
+      "label": "Icon mail",
+      "default": "ti-email",
+      "info": "[Get icon in here](https://themify.me/themify-icons)"
+     },
+	{
+      "type": "checkbox",
+      "id": "enabledimage_comments_v2",
+      "label": "Enable Image comments v2?",
+      "default": true
+    },	
+    {
+      "type": "image_picker",
+      "id": "image_comments_v2",
+      "label": "Image comments v2",
+      "info": "70 x 7px recommended"
+    },
+	{	
+      "type": "url",
+      "id": "url_image_comments_v2",
+      "label": "URL Image comments v2",
+      "default": "/collections/all"
+    },
+    {
+      "type": "header",
+      "content": "Sidebar Config"
+    },
+
+	{
+      "type": "header",
+      "content": "Search"
+    },
+	 {
+      "type": "text",
+      "id": "shop_by_search_title",
+      "label": "Widget Title",
+      "default": "Search"
+    },
+    {
+      "type": "text",
+      "id": "shop_by_search_placeholder",
+      "label": "Input placeholder",
+      "default": "Search"
+    },
+
+    {
+      "type": "checkbox",
+      "id": "enable_widget_search",
+      "label": "Enable?",
+      "default": true
+    },
+	    {
+      "type": "header",
+      "content": "Widget Related Post"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_widget_related",
+      "label": "Enable?",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "widget_related_title",
+      "label": "Title Widget",
+      "default": "RECENT POSTS"
+    },
+    {
+      "type": "blog",
+      "id": "select_blog",
+      "label": "Select Blog"
+    },
+    {
+      "type": "range",
+      "id": "blogs_limit",
+      "label": "Limit blogs",
+      "min": 2,
+      "max": 50,
+      "step": 1,
+      "default": 8
+    },
+	 {
+      "type": "header",
+      "content": "RECENT COMMENTS"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_recent_comments",
+      "label": "Enable?",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title_recent_comments",
+      "label": "Recent Comments Title",
+      "default": "Recent Comments"
+    },
+	{
+      "type": "range",
+      "id": "comment_limit_sidebar",
+      "label": "comment limit sidebar",
+      "min": 2,
+      "max": 50,
+      "step": 1,
+      "default": 5
+    },
+
+	{
+      "type": "header",
+      "content": "Widget Categories"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_widget_cate",
+      "label": "Enable?",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "widget_cate_title",
+      "label": "Title Widget",
+      "default": "Categories"
+    },
+    {
+      "type": "link_list",
+      "id": "widget_cate_menu",
+      "label": "Menu for Categories"
+    },
+	
+    {
+      "type": "header",
+      "content": "Widget Meta"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_widget_meta",
+      "label": "Enable?",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "widget_meta_title",
+      "label": "Title Widget",
+      "default": "Meta"
+    },
+    {
+      "type": "link_list",
+      "id": "widget_meta_menu",
+      "label": "Menu for Meta"
+    }
+
+   
+  ]
+
+  
+}
+{% endschema %}

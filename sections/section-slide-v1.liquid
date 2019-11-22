@@ -1,0 +1,241 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-slide-v1" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %} {% if section.settings.sections_layout == "dark" %}background: {{section.settings.sections_bg_color}};{% endif %}">
+  <div class="section-slide-v1">
+    <div class="container-fluid my-container px-0">
+      <div class="slide-v1">
+        <div class="slide-top-v1 jstop_slide1">
+          {% if section.blocks.size > 0 %}
+          {% for block in section.blocks %}
+          {% if block.type == "image" %}
+          <div class="item">
+            <div class="picture-side">
+              {% if block.settings.block_banerimage != blank %}
+              	<img src="{{block.settings.block_banerimage|img_url:'master'}}" class="img-fluid" alt="sideshow">
+              {% else %}
+              	<img src="//placehold.it/1720x1000" class="img-fluid" alt="slideshow">
+              {% endif %}
+            </div>
+            <div class="box-content-side">
+              {% if block.settings.block_description != blank %}
+                <p style="color:{{block.settings.text_color}}" class="mb-0">{{block.settings.block_description}}</p> 
+              {% endif %}
+              {% if block.settings.block_title != blank %}
+                <h3 style="color:{{block.settings.text_color}};">{{block.settings.block_title}}</h3> 
+              {% endif %}
+              <div class="link-side d-flex justify-content-between">
+                {% if block.settings.block_buton != blank %}
+                	<a href="{{block.settings.block_url}}" style="color:{{block.settings.text_color}};" class="view">
+                      {{block.settings.block_buton}}
+                	</a> 
+              	{% endif %}
+                <ul class="list-unstyled">
+                  {% for link in linklists[block.settings.block_menu].links %}
+                  <li>
+                    <a href="{{ link.url }}" class="{% if forloop.first %}active{% endif %}">
+                      {{ link.title }}
+                    </a>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+          {% endif %}
+          
+        </div>
+        <div class="bottom d-flex align-items-center" >
+          <div class="custom text-center">
+            <div class="pagingInfo">03<p class="mb-0" style="color:{{section.settings.text_bottom_color2}}">/03</p></div>
+          </div>
+          <div class="bottom-side js_bottom_slide1">            
+            {% if section.blocks.size > 0 %}
+            {% for block in section.blocks %}
+            {% if block.type == "image" %}
+            <div>
+              {% if block.settings.block_image != blank %}
+              <img src="{{block.settings.block_image|img_url:'master'}}" class="img-fluid" alt="slideshow">
+              {% else %}
+              <img src="//placehold.it/160x132" class="img-fluid" alt="slideshow">
+              {% endif %}
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endif %}            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .section-slide-v1 .slide-v1 button.slick-prev,
+  .section-slide-v1 .slide-v1 button.slick-next{
+    background-color:{{section.settings.color_next}};
+  }
+  .section-slide-v1 .slide-v1 .slide-top-v1 .box-content-side h3 span{
+    color:{{section.settings.bottom_color}};
+  }
+  .section-slide-v1 .slide-v1 .bottom
+  {
+  	background-color:{{section.settings.bottom_color}};
+  }
+  .section-slide-v1 .slide-v1 .bottom .custom .pagingInfo{
+    color:{{section.settings.text_bottom_color1}};
+  }
+  .section-slide-v1 .slide-v1 .slide-top-v1 .box-content-side .link-side .view:hover{
+  	color:{{block.settings.text_color_hover}};
+  }
+  
+</style>
+{% schema %}
+{
+  "name": "Slide v1",
+  "class": "index-section",
+  "settings": [
+	{
+      "type": "header",
+      "content": "Section Space"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+	{
+           "type": "color",
+           "id": "bottom_color",
+           "label": "Color Bottom and dots",
+           "default": "#3a5ea8"
+        },
+		{
+           "type": "color",
+           "id": "text_bottom_color1",
+           "label": "Color text1 Bottom",
+           "default": "#fff"
+        },
+		{
+           "type": "color",
+           "id": "text_bottom_color2",
+           "label": "Color text2 Bottom",
+           "default": "#8899c5"
+        },
+		{
+           "type": "color",
+           "id": "color_next",
+           "label": "Color next and previous",
+           "default": "#000"
+        }
+  ],
+	"blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+		{
+          "type": "image_picker",
+          "id": "block_banerimage",
+          "label": "Background image",
+		  "info": "1720 x 1000px recommended"
+        },
+		
+		{
+           "type": "color",
+           "id": "text_color",
+           "label": "Text color",
+           "default": "#000"
+        },
+		{
+           "type": "color",
+           "id": "text_color_hover",
+           "label": "Text color hover",
+           "default": "#3a5ea8"
+        },
+        {
+          "type": "text",
+          "id": "block_description",
+          "label": "Description sideshow",
+          "default": "Here's the latest quaterly trend<br>information"
+        },
+		{
+          "type": "text",
+          "id": "block_title",
+          "label": "Title sideshow",
+          "default": "SPORTS <span>.</span>"
+        },
+        {
+          "type": "text",
+          "id": "block_buton",
+          "label": "Button sideshow",
+          "default": "view more"
+        },
+		{
+          "type": "url",
+          "id": "block_url",
+          "label": "URL button side",
+          "default": "/collections/all"
+        },
+		{
+          "type": "link_list",
+          "id": "block_menu",
+          "label": "Menu"
+        },
+		{
+          "type": "image_picker",
+          "id": "block_image",
+          "label": "Image bottom",
+		  "info": "160 x 132px recommended"
+        }
+    	
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Slide v1",
+      "category": "Slide",
+	  "blocks": [
+        {
+          "type": "image",
+          "settings": {
+            "block_description": "Here's the latest quaterly trend<br>information",
+            "block_title": "SPORTS <span>.</span>",
+            "block_buton": "view more"
+          }
+        },
+		{
+          "type": "image",
+          "settings": {
+            "block_description": "Here's the latest quaterly trend<br>information",
+            "block_title": "SPORTS <span>.</span>",
+            "block_buton": "view more"
+          }
+        },
+		{
+          "type": "image",
+          "settings": {
+            "block_description": "Here's the latest quaterly trend<br>information",
+            "block_title": "SPORTS <span>.</span>",
+            "block_buton": "view more"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

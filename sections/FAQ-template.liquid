@@ -1,0 +1,382 @@
+<section class="page_aboutus_v1 page_FQA">
+  {% if section.settings.enable_slide %}
+  <div class="slide" style="background-image: url({% if section.settings.backgroud_slide != blank %}{{section.settings.backgroud_slide |img_url:'master'}}{% else %}//placehold.it/1920x500{% endif %})">
+    <div class="container text-center">
+      <span class="text-uppercase" >{{page.title}}</span>
+      {% if section.settings.title_slide != blank %}
+      	<h1 >{{section.settings.title_slide}}</h1>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+  {% if section.settings.enable_asked %}
+  <div class="asked">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 top_asked">
+          {% if section.settings.title_asked !=blank %}
+          <h3 >{{section.settings.title_asked}}</h3>
+          {% endif %}
+          {% if section.settings.description_asked != blank %}
+          <p class="mb-0">{{section.settings.description_asked}}</p>
+          {% endif %}
+        </div>
+      </div>
+      <div class="row content_askeds">        
+        <div class="col-lg-5 col-md-5">   
+          {% if section.blocks.size > 0 %}
+          {% for block in section.blocks %}
+          {% if block.type == "faq_left" %}       
+          <div class="box_content_question">
+            {% if block.settings.block_title_question != blank %}
+            <a class="title_question jstitleqs engoc-faq-heading" data-toggle="collapse" href="#faq_block_left_{{forloop.index}}" role="button" aria-expanded="true" aria-controls="collapseExample">
+              <i class="{{block.settings.icon_question}} mr-2 engoc-faq-icon-plus"></i>
+              <i class="{{block.settings.icon_question_add}} mr-2 engoc-faq-icon-minus"></i>
+              {{block.settings.block_title_question}}
+            </a>
+            {% endif %}
+            <div class="collapse" id="faq_block_left_{{forloop.index}}">
+              {% if block.settings.block_description_question != blank %}
+              <div class="card-body">
+                {{block.settings.block_description_question}}
+              </div>
+              {% endif %}              
+            </div>
+          </div>          
+          {% endif %}
+          {% endfor %}
+          {% else%}
+          <div class="box_content_question">
+            <a class="title_question jstitleqs engoc-faq-heading" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="true" aria-controls="collapseExample">
+              <i class="ti-plus mr-2 engoc-faq-icon-plus"></i>
+              <i class="ti-minus mr-2 engoc-faq-icon-minus"></i>
+              First question
+            </a>
+            <div class="collapse" id="collapseExample">
+              <div class="card-body">
+                Lorem ipsum dolor sit amet isse potenti. Vesquam ante aliquet 
+                lacusemper elit. Cras neque nulla, convallis non commodo et, 
+                euismod nonsese. At vero eos et accusamus et iusto odio qui 
+                blanditiis praesentium voluptatum deleniti atque corrupti quos 
+                dolores et quas molestias excepturi sint occaecati cupiditate 
+                provident, similique sunt in culpa qui officia.
+                Cras neque nulla, convallis non commodo et, euismod nonsese. 
+                At vero et accusamus.
+              </div>
+            </div>
+          </div>
+          {% endif %}          
+        </div>
+
+        <div class="col-lg-1 col-md-1">
+        </div>
+			<div class="col-lg-5 col-md-5">   
+          {% if section.blocks.size > 0 %}
+          {% for block in section.blocks %}
+          {% if block.type == "faq_right" %}       
+          <div class="box_content_question">
+            {% if block.settings.block_title_question2 != blank %}
+            <a class="title_question jstitleqs engoc-faq-heading" data-toggle="collapse" href="#faq_block_right_{{forloop.index}}" role="button" aria-expanded="true" aria-controls="collapseExample">
+              <i class="{{block.settings.icon_question2}} mr-2 engoc-faq-icon-plus"></i>
+              <i class="{{block.settings.icon_question_add2}} mr-2 engoc-faq-icon-minus"></i>
+              {{block.settings.block_title_question2}}
+            </a>
+            {% endif %}
+            <div class="collapse" id="faq_block_right_{{forloop.index}}">
+              {% if block.settings.block_description_question2 != blank %}
+              <div class="card-body">
+                {{block.settings.block_description_question2}}
+              </div>
+              {% endif %}              
+            </div>
+          </div>          
+          {% endif %}
+          {% endfor %}
+          {% else%}
+          <div class="box_content_question">
+            <a class="title_question jstitleqs engoc-faq-heading" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="true" aria-controls="collapseExample">
+              <i class="ti-plus mr-2 engoc-faq-icon-plus"></i>
+              <i class="ti-minus mr-2 engoc-faq-icon-minus"></i>
+              First question
+            </a>
+            <div class="collapse" id="collapseExample2">
+              <div class="card-body">
+                Lorem ipsum dolor sit amet isse potenti. Vesquam ante aliquet 
+                lacusemper elit. Cras neque nulla, convallis non commodo et, 
+                euismod nonsese. At vero eos et accusamus et iusto odio qui 
+                blanditiis praesentium voluptatum deleniti atque corrupti quos 
+                dolores et quas molestias excepturi sint occaecati cupiditate 
+                provident, similique sunt in culpa qui officia.
+                Cras neque nulla, convallis non commodo et, euismod nonsese. 
+                At vero et accusamus.
+              </div>
+            </div>
+          </div>
+          {% endif %}          
+        </div>
+
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  {% if section.settings.enable_newsletter %}
+  <div class="newsletter">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center box-content">
+          {% if section.settings.section_title != blank %}
+          	<h3>{{section.settings.section_title}}</h3>
+          {% endif%}
+          {% if section.settings.section_description != blank %}
+          	<p> {{section.settings.section_description}}</p>
+          {% endif %}          
+        </div>         
+        <div class="col-lg-8 text-center box-email">          
+           	{% if settings.newsletter_form_action != blank %}
+            {% assign form_action = settings.newsletter_form_action %}
+            {% else %}
+            {% assign form_action = '#' %}
+            {% endif %}          
+          <form class="needs-validation" action="{{form_action}}" method="post">
+            <div class="input-group mb-2 mr-sm-2">                            
+              <input type="email" name="EMAIL" class="form-control" id="mail" placeholder="{{section.settings.newsletter_placeholder_input}}">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="{{section.settings.iconmail}}"></i></div>
+              </div>
+            </div>
+            {% if section.settings.button_name != blank %}            
+            	<button class="btn btn-primary w-100" type="submit">{{section.settings.button_name}}</button>
+            {% endif %}
+          </form>
+          
+        </div>
+      </div>      
+    </div>
+  </div>
+  {% endif %}
+  
+</section>
+
+{% schema %}
+  {
+    "name": "FQA page",
+    "settings": [
+	{
+      "type": "header",
+      "content": "Section Slide"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_slide",
+      "label": "Enable Slide?",
+      "default": true
+    },
+	{
+      "type": "image_picker",
+      "id": "backgroud_slide",
+      "label": "Backgroud Slide ",
+	  "info": "1920 x 500px recommended"
+    },
+	{
+      "type": "text",
+      "id": "title_slide",
+      "label": "Title Slide",
+      "default": "Frequently Asked Questions"
+    },
+
+	{
+      "type": "header",
+      "content": "Section Asked"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_asked",
+      "label": "Enable?",
+      "default": true
+    },
+	{
+      "type": "text",
+      "id": "title_asked",
+      "label": "Title Asked",
+      "default": "#Frequently asked questions"
+    },
+	{
+      "type": "textarea",
+      "id": "description_asked",
+      "label": "Description Asked",
+      "default": "I am text block. Click edit button to change this text. Lorem ipsum dolor sit amet,consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."
+    },
+	{
+      "type": "header",
+      "info": "MailChimp form action URL: Setting in Login Store > Customize theme > Theme settings tab > Mailchimp",
+      "content": "Section Newsletter"
+    },
+	{
+      "type": "checkbox",
+      "id": "enable_newsletter",
+      "label": "Enable?",
+      "default": true
+    },
+	{
+	"type":"text",
+	"id": "section_title",
+	"label": "Title section",
+	"default": "Never miss our updates about new arrivals and special offers"
+	},
+	{
+	"type":"text",
+	"id": "section_description",
+	"label": "Description",
+	"default": "Get the latest news & updates from Maxcolt"
+	},
+	{
+      "type": "text",
+      "id": "newsletter_placeholder_input",
+      "label": "Placeholder input",
+      "default": "EMAIL ADDRESS"
+    },
+	{
+      "type": "text",
+      "id": "iconmail",
+      "label": "Icon right",
+      "default": "ti-email",
+      "info": "[Get icon in here](https://themify.me/themify-icons)"
+     },
+	{
+	"type":"text",
+	"id": "button_name",
+	"label": "Button name",
+	"default": "SUBCRIBE NOW"
+	}
+	],
+	"blocks": [
+      {
+      "type": "faq_left",
+      "name": "FAQ left",
+      "settings": [
+        {
+          "type": "text",
+          "id": "block_title_question",
+          "label": "Title",
+          "default": "First question"
+        },
+        {
+          "type": "textarea",
+          "id": "block_description_question",
+          "label": "Description",
+          "default": "Lorem ipsum dolor sit amet isse potenti. Vesquam ante aliquet lacusemper elit. Cras neque nulla, convallis non commodo et, euismod nonsese. At vero eos et accusamus et iusto odio qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate provident, similique sunt in culpa qui officia. Cras neque nulla, convallis non commodo et, euismod nonsese. At vero et accusamus."
+        },
+        {
+        "type": "text",
+        "id": "icon_question",
+        "label": "Icon plus",
+        "default": "ti-plus",
+        "info": "[Get icon in here](https://themify.me/themify-icons)"
+       },
+       {
+        "type": "text",
+        "id": "icon_question_add",
+        "label": "Icon minus",
+        "default": "ti-minus",
+        "info": "[Get icon in here](https://themify.me/themify-icons)"
+       }
+      ]
+    },
+	{
+      "type": "faq_right",
+      "name": "FAQ right",
+      "settings": [
+        {
+          "type": "text",
+          "id": "block_title_question2",
+          "label": "Title2",
+          "default": "First question"
+        },
+        {
+          "type": "textarea",
+          "id": "block_description_question2",
+          "label": "Description2",
+          "default": "Lorem ipsum dolor sit amet isse potenti. Vesquam ante aliquet lacusemper elit. Cras neque nulla, convallis non commodo et, euismod nonsese. At vero eos et accusamus et iusto odio qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate provident, similique sunt in culpa qui officia. Cras neque nulla, convallis non commodo et, euismod nonsese. At vero et accusamus."
+        },
+        {
+        "type": "text",
+        "id": "icon_question2",
+        "label": "Icon plus2",
+        "default": "ti-plus",
+        "info": "[Get icon in here](https://themify.me/themify-icons)"
+       },
+       {
+        "type": "text",
+        "id": "icon_question_add2",
+        "label": "Icon minus2",
+        "default": "ti-minus",
+        "info": "[Get icon in here](https://themify.me/themify-icons)"
+       }
+      ]
+    } 
+	
+  ],
+    "presets": [
+    {
+      "name": "FAQ lef",
+      "blocks": [
+        {
+          "type": "faq_left",
+          "settings": {
+            "block_title_question": "First question",
+            "block_description_question": "Lorem ipsum dolor sit amet isse potenti. Vesquam ante aliquet lacusemper elit. Cras neque nulla, convallis non commodo et, euismod nonsese. At vero eos et accusamus et iusto odio qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate provident, similique sunt in culpa qui officia. Cras neque nulla, convallis non commodo et, euismod nonsese. At vero et accusamus.",
+            "icon_question": "ti-plus",
+			"icon_question_add": "ti-minus"
+          }
+        },
+		{
+          "type": "faq_left",
+          "settings": {
+            "block_title_question": "First question",
+            "block_description_question": "Lorem ipsum dolor sit amet isse potenti. Vesquam ante aliquet lacusemper elit. Cras neque nulla, convallis non commodo et, euismod nonsese. At vero eos et accusamus et iusto odio qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate provident, similique sunt in culpa qui officia. Cras neque nulla, convallis non commodo et, euismod nonsese. At vero et accusamus.",
+            "icon_question": "ti-plus",
+			"icon_question_add": "ti-minus"
+          }
+        }
+
+     
+
+      ]
+    },
+	{
+      "name": "FAQ right",
+      "blocks": [
+        {
+          "type": "faq_right",
+          "settings": {
+            "block_title_question2": "First question",
+            "block_description_question2": "Lorem ipsum dolor sit amet isse potenti. Vesquam ante aliquet lacusemper elit. Cras neque nulla, convallis non commodo et, euismod nonsese. At vero eos et accusamus et iusto odio qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate provident, similique sunt in culpa qui officia. Cras neque nulla, convallis non commodo et, euismod nonsese. At vero et accusamus.",
+            "icon_question2": "ti-plus",
+			"icon_question_add2": "ti-minus"
+          }
+        },
+		{
+          "type": "faq_right",
+          "settings": {
+            "block_title_question2": "First question",
+            "block_description_question2": "Lorem ipsum dolor sit amet isse potenti. Vesquam ante aliquet lacusemper elit. Cras neque nulla, convallis non commodo et, euismod nonsese. At vero eos et accusamus et iusto odio qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate provident, similique sunt in culpa qui officia. Cras neque nulla, convallis non commodo et, euismod nonsese. At vero et accusamus.",
+            "icon_question2": "ti-plus",
+			"icon_question_add2": "ti-minus"
+          }
+        }
+
+     
+
+      ]
+    }
+
+
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

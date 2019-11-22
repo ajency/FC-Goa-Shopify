@@ -1,0 +1,77 @@
+<div class="filter-mobile-v2 engoj-collection-sidebar">
+  <div class="js_filtermobile d-block d-lg-none">
+    <span class="jsclick_mnfilter engoc-filter-mobile">
+      <i class="ti-filter icon_jsfilter_mobile"></i>
+      <i class="ti-close icon_jsfilter_mobileadd"></i>
+    </span>
+  </div>
+  <div class="bg_boxx_filtermenu"></div>
+  <div class="boxx_filtermenu">
+    <div class="title_filter_moblie">
+      <h3>Filter</h3>
+      <span class="closebtn-filter"><i class="ti-close"></i></span>
+    </div>
+    <div class="filter_prd">
+      <div class="product_category box_filterwwidth">
+        <div class="title_pr_filter">
+          <span>{{section.settings.widget_cate_title}}</span>
+        </div>
+        <div class="check_pr">              
+          {% for link in linklists[section.settings.widget_cate_menu].links %}
+          <a href="{{ link.url }}" title="{{ link.title }}" >{{ link.title }}</a>
+          {% endfor %}
+        </div>
+      </div> <!-- end category -->
+      <div class="prcheckbox_color box_filterwwidth filter-tag">
+        <div class="title_pr_filter">
+          <span>{{section.settings.shop_by_color_title}}</span>
+        </div>
+        <ul class="check_color_list list-unstyled list-inline">
+          {% assign tags = section.settings.shop_by_color_list_tags | split: ',' %}
+          {% for t in tags %}
+          {% assign tag = t | strip %}
+          {% assign tag_value = tag | handleize %}
+          <li class="list-inline-item">
+            <input type="checkbox" value="{{ tag_value | split: '|' | first }}" {% if current_tags contains tag %}checked{% endif %}/>
+            <a href="javascript:void(0)" title="{{tag}}" style="background-color: {{tag}};"></a>
+          </li>
+          {% endfor %}                      
+        </ul>
+      </div> <!-- end checkbox color -->
+      <div class="check_size_pr box_filterwwidth filter-tag">
+        <div class="title_pr_filter">
+          <span>{{section.settings.shop_by_price_title}}</span>
+        </div>
+        <ul class="list_checkbox_size check_size_only list-unstyled mb-0">
+          {% assign tags = section.settings.shop_by_size_list_tags | split: ',' %}
+          {% for t in tags %}
+          {% assign tag = t | strip %}
+          {% assign tag_value = tag | handleize %}
+          <li>
+            <input type="checkbox" value="{{ tag_value | split: '|' | first }}" {% if current_tags contains tag %}checked{% endif %}/>
+            <a href="javascript:void(0)" title="{{tag}}" > {{tag}}</a>
+          </li>
+          {% endfor %}                      
+        </ul>
+      </div> <!-- end size -->
+      <div class="product_price check_size_pr box_filterwwidth filter-tag">
+      <div class="title_pr_filter">
+        <span>{{section.settings.shop_by_size_title}}</span>
+      </div>
+      <ul class="check_pr check_end list-unstyled mb-0">              
+        {% assign tags = section.settings.shop_by_price_list_tags | split: ',' %}
+
+        {% for t in tags %}
+        {% assign tag = t | strip %}
+        {% assign tag_value = tag | handleize %}
+        <li>
+          <input type="checkbox" value="{{ tag_value | split: '|' | first }}" {% if current_tags contains tag %}checked{% endif %}/>
+          <a href="javascript:void(0)" title="{{tag}}" >{{tag}}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div> <!-- end price -->
+    </div>
+    
+  </div>
+</div>

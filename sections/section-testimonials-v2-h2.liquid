@@ -1,0 +1,151 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-testimonials-v2" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %} {% if section.settings.sections_layout == "dark" %}background: {{section.settings.sections_bg_color}};{% endif %}">
+  <div class="section-testimonials-v2">
+    <div class="container">
+      <div class="row title-testimonials">
+        <div class="col-lg-8 col-sm-12 col-md-12">
+          {% if section.settings.section_title != blank %}
+          	<h3>{{section.settings.section_title}}</h3>
+          {% endif %}
+          {% if section.settings.section_description != blank %}
+          	<p>{{section.settings.section_description}}</p>
+          {% endif %}
+        </div>
+      </div>
+      <div class="row content-testimonials justify-content-between">
+        {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+        {% if block.type == "image" %}
+        <div class="col-lg-3 col-sm-6 col-md-4">
+          <div class="box-content">
+          {% if block.settings.block_title_item != blank %}
+          	<h4>{{block.settings.block_title_item}}</h4>
+          {% endif %}
+            {% if block.settings.block_description != blank %}
+          	<p class="guide">{{block.settings.block_description}}</p>
+            {% endif %}
+            {% if block.settings.block_author_item != blank %}
+              <p class="model">{{block.settings.block_author_item}} <span>{{block.settings.block_model}}</span></p>
+            {% endif %}
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Testimonials v2 H2",
+  "class": "index-section",
+  "settings": [
+	{
+      "type": "header",
+      "content": "Title"
+    },
+	{
+      "type": "text",
+      "id": "section_title",
+      "label": "Title section Testimonials",
+      "default": "Testimonials"
+    },
+	{
+      "type": "text",
+      "id": "section_description",
+      "label": "Description",
+      "default": "Donec sed odio dui. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo. condimentum nibh."
+    },
+	{
+      "type": "header",
+      "content": "Section Space"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Testimonials item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "block_title_item",
+          "label": "Title item",
+          "default": "#01"
+        },
+		{
+          "type": "text",
+          "id": "block_description",
+          "label": "Description item",
+          "default": "Quisque condimentum ipsum at velit hendrerit venenatis. Donec luctus metus enim, nunced. Sed sit amet nisl id purus aliquet cursus..."
+        },
+		{
+          "type": "text",
+          "id": "block_author_item",
+          "label": "Author item",
+          "default": "IRYNA PETRUNKO"
+        },
+		{
+          "type": "text",
+          "id": "block_model",
+          "label": "Description Author item",
+          "default": "/ Model"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials v2 H2",
+      "category": "Testimonials",
+	  "blocks": [
+        {
+          "type": "image",
+          "settings": {
+            "block_title_item": "#01",
+            "block_description": "Quisque condimentum ipsum at velit hendrerit venenatis. Donec luctus metus enim, nunced. Sed sit amet nisl id purus aliquet cursus...",
+            "block_author_item": "IRYNA PETRUNKO",
+			"block_model": "/ Model"
+          }
+        },
+		{
+          "type": "image",
+          "settings": {
+            "block_title_item": "#02",
+            "block_description": "Quisque condimentum ipsum at velit hendrerit venenatis. Donec luctus metus enim, nunced. Sed sit amet nisl id purus aliquet cursus...",
+            "block_author_item": "IRYNA PETRUNKO",
+			"block_model": "/ Model"
+          }
+        },
+		{
+          "type": "image",
+          "settings": {
+            "block_title_item": "#03",
+            "block_description": "Quisque condimentum ipsum at velit hendrerit venenatis. Donec luctus metus enim, nunced. Sed sit amet nisl id purus aliquet cursus...",
+            "block_author_item": "IRYNA PETRUNKO",
+			"block_model": "/ Model"
+          }
+        }	
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

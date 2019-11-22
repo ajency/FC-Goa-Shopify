@@ -1,0 +1,161 @@
+<!-- /sections/header.liquid -->
+
+{% if template contains 'index' %}
+  {% if section.settings.select_hds == "header_v1" %}
+  {% include 'header-v1' %}
+  {% elsif section.settings.select_hds == "header_v2" %}
+  {% include 'header-v2' %}
+  {% elsif section.settings.select_hds == "header_v3" %}
+  {% include 'header-v3' %}
+  {% elsif section.settings.select_hds == "header_v4" %}
+  {% include 'header-v4' %}
+  {% endif %}
+{% else %}
+  {% if section.settings.select_hds_all == "header_ver1" %}
+  {% include 'header-v1' %}
+  {% elsif section.settings.select_hds_all == "header_ver2" %}
+  {% include 'header-v2' %}
+  {% elsif section.settings.select_hds_all == "header_ver3" %}
+  {% include 'header-v3' %}
+  {% elsif section.settings.select_hds_all == "header_ver4" %}
+  {% include 'header-v4' %}
+  {% endif %}
+{% endif %}
+
+{% schema %}
+{
+  "name": "Header",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "select_hds",
+      "label": "Select Header Style for Homepage",
+      "options": [
+        {
+          "value": "header_v1",
+          "label": "Header v1"
+        },
+        {
+          "value": "header_v2",
+          "label": "Header v2"
+        },
+        {
+          "value": "header_v3",
+          "label": "Header v3"
+        },
+        {
+          "value": "header_v4",
+          "label": "Header v4"
+        }
+      ],
+      "default": "header_v1"
+    },
+    {
+      "type": "select",
+      "id": "select_hds_all",
+      "label": "Select Header Style for All page (unless Homepage)",
+      "options": [
+        {
+          "value": "header_ver1",
+          "label": "Header v1"
+        },
+        {
+          "value": "header_ver2",
+          "label": "Header v2"
+        },
+        {
+          "value": "header_ver3",
+          "label": "Header v3"
+        },
+        {
+          "value": "header_ver4",
+          "label": "Header v4"
+        }
+      ],
+      "default": "header_ver1"
+    },
+    {
+      "type": "header",
+      "content": "Select Menu"
+    },
+    {
+      "type": "link_list",
+      "id": "main_menu_store",
+      "label": "Menu Main"
+    },
+    {
+      "type": "header",
+      "content": "Header Icon destop"
+    },
+		{
+        "type": "text",
+        "id": "icon_user_header_destop",
+        "label": "Icon user header",
+        "default": "ti-user",
+        "info": "[Get icon in here](https://themify.me/themify-icons)"
+      },
+      {
+        "type": "text",
+        "id": "icon_shoppingcart_destop",
+        "label": "Icon shopping cart header",
+        "default": "ti-shopping-cart",
+        "info": "[Get icon in here](https://themify.me/themify-icons)"
+      },
+      {
+        "type": "text",
+        "id": "icon_search_header_destop",
+        "label": "Icon search header",
+        "default": "ti-search",
+        "info": "[Get icon in here](https://themify.me/themify-icons)"
+      },
+      {
+        "type": "header",
+        "content": "Header Icon mobile"
+      },
+	  {
+        "type": "text",
+        "id": "icon_cart_menu_mobile",
+        "label": "Icon cart menu moblile",
+        "default": "ti-shopping-cart",
+        "info": "[Get icon in here](https://themify.me/themify-icons)"
+      },
+	  {
+        "type": "text",
+        "id": "icon_search_header_mobile",
+        "label": "Icon search header mobile",
+        "default": "ti-search",
+        "info": "[Get icon in here](https://themify.me/themify-icons)"
+      },
+	  {
+        "type": "text",
+        "id": "icon_tab_menu_mobile",
+        "label": "Icon tab menu moblile",
+        "default": "ti-align-left",
+        "info": "[Get icon in here](https://themify.me/themify-icons)"
+      },
+	  {
+        "type": "text",
+        "id": "icon_tab_login_mobile",
+        "label": "Icon tab login moblile",
+        "default": "ti-user",
+        "info": "[Get icon in here](https://themify.me/themify-icons)"
+      },
+	  {
+        "type": "text",
+        "id": "icon_tab_regester_mobile",
+        "label": "Icon tab regester moblile",
+        "default": "ti-pencil-alt",
+        "info": "[Get icon in here](https://themify.me/themify-icons)"
+      },
+	  {
+        "type": "text",
+        "id": "icon_tab_resetpassword_mobile",
+        "label": "Icon tab reset password mobile",
+        "default": "ti-reload",
+        "info": "[Get icon in here](https://themify.me/themify-icons)"
+      }
+		
+  ]
+}
+{% endschema %}

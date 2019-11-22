@@ -1,0 +1,42 @@
+{% if section.settings.enable_alltab %}
+<div class="title_tab_description">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-lg-12 ">
+        <div class="title_tab">
+          <ul class="list-unstyled list-inline mb-0">
+            {% if section.settings.enable_description_tab %}
+            <li class="list-inline-item mr-0"><a href="javascript:void(0)" data-target="1" class="active text-uppercase jstab_desproduct">{{section.settings.destab_title}}</a></li>
+            {% endif %}
+            {% if section.settings.enable_review_tab %}
+            <li class="list-inline-item mr-0"><a href="javascript:void(0)" data-target="2" class="text-uppercase jstab_desproduct">{{section.settings.reviewtab_title}}(0)</a></li>
+          	{% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="bgcontent_tab_description">
+  <div class="container ">
+    <div class="row">
+      <div class="col-lg-12">
+        {% if section.settings.enable_description_tab %}
+        <div class="jscontent_dsprduct1" id="1">
+          {{product.description}}
+        </div>
+        {% endif %}
+        {% if section.settings.enable_review_tab %}
+        <div class="jscontent_dsprduct2" id="2">
+          <div class="row justify-content-center">
+            <div class="col-lg-8">
+              <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}

@@ -1,0 +1,53 @@
+<header>
+	{% include 'minicart' %}
+	{% include 'search_mobile' %}
+	{% include 'menu_mobile' %}
+    <div class="menu_destop d-md-none d-none d-sm-none d-xl-block header_v1 header_v3 jsheader3 {% unless settings.enable_absolute_menu3 %}engoc-disable-absolute{% endunless %} ">
+      <div class="container-fluid my-container">
+        <div class="row justify-content-between">
+          <div class="col-lg-2 logo ">
+            <div class="text-left">          	
+              {% if settings.logo_svg3 !=blank %}
+              <a href="{{shop.url}}">{{settings.logo_svg3}}</a>
+              {% else %}          	
+              <a href="{{shop.url}}">
+                {% if settings.hdv3_logo != blank %}
+                <img src="{{settings.hdv3_logo|img_url:'master'}}" width="{{settings.hdv3_logo_maxwidth}}" alt="logo">
+                {% else %}
+                <img src="//placehold.it/140x22" width="{{settings.hdv3_logo_maxwidth}}" alt="logo">
+                {% endif %}
+              </a>
+              {% endif %}          
+            </div>
+          </div>
+          <div class="col-lg-8">
+            {% include 'menu' %} 
+          </div>
+          <div class="col-lg-2 menu_right">
+        <div class="d-flex justify-content-end align-items-center">
+          <div class="accout_login">            
+            <a class="ti-user jslogin"></a>
+            <div class="login_box">
+              <ul class="mb-0 list-unstyled list_log_res">
+                {% if customer %}
+                <li><a href="/account">{{ 'layout.customer.account' | t }}</a></li>
+                <li><a href="/account/logout">{{ 'layout.customer.log_out' | t }}</a></li>
+                {% else %}
+                <li><a href="/account/login">{{ 'layout.customer.log_in' | t }}</a></li>
+                <li><a href="/account/register">{{ 'layout.customer.create_account' | t }}</a></li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+          <div class="{{settings.icon_shoppingcart}} jscart-destop cart_destop">
+            <span class=" enj-cartcount">{{ cart.item_count }}</span>
+          </div>          
+          <div class="js_search_destop">
+            <span class="{{settings.icon_search_header}}"></span>
+          </div>
+        </div>
+      </div>
+        </div>
+      </div>
+    </div>
+</header>

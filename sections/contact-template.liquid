@@ -1,0 +1,377 @@
+<section id="content">
+  <div class="content-page">
+    <div class="container">
+      <div class="content-about content-contact-page">
+        <h2 class="title30 dosis-font dark font-bold text-uppercase">{{page.title}}</h2>
+        
+        {% if section.settings.enable_s_gmap %}
+        <div class="contact-google-map bg-white border">
+          <div id="map" class="map-custom"></div>
+          <script>
+            function initMap() {
+              var myLatLng = {lat: {{settings.gmap_latitude}}, lng: {{settings.gmap_longitude}}};
+
+              var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 12,
+                center: myLatLng
+              });
+
+              var marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+              });
+            }
+          </script>
+          <script src="https://maps.googleapis.com/maps/api/js?key={{settings.gmap_key}}&callback=initMap" async defer></script>
+        </div>
+        {% endif %}
+        <!-- End Google Map -->
+        {% if section.settings.enable_s_info %}
+        <div class="contact-page-info blockquote">
+          <div class="row">
+            <div class="col-md-5 col-sm-12 col-xs-12">
+              <div class="contact-box contact-address-box">
+                <span class="dark"><i class="{{section.settings.info_icon1}}"></i></span>
+                <label class="title16 dark">{{section.settings.info_title1}}</label>
+                <p class="desc">{{section.settings.info_content1}}</p>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-7 col-xs-12">
+              <div class="contact-box">
+                <span class="dark"><i class="{{section.settings.info_icon2}}"></i></span>
+                <ul class="list-inline-block">
+                  <li>
+                    <label class="title16 dark">{{section.settings.info_title1}}</label>
+                  </li>
+                  <li>
+                    {{section.settings.info_content2}}
+                  </li>
+                </ul>
+              </div>
+              <div class="contact-box">
+                <span class="dark"><i class="{{section.settings.info_icon3}}"></i></span>
+                <ul class="list-inline-block">
+                  <li>
+                    <label class="title16 dark">{{section.settings.info_title3}}</label>
+                  </li>
+                  <li>
+                    {{section.settings.info_content3}}
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-5 col-xs-12">
+              <div class="contact-box contact-email-box">
+                <span class="dark"><i class="{{section.settings.info_icon4}}"></i></span>
+                <label class="title16 dark">{{section.settings.info_title4}}</label>
+                <p class="desc"><a href="mailto:{{section.settings.info_content4}}" class="dark">{{section.settings.info_content4}}</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        <!-- End Contact Info -->
+        {% if section.settings.enable_s_contactform or section.settings.enable_s_faq %}
+        <div class="contact-form-faq">
+          <div class="row">
+            {% if section.settings.enable_s_contactform %}
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <div class="contact-form-page">
+                <h2 class="title18 dark font-bold text-uppercase dosis-font">{{section.settings.contactform_title}}</h2>
+                
+                {% form 'contact' %}
+
+                {% if form.posted_successfully? %}
+                <div class="alert alert-success alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <p style="margin-bottom: 5px;">
+                    {{ 'contact.form.post_success' | t }}
+                  </p>
+                </div>
+                {% endif %}
+
+                {% if form.errors %}
+                <div class="alert alert-success alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <!-- {{ form.errors.size }} or {{ form.errors | size }} -->
+                  <p style="margin-bottom: 5px;">Your contact form has {{ form.errors | size | pluralize: "an error", "a few errors" }}. To submit your form, make the following changes and try again:</p>
+                  {% for field in form.errors %}
+                  <p style="margin-bottom: 5px;">The {{ field | capitalize | replace: 'Body', 'Message' }} field {{ form.errors.messages[field] }}.</p>
+                  {% endfor %}
+                </div>
+                {% endif %}
+                <div class="contact-form">
+                  <p class="contact-name">
+                    <input class="dark border" placeholder="{{section.settings.contactform_name}}" type="text" id="contactFormName" name="contact[name]" required>
+                  </p>
+                  <p class="contact-email">
+                    <input class="dark border" placeholder="{{section.settings.contactform_email}}" type="email" id="contactFormEmail" name="contact[email]" required>
+                  </p>
+                  <p class="contact-message">
+                    <textarea class="dark border" placeholder="{{section.settings.contactform_content}}" cols="30" rows="10" id="contactFormMessage" name="contact[body]" required></textarea>
+                  </p>
+                  <p class="contact-submit">
+                    <input  class="shop-button white bg-dark" type="submit" value="{{section.settings.contactform_btn}}">
+                  </p>
+                </div>
+                {% endform %}
+              </div>
+            </div>
+            {% endif %}
+            {% if section.settings.enable_s_faq %}
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <div class="contact-faq">
+                <h2 class="title18 dark font-bold text-uppercase dosis-font">{{section.settings.faq_title}}</h2>
+                <div class="contact-accordion toggle-tab">
+                  {% if section.blocks.size > 0 %}
+                  {% for block in section.blocks %}
+                  {% if block.type == "faq" %}
+                  <div class="item-toggle-tab {% if forloop.first %}active{% endif%}">
+                    <h2 class="toggle-tab-title dark">{{block.settings.b_faq_title}}</h2>
+                    <p class="desc toggle-tab-content dark opaci">{{block.settings.b_faq_content}}</p>
+                  </div>
+                  {% endif %}
+                  {% endfor %}
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact Us",
+  "settings": [
+    {
+      "type": "header",
+      "info": "Google Map: Setting in Login Store > Customize theme > Theme settings tab > Google Maps",
+      "content": "Section Map"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_s_gmap",
+      "label": "Enable?",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Section Info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_s_info",
+      "label": "Enable?",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "info_icon1",
+      "label": "Icon 1",
+      "info": "[Get icon here](https://fontawesome.com/v4.7.0/icons/)",
+      "default": "fa fa-home"
+    },
+    {
+      "type": "text",
+      "id": "info_title1",
+      "label": "Title 1",
+      "default": "ADDRESS:"
+    },
+    {
+      "type": "textarea",
+      "id": "info_content1",
+      "label": "Content 1",
+      "default": "The Company Name Inc. 4320 St Vincent Place,Glasgow, DC 28"
+    },
+    {
+      "type": "text",
+      "id": "info_icon2",
+      "label": "Icon 2",
+      "info": "[Get icon here](https://fontawesome.com/v4.7.0/icons/)",
+      "default": "fa fa-phone"
+    },
+    {
+      "type": "text",
+      "id": "info_title2",
+      "label": "Title 2",
+      "default": "PHONES:"
+    },
+    {
+      "type": "textarea",
+      "id": "info_content2",
+      "label": "Content 2",
+      "default": "800-6688-999;"
+    },
+    {
+      "type": "text",
+      "id": "info_icon3",
+      "label": "Icon 3",
+      "info": "[Get icon here](https://fontawesome.com/v4.7.0/icons/)",
+      "default": "fa fa-print"
+    },
+    {
+      "type": "text",
+      "id": "info_title3",
+      "label": "Title 3",
+      "default": "FAX:"
+    },
+    {
+      "type": "textarea",
+      "id": "info_content3",
+      "label": "Content 3",
+      "default": "800-6969-0044;"
+    },
+    {
+      "type": "text",
+      "id": "info_icon4",
+      "label": "Icon 4",
+      "info": "[Get icon here](https://fontawesome.com/v4.7.0/icons/)",
+      "default": "fa fa-envelope"
+    },
+    {
+      "type": "text",
+      "id": "info_title4",
+      "label": "Title 4",
+      "default": "E-mail:"
+    },
+    {
+      "type": "textarea",
+      "id": "info_content4",
+      "label": "Content 4",
+      "default": "shopilaunch@gmail.com"
+    },
+    {
+      "type": "header",
+      "content": "Section Contact Form"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_s_contactform",
+      "label": "Enable?",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "contactform_title",
+      "label": "Title",
+      "default": "Contact Form"
+    },
+    {
+      "type": "text",
+      "id": "contactform_name",
+      "label": "Placeholder name",
+      "default": "User name*"
+    },
+    {
+      "type": "text",
+      "id": "contactform_email",
+      "label": "Placeholder email",
+      "default": "Email*"
+    },
+    {
+      "type": "text",
+      "id": "contactform_content",
+      "label": "Placeholder Message",
+      "default": "Message*"
+    },
+    {
+      "type": "text",
+      "id": "contactform_btn",
+      "label": "Button name",
+      "default": "Send"
+    },
+    {
+      "type": "header",
+      "info": "Scroll down to the bottom and click Add content",
+      "content": "Section FAQs"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_s_faq",
+      "label": "Enable?",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "faq_title",
+      "label": "Title",
+      "default": "FAQs"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "Faq",
+      "settings": [
+        {
+          "type": "text",
+          "id": "b_faq_title",
+          "label": "Title",
+          "default": "At vero eos et accusamus et iusto"
+        },
+        {
+          "type": "textarea",
+          "id": "b_faq_content",
+          "label": "Content",
+          "default": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid animi archi tecto aspernatur assumenda cum inventore labore magnam"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact Us",
+      "blocks": [
+        {
+          "type": "faq",
+          "settings": {
+            "b_faq_title": "At vero eos et accusamus et iusto"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "b_faq_title": "Dignissimos ducimus qui blanditiis"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "b_faq_title": "Raesentium voluptatum deleniti"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "b_faq_title": "At vero eos et accusamus et iusto"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "b_faq_title": "Dignissimos ducimus qui blanditiis"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "b_faq_title": "Raesentium voluptatum deleniti"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

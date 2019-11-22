@@ -1,0 +1,22 @@
+
+<div class="filter_price colors filter-tag">
+  <div class="title_general_sidebar">
+    <h3 class="mb-0" style=color:{{section.settings.title_sidebar_color}}; background-color:{{section.settings.background_title_sidebar_color}};>{{section.settings.shop_by_size_title}}</h3>
+  </div>
+  <div class="content_sidebar">
+    <ul class="list-unstyled">
+      {% assign tags = section.settings.shop_by_size_list_tags | split: ',' %}
+
+      {% for t in tags %}
+      {% assign tag = t | strip %}
+      {% assign tag_value = tag | handleize %}
+      <li>
+        <input type="checkbox" value="{{ tag_value | split: '|' | first }}" {% if current_tags contains tag %}checked{% endif %}/>
+        <a href="javascript:void(0)" title="{{tag}}" style=color:{{section.settings.content_sidebar_color}};><i class="ti-angle-double-right"></i> {{tag}}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+               

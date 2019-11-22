@@ -1,0 +1,134 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-banner-v2" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %} {% if section.settings.sections_layout == "dark" %}background: {{section.settings.sections_bg_color}};{% endif %}">
+  <div class="container-fluid px-0">
+    <div class="section-banner-v2" style="background-image: url({% if section.settings.backgroud_image != blank %}{{section.settings.backgroud_image|img_url:'master'}}{% else %}//placehold.it/1920x600{% endif %})">
+      <div class="row align-items-center">
+        <div class="col-lg-6 col-12 col-sm-8 col-md-7">
+          <div class="box-banner">
+            {% if section.settings.section_title != blank %}
+            	<h3>{{section.settings.section_title}}</h3>
+            {% endif %}
+            {% if section.settings.section_description != blank %}
+            	<p>{{section.settings.section_description}}</p>
+            {% endif %}
+            {% if section.settings.button_name != blank %}
+              <a href="{{ section.settings.button_url }}" >{{section.settings.button_name}}</a>
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-lg-6 text-center col-sm-4 col-md-5">
+          {% if section.settings.enable_image_small%}
+          <div class="picture">
+            <a href="{{section.settings.image_url}}">
+            {% if section.settings.image_banner != blank %}
+            	<img src="{{section.settings.image_banner|img_url:'master'}}" class="img-fluid" alt="banner">
+            {% else %}
+            	{{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+          </a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Banner v2 H2",
+  "class": "index-section",
+  "settings": [
+	{
+      "type": "header",
+      "content": "Info Left"
+    },
+	{
+      "type": "text",
+      "id": "section_title",
+      "label": "Title",
+      "default": "Introducing Over pink<br>bags collection."
+    },
+
+	{
+      "type": "text",
+      "id": "section_description",
+      "label": "Description",
+      "default": "Donec sed odio dui. Fusce dapibus, tellus ac cursus<br>commodo, tortor mauris condimentum nibh, ut fermentum massa justo."
+    },
+
+	{
+      "type": "text",
+      "id": "button_name",
+      "label": "Button name",
+      "default": "VIEW COLLECTION"
+    },
+	{	
+      "type": "url",
+      "id": "button_url",
+      "label": "URL button name",
+      "default": "/collections/all"
+    },
+	
+	{
+      "type": "header",
+      "content": "Info Right"
+    },
+	{
+      "type": "checkbox",
+      "id": "enable_image_small",
+      "label": "Enable Image small?",
+      "default": true
+    },
+	{
+      "type": "image_picker",
+      "id": "image_banner",
+      "label": "Image small",
+      "info": "700 x 350px recommended"
+    },
+	{	
+      "type": "url",
+      "id": "image_url",
+      "label": "URL image",
+      "default": "/collections/all"
+    },
+	{
+      "type": "header",
+      "content": "Info Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "backgroud_image",
+      "label": "Background image",
+      "info": "1920 x 600px recommended"
+    },
+    {
+      "type": "header",
+      "content": "Section Space"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner v2 H2",
+      "category": "Banner"
+    }
+  ]
+}
+{% endschema %}
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

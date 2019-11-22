@@ -1,0 +1,105 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-product-v1" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %} {% if section.settings.sections_layout == "dark" %}background: {{section.settings.sections_bg_color}};{% endif %}">
+  <div class="section-product-v1">
+    <div class="container container_1170">
+      <div class="row justify-content-center">
+        <div class="col-lg-12 text-center">
+          <div class="title-section-product-v1">
+            {% if section.settings.section_title != blank%}
+            <h3 class="mb-0">{{section.settings.section_title}}</h3>
+            {% endif %}
+            {% if section.settings.section_description != blank %}
+            <p class="mb-0">{{ section.settings.section_description }}</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="row">        
+        {% assign products_limit = section.settings.products_limit %}
+        {% assign col = section.settings.select_collection %}
+        {% for product in collections[col].products limit: products_limit %}
+          <div class="col-lg-3 col-6 col-sm-6 left col-md-3 col-12">
+            {% include 'product-item' %}
+          </div>
+        {% else %}
+          {% for i in (1..4) %}
+          <div class="col-lg-3 col-6 col-sm-6 left col-md-3 col-12">
+            {% include 'empty-product-item' %}
+          </div>
+          {% endfor %}
+        {% endfor %}
+              
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Product v1 H1",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Info title Product"
+    },
+	{
+      "type":"text",
+      "id": "section_title",
+      "label": "Title Product",
+      "default": "Shop the look"
+	},
+	{
+      "type":"textarea",
+      "id": "section_description",
+      "label": "Description",
+      "default": "Donec sed odio dui. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum<br>nibh, ut fermentum massa justo."
+	},
+	{
+      "type": "header",
+      "content": "Info Product"
+    },
+    {
+      "type": "collection",
+      "id": "select_collection",
+      "label": "Select Collection"
+    },
+	{
+      "type": "range",
+      "id": "products_limit",
+      "label": "Limit products",
+      "min": 2,
+      "max": 50,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Section Space"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product v1 H1",
+      "category": "Product"
+    }
+  ]
+}
+{% endschema %}
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

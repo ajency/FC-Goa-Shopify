@@ -1,0 +1,39 @@
+<header>
+  {% include 'minicart' %}
+  {% include 'search_mobile' %}
+  {% include 'menu_mobile' %}
+
+  <div class="menu_destop menuheader2 d-none d-xl-block jsheader2 {% unless settings.enable_absolute_menu2 %}engoc-disable-absolute{% endunless %}">
+    <div class="container-fluid my-container">
+      <div class="row justify-content-between">
+        <div class="col-lg-6 logo ">
+          <div class="text-left">          	
+          {% if settings.logo_svg2 !=blank %}
+          <a href="{{shop.url}}" style="width:{{settings.hdv2_logo_maxwidth}}">{{settings.logo_svg2}}</a>
+          {% else %}          	
+          <a href="{{shop.url}}">
+            {% if settings.hdv2_logo != blank %}
+            <img src="{{settings.hdv2_logo|img_url:'master'}}" width="{{settings.hdv2_logo_maxwidth}}" alt="logo">
+            {% else %}
+            <img src="//placehold.it/141x22" width="{{settings.hdv2_logo_maxwidth}}" alt="logo">
+            {% endif %}
+          </a>
+          {% endif %}          
+        </div>
+        </div>
+        <div class="col-lg-6 menu_right">
+          <div class="d-flex justify-content-end align-items-center">
+            <a href="javascript:void(0)" title="" class="icon jsmenudestop">
+              <div class="iconmenu">
+                <i></i>
+              </div>
+            </a>
+            <div class="js_search_destop">
+              <span class="{{settings.icon_search_header}}"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

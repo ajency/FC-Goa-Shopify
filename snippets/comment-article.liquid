@@ -1,0 +1,190 @@
+{% assign number_of_comments = article.comments_count %}
+{% if comment and comment.created_at %}
+{% assign number_of_comments = article.comments_count | plus: 1 %}
+{% endif %}
+
+
+{% if section.settings.blog_template == "blogdetail_v1" %}
+<div class="col-lg-7">
+  <div class="conments">
+    {% if article.comments_count > 0 %}
+    <div class="title_comment">
+      <h4 class="mb-0">{{ 'blogs.comments.comments_with_count' | t: count: number_of_comments }}</h4>
+    </div>
+    {% endif %}
+    
+    {% if comment and comment.created_at %}
+    <div class="alert alert-success alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <p>
+        {% if blog.moderated? %}
+        {{ 'blogs.comments.success_moderated' | t }}
+        {% else %}
+        {{ 'blogs.comments.success' | t }}
+        {% endif %}
+      </p>
+    </div>
+    {% endif %}
+    
+    {% if article.comments_count > 0 %}
+    <ul class="list-unstyled mb-0">
+      
+      {% comment %}
+    If a comment was just submitted with no blank field, show it.
+    {% endcomment %}
+    {% if comment and comment.created_at %}
+    {% include 'comment' %}
+    {% endif %}
+
+    {% comment %}
+    Showing the rest of the comments.
+    {% endcomment %}
+    {% for comment in article.comments %}
+    {% include 'comment' %}
+    {% endfor %}
+      
+    </ul>
+    {% endif %}
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      {% if paginate.pages > 1 %}
+      <div class="pagi-nav text-right">
+        {{ paginate | default_pagination | replace: '&laquo; Previous', '' | replace: 'Next &raquo;', '' }}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+<!-- End Blog Comment -->
+<div class="col-lg-5">
+  <div class="submit_list" id="comments">
+    <div class="title_comment">
+      <h4 class="mb-0">{{ 'blogs.comments.title' | t }}</h4>
+    </div>
+    {% form 'new_comment', article %}
+      {% if form.posted_successfully? %}
+        <div class="alert alert-success alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <p style="margin-bottom: 5px;">
+            {{ 'contact.form.post_success' | t }}
+          </p>
+        </div>
+        {% endif %}
+        {% if form.errors %}
+        <div class="alert alert-success alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <!-- {{ form.errors.size }} or {{ form.errors | size }} -->
+          <p style="margin-bottom: 5px;">Your contact form has {{ form.errors | size | pluralize: "an error", "a few errors" }}. To submit your form, make the following changes and try again:</p>
+          {% for field in form.errors %}
+          <p style="margin-bottom: 5px;">The {{ field | capitalize | replace: 'Body', 'Message' }} field {{ form.errors.messages[field] }}.</p>
+          {% endfor %}
+        </div>
+        {% endif %}
+      <textarea  type="text" rows="8" class="form-control" name="comment[body]" placeholder="{{ 'blogs.comments.message' | t }}" required>{{form.body}}</textarea>
+      <input type="text" class="form-control" name="comment[author]" value="{{ form.author }}" placeholder="{{ 'blogs.comments.name' | t }}"  required>
+      <input type="email" class="form-control" name="comment[email]" value="{{ form.email }}" placeholder="{{ 'blogs.comments.email' | t }}"  required>
+      <input type="text" class="form-control" name="comment[author]" value="{{ form.author }}" placeholder="{{ 'blogs.comments.web' | t }}">
+      <button class="btn btn-primary w-100" type="submit" value="{{ 'blogs.comments.submit' | t }}">{{ 'blogs.comments.submit' | t }}</button>
+    {% endform %}
+  </div>
+</div>
+{% elsif section.settings.blog_template == "blogdetail_v2" %}
+
+<div class="comments_list">
+  <div class="row">
+    <div class="col-lg-12">
+      {% if article.comments_count > 0 %}
+      <span class="title_comment">{{ 'blogs.comments.comments_with_count' | t: count: number_of_comments }}</span>
+      {% endif %}
+      {% if comment and comment.created_at %}
+      <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <p>
+          {% if blog.moderated? %}
+          {{ 'blogs.comments.success_moderated' | t }}
+          {% else %}
+          {{ 'blogs.comments.success' | t }}
+          {% endif %}
+        </p>
+      </div>
+      {% endif %}
+      {% if article.comments_count > 0 %}      
+      {% comment %}
+      If a comment was just submitted with no blank field, show it.
+      {% endcomment %}
+      {% if comment and comment.created_at %}
+      {% include 'comment' %}
+      {% endif %}
+
+      {% comment %}
+      Showing the rest of the comments.
+      {% endcomment %}
+      {% for comment in article.comments %}
+      {% include 'comment' %}
+      {% endfor %}
+      
+      {% endif %}    
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      {% if paginate.pages > 1 %}
+      <div class="pagi-nav text-right">
+        {{ paginate | default_pagination | replace: '&laquo; Previous', '' | replace: 'Next &raquo;', '' }}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<div class="send_message" id="comments">
+  <div class="row">
+    <div class="col-lg-12">
+      <p class="mb-0">{{ 'blogs.comments.title' | t }}</p>
+      {% form 'new_comment', article %}
+        {% if form.posted_successfully? %}
+        <div class="alert alert-success alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <p style="margin-bottom: 5px;">
+            {{ 'contact.form.post_success' | t }}
+          </p>
+        </div>
+        {% endif %}
+        {% if form.errors %}
+        <div class="alert alert-success alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <!-- {{ form.errors.size }} or {{ form.errors | size }} -->
+          <p style="margin-bottom: 5px;">Your contact form has {{ form.errors | size | pluralize: "an error", "a few errors" }}. To submit your form, make the following changes and try again:</p>
+          {% for field in form.errors %}
+          <p style="margin-bottom: 5px;">The {{ field | capitalize | replace: 'Body', 'Message' }} field {{ form.errors.messages[field] }}.</p>
+          {% endfor %}
+        </div>
+        {% endif %}
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <input type="text" class="form-control" name="comment[author]" value="{{ form.author }}" placeholder="{{ 'blogs.comments.name' | t }}" required>
+          </div>
+          <div class="form-group col-md-4">
+            <input type="email" class="form-control" name="comment[email]" value="{{ form.email }}" placeholder="{{ 'blogs.comments.email' | t }}" required>
+          </div>
+          <div class="form-group col-md-4">
+            <input type="text" class="form-control" name="comment[web]" value="{{ form.web }}" placeholder="{{ 'blogs.comments.web' | t }}">
+          </div>
+        </div>
+        <div class="input-group mb-2 mr-sm-2 mr-md-0 mb-0">
+          <input type="text" class="form-control border_bottomform" name="comment[body]" value="{{form.body}}"  placeholder="{{ 'blogs.comments.message2' | t }}" required>
+          <div class="input-group-prepend">
+            <div class="input-group-text"><i class="{{section.settings.iconmail}}"></i></div>
+          </div>
+        </div>
+        <button class="btn btn-primary w-100" type="submit" value="{{ 'blogs.comments.submit2' | t }}">{{ 'blogs.comments.submit2' | t }}</button>
+      {% endform %}
+    </div>
+  </div>
+</div>
+
+
+
+{% endif %}
+

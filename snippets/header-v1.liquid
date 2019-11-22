@@ -1,0 +1,61 @@
+<header>
+	{% include 'minicart' %}
+	{% include 'search_mobile' %}
+	{% include 'menu_mobile' %}
+
+<div class="menu_destop d-md-none d-none d-sm-none d-xl-block header_v1 jsheader1 {% unless settings.enable_sticky_menu_v1 %}engoc-disable-sticky{% endunless %}">
+  <div class="container-fluid my-container ">
+    <div class="row nga justify-content-between">
+      <div class="col-lg-2 logo">
+        <div class="text-left">          	
+          {% if settings.logo_svg1 !=blank %}
+          <div class="logosvg" style="max-width:{{settings.hdv1_logo_maxwidth}}px;">
+            <a class="d-block" href="{{shop.url}}">{{settings.logo_svg1}}</a>
+          </div>
+          
+          {% else %}          	
+          <a href="{{shop.url}}">
+            {% if settings.hdv1_logo != blank %}
+            <img src="{{settings.hdv1_logo|img_url:'master'}}" width="{{settings.hdv1_logo_maxwidth}}" alt="logo">
+            {% else %}
+            <img src="//placehold.it/140x22" width="{{settings.hdv1_logo_maxwidth}}" alt="logo">
+            {% endif %}
+          </a>
+          {% endif %}          
+        </div>
+      </div>
+      <div class="col-lg-8 posittion-relative">
+        {% include 'menu' %} 
+        
+      </div>
+      <div class="col-lg-2 menu_right">
+        <div class="fc_link d-flex justify-content-end">
+          <p class="mb-0"> FC Goa Home </p>
+        </div>
+        <div class="d-flex justify-content-end align-items-center mt-4">
+          <div class="accout_login">            
+            <a class="ti-user jslogin"></a>
+            <div class="login_box">
+              <ul class="mb-0 list-unstyled list_log_res">
+                {% if customer %}
+                <li><a href="/account">{{ 'layout.customer.account' | t }}</a></li>
+                <li><a href="/account/logout">{{ 'layout.customer.log_out' | t }}</a></li>
+                {% else %}
+                <li><a href="/account/login">{{ 'layout.customer.log_in' | t }}</a></li>
+                <li><a href="/account/register">{{ 'layout.customer.create_account' | t }}</a></li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+          <div class="{{settings.icon_shoppingcart}} jscart-destop cart_destop">
+            <span class=" enj-cartcount">{{ cart.item_count }}</span>
+          </div>
+          <div class="js_search_destop">
+            <span class="{{settings.icon_search_header}}"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>

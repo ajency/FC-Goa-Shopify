@@ -1,0 +1,141 @@
+<div data-section-id="{{ section.id }}" data-section-type="section-testimonials-v1" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %} {% if section.settings.sections_layout == "dark" %}background: {{section.settings.sections_bg_color}};{% endif %}">
+  <div class="section-testimonials-v1">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center col-md-10">
+          <div class="list_testimonials">
+            {% if section.blocks.size > 0 %}
+            {% for block in section.blocks %}
+            {% if block.type == "testimonials" %}
+            <div class="item text-center">              
+              <a href="{{block.settings.author_url}}">
+                {% if block.settings.block_image_author != blank %}
+                	<img src="{{block.settings.block_image_author|img_url:'master'}}" class="img-fluid" alt="">
+                {% else %}
+                	<img src="//placehold.it/115x115" class="img-fluid" alt="testimonial">
+                {% endif %}
+              </a>
+              {% if block.settings.block_description != blank %}
+              	<p>{{block.settings.block_description}}</p>
+              {% endif %}
+              <div class="customer">
+                {% if block.settings.block_author != blank %}
+                	<span class="walter">{{block.settings.block_author}}</span>
+                {% endif %}
+                
+                {% if block.settings.block_descriptionauthor != blank %}
+                	<span class="retail">{{block.settings.block_descriptionauthor}}</span>
+                {% endif %}
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+       
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Testimonials v1 H1",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Space"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonials",
+      "name": "Testimonials item",
+      "settings": [
+		{
+          "type": "image_picker",
+          "id": "block_image_author",
+          "label": "Image Customer",
+		  "info": "115 x 115px recommended"
+        },
+		{
+          "type": "url",
+          "id": "author_url",
+          "label": "URL Customer ",
+          "default": "/collections/all"
+        },
+        {
+          "type": "text",
+          "id": "block_description",
+          "label": "Comment",
+          "default": "The support makes this theme the best theme event. The theme is easy to use. The support is the best anybody could hope for."
+        },
+        {
+          "type": "text",
+          "id": "block_author",
+          "label": "Name Customer",
+          "default": "Walter Bradley _"
+        },
+		{
+          "type": "text",
+          "id": "block_descriptionauthor",
+          "label": "Name Description",
+          "default": "Retail Salesperson 3 _"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials v1 H1",
+      "category": "Testimonials",
+	  "blocks": [
+        {
+          "type": "testimonials",
+          "settings": {
+            "block_description": "The support makes this theme the best theme event. The theme is easy to use. The support is the best anybody could hope for.",
+            "block_author": "WALTER BRADLEY _",
+            "block_descriptionauthor": "Retail Salesperson 3"
+          }
+        },
+		{
+          "type": "testimonials",
+          "settings": {
+            "block_description": "The support makes this theme the best theme event. The theme is easy to use. The support is the best anybody could hope for.",
+            "block_author": "SELENA GOMEZ _",
+            "block_descriptionauthor": "Retail Salesperson 3"
+          }
+        },
+		{
+          "type": "testimonials",
+          "settings": {
+            "block_description": "The support makes this theme the best theme event. The theme is easy to use. The support is the best anybody could hope for.",
+            "block_author": "TAYLOR SWIFT _",
+            "block_descriptionauthor": "Retail Salesperson 3"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

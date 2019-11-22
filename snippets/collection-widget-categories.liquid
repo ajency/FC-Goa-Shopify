@@ -1,0 +1,13 @@
+
+<div class="filter_price colors">
+  <div class="title_general_sidebar">
+    <h3 class="mb-0" style=color:{{section.settings.title_sidebar_color}}; background-color:{{section.settings.background_title_sidebar_color}};>{{section.settings.widget_cate_title}}</h3>
+  </div>
+  <div class="content_sidebar">
+    <ul class="list-unstyled">
+      {% for link in linklists[section.settings.widget_cate_menu].links %}
+      <li><a href="{{ link.url }}" title="{{ link.title }}" style=color:{{section.settings.content_sidebar_color}};><i class="ti-angle-double-right"></i>{{ link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
