@@ -39,7 +39,6 @@
   {{ 'timber_2.scss.css' | asset_url | stylesheet_tag }}
   {% endif %}
 
-  {{ 'banner.scss.css' | asset_url | stylesheet_tag }}
   {{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
   {{ 'themify-icons.css' | asset_url | stylesheet_tag }}
   {{ 'font-awesome.min.css' | asset_url | stylesheet_tag }}
@@ -49,6 +48,11 @@
   {{ 'jquery.fancybox.min.css' | asset_url | stylesheet_tag }}
   
   {{ 'engo-customize.scss.css' | asset_url | stylesheet_tag }}
+
+  <!-- Ajency Styles -->
+  {{ 'banner.scss.css' | asset_url | stylesheet_tag }}
+  {{ 'theme-copy.scss.css' | asset_url | stylesheet_tag }}
+
 
   <!-- Header hook for plugins ================================================== -->
   {{ content_for_header }}
