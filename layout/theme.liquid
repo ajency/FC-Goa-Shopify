@@ -39,10 +39,12 @@
   {{ 'timber_2.scss.css' | asset_url | stylesheet_tag }}
   {% endif %}
 
+  {{ 'banner.scss.css' | asset_url | stylesheet_tag }}
   {{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
   {{ 'themify-icons.css' | asset_url | stylesheet_tag }}
   {{ 'font-awesome.min.css' | asset_url | stylesheet_tag }}
   {{ 'slick.css' | asset_url | stylesheet_tag }}
+  {{ 'owl.carousel.min.css' | asset_url | stylesheet_tag }}
   {{ 'slick-theme.css' | asset_url | stylesheet_tag }}
   {{ 'jquery.fancybox.min.css' | asset_url | stylesheet_tag }}
   
@@ -193,6 +195,7 @@ Add the page template as a class for easy page or template specific styling.
   
   {{ 'bootstrap.bundle.min.js' | asset_url | script_tag }}
   {{ 'slick.min.js' | asset_url | script_tag }}
+  {{ 'owl.carousel.min.js' | asset_url | script_tag }}
   {{ 'instafeed.min.js' | asset_url | script_tag }}
   {{ 'jquery.matchHeight.js' | asset_url | script_tag }}
   {{ 'tilt.jquery.min.js' | asset_url | script_tag }}
