@@ -903,7 +903,7 @@ margin-top:10px
     margin-top: 5px;
     button{
       padding: 10px 20px;
-      background-color: #000 !important;
+      //background-color: #000 !important;
       &:focus{
          outline: none;
       }
@@ -965,13 +965,14 @@ margin-top:10px
     position: relative;
     background: #fff;
     min-width: 490px;
-
     -webkit-transition: all 300ms ease-in-out;
     -moz-transition: all 300ms ease-in-out;
     -ms-transition: all 300ms ease-in-out;
     -o-transition: all 300ms ease-in-out;
     transition: all 300ms ease-in-out;
-
+    @media (max-width: 575px) {
+      min-width: 100%;
+    }
   }
   @media (max-width: 1500px){
     .content{
@@ -1005,22 +1006,23 @@ margin-top:10px
 
   .close-window{
     position: absolute;
-    right: 0;
-    top: 0;
+    right: 10px;
+    top: 10px;
     font-weight: bold;
-    background-color: #000;
+    background-color: #060E59;
     color: #ffffff;
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
     text-align: center;
+    z-index: 1;
     i{
-      line-height: 24px;}
+      line-height: 30px;}
   }
   .success-message{
-    color: #979797;
-    font-size: 13px;
-    line-height: 25px;
-
+    color: #18AF68;
+    font-size: 14px;
+    line-height: 26px;
+    margin-bottom: 40px;
     &:before{
       font-family: FontAwesome;
       content: "\f00c";
@@ -1043,11 +1045,19 @@ margin-top:10px
     }
   }
   .product-name{
-    padding-bottom: 10px;
-    font-size: 20px;
-    line-height: 20px;
+    padding-bottom: 0;
+    font-size: 24px;
+    line-height: 29px;
     text-transform: capitalize;
     font-weight: 400;
+  }
+
+  .product-image{
+    img{
+      width: 100%;
+      max-width: 230px;
+      height: auto;
+    }
   }
 
   .actions {display: inline-block;}
@@ -1070,7 +1080,7 @@ margin-top:10px
 /*Hidden Ajax Popup AddtoCart Mobile*/
 @media screen and (max-width: 480px) {
   .engoc_hide_mobile {
-    display: none !important;
+    //display: none !important;
   }
 }
 
@@ -2466,7 +2476,7 @@ input:focus {
               a {
                 font-size: 16px;
                 text-align: justify;
-                color: #000;
+                color: #060E59;
                 text-decoration: none;
                 font-weight: 400
               }
@@ -2563,7 +2573,7 @@ input:focus {
 
         .button-viewcart {
           text-decoration: none;
-          border: 1px solid #000;
+          border: 1px solid #060E59;
           display: block;
           float: left;
           text-align: center;
@@ -2571,20 +2581,20 @@ input:focus {
           width: 50%;
           line-height: 56px;
           font-size: 15px;
-          color: #000;
+          color: #060E59;
           background-color: #fff;
           margin-right: 20px;
           transition: all 0.5s ease;
 
           &:hover {
             color: #fff;
-            background-color: #000;
+            background-color: #060E59;
           }
         }
 
         .button-checkout {
           text-decoration: none;
-          border: 1px solid #000;
+          border: 1px solid #060E59;
           display: block;
           float: right;
           width: 50%;
@@ -2593,11 +2603,11 @@ input:focus {
           line-height: 56px;
           font-size: 15px;
           color: #fff;
-          background-color: #000;
+          background-color: #060E59;
           transition: all 0.5s ease;
 
           &:hover {
-            color: #000;
+            color: #060E59;
             background-color: #fff;
           }
         }

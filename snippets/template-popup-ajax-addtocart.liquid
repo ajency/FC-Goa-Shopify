@@ -12,22 +12,20 @@
       <i class="fa fa-close"></i>
     </a>
     <div class="mini-product-item row">
-      <div class="col-md-3 col-sm-3 product-image f-left">
-        <img alt="img" src="{{'favicon.png' | asset_url}}" style="max-width:120px; height:auto"/>
+      <div class="col-md-4 col-sm-3 product-image f-left">
+        <img alt="img" class="img-fluid" src="{{'favicon.png' | asset_url}}"/>
       </div>
-      <div class="col-md-9 col-sm-9 f-left">
+      <div class="col-md-8 col-sm-9 f-left">
         <div class="product-info f-left">
-          <p class="product-name"></p>
-          <p class="success-message">{{ 'popup.cart' | t }}</p>
-
+          <p class="product-name text-blue"></p>
+          <p class="success-message text-green">{{ 'popup.cart' | t }}</p>
         </div>
         <div class="actions">
-          <button class="continue-shopping shop-button bg-dark" onclick="javascript:void(0)">{{ 'popup.continue' | t }}</button>
-          <button class="shop-button bg-dark " onclick="window.location='/cart'">{{ 'popup.goto_cart' | t }}</button>
+          <button class="continue-shopping shop-button btn-bg-blue" onclick="javascript:void(0)">{{ 'popup.continue' | t }}</button>
+          <button class="shop-button btn-bg-blue" onclick="window.location='/cart'">{{ 'popup.goto_cart' | t }}</button>
         </div>  
       </div>
     </div>
-
   </div>    
 </div>
 
