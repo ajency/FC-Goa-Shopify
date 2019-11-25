@@ -25,18 +25,21 @@
     <div class="container">
       <div class="row justify-content-between">        
         <div class="col-lg-12">
-          <div class="content-page-detail">
+          <div class="content-page-detail">             
             <div class="product-detail">
               <div class="row justify-content-between">
                 <div class="col-lg-6 col-md-6">
-                  <div class="product-img-box">
-                    {% for image in product.images %}
+                    <div class="wishlist-icon">
+                        {% include 'add-wishlist' %}
+                    </div>
+                  <div class="product-img-box">                    
+                    {% for image in product.images %}                    
                     <div>
-                      <a href="javascript:void(0)">
+                      <a class="product-featured-img" href="javascript:void(0)">
                         <img class="img-fluid engoj_img_main" src="{{ image.src | product_img_url: 'master' }}" alt="{{product.title}}"/>
                       </a>
                     </div>
-                    {% endfor %}
+                    {% endfor %}                    
                   </div>
                   <div class="box-thumbnail-pr">                               
                     {% for image in product.images %}
@@ -55,7 +58,7 @@
                     <div class="product-price price text-blue">
                       {% capture price %}{{ product.price | money }}{% endcapture %}
                       {% if on_sale %}<del class="dark opaci title14 enj-product-price-compare price_nosale">{{ product.compare_at_price | money }}</del> {% endif %}
-                      <span class="title18 color font-bold enj-product-price engoj_price_main price_sale">{{ price }}</span>
+                      <span class="title18 color enj-product-price engoj_price_main price_sale">{{ price }}</span>
                     </div>	
 
                     {% if section.settings.show_rating %}
@@ -90,7 +93,7 @@
                           <input type="number" size="4" title="Qty" value="1" min="1" id="Quantity" name="quantity" />
                         </div> 
                       </div>
-                      <div class="wishlist_addtocart">
+                      <div class="wishlist_addtocart">                          
                         <!--                         <a href="#" class="ti-heart" title="wishlist"></a> -->
                         <button type="submit" class="shop-button addcart-link enj-add-to-cart-btn engoj-btn-addtocart">
                           {{settings.pia_addcart_name}}
