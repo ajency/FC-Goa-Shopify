@@ -1,13 +1,9 @@
 <div class="menu_moblie d-flex d-xl-none jsmenumobile {% unless settings.enable_sticky_mobile %}engoc-disable-sticky{% endunless %}">
-  <a href="javascript:void(0)" title="" class="menuleft">
-    <div class="iconmenu">
-      <i class="btn_icon"></i>
-    </div>
-  </a>
-  <div class="logo_menumoblie">
+ 
+<!--   <div class="logo_menumoblie">
     {% if settings.logo_svgmobile !=blank %}
     <a href="{{shop.url}}">{{settings.logo_svgmobile}}</a>
-    {% else %}          	
+    {% else %}            
     <a href="{{shop.url}}">
       {% if settings.logo_mobile != blank %}
       <img src="{{settings.logo_mobile|img_url:'master'}}" width="{{settings.mobile_logo_maxwidth}}" alt="logo">
@@ -16,21 +12,56 @@
       {% endif %}
     </a>
     {% endif %} 
+  </div> -->
+    <div class="row my-container align-items-center justify-content-between w-100">
+      <div class="col-6 text-left logo">           
+        {% if settings.logo_svg1 !=blank %}
+        <div class="logosvg" style="max-width:{{settings.hdv1_logo_maxwidth}}px;">
+          <a class="d-block" href="{{shop.url}}">{{settings.logo_svg1}}</a>
+        </div>
+        
+        {% else %}            
+        <a href="{{shop.url}}">
+          {% if settings.hdv1_logo != blank %}
+          <img src="{{settings.hdv1_logo|img_url:'master'}}" width="{{settings.hdv1_logo_maxwidth}}" alt="logo">
+          {% else %}
+          <img src="//placehold.it/140x22" width="{{settings.hdv1_logo_maxwidth}}" alt="logo">
+          {% endif %}
+        </a>
+        {% endif %}          
+      </div>
+      <div class=" col-3 menuright">
+  <!--       <div class="accout_login">            
+          <a class="ti-user jslogin"></a>
+          <div class="login_box">
+            <ul class="mb-0 list-unstyled list_log_res">
+              {% if customer %}
+              <li><a href="/account">{{ 'layout.customer.account' | t }}</a></li>
+              <li><a href="/account/logout">{{ 'layout.customer.log_out' | t }}</a></li>
+              {% else %}
+              <li><a href="/account/login">{{ 'layout.customer.log_in' | t }}</a></li>
+              <li><a href="/account/register">{{ 'layout.customer.create_account' | t }}</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </div> -->
+        <a href="javascript:void(0)" title="" class="js_minicart px-3 pt-3"><i class="ti-shopping-cart"></i>
+          <span class="count_pr_incart enj-cartcount">{{cart.item_count }}</span>
+        </a>
+        <span class=" px-3 pt-3 js_search"><i class="{{section.settings.icon_search_header_mobile}}"></i></span>
+        <a href="javascript:void(0)" title="" class="menuleft">
+          <div class="iconmenu">
+            <i class="btn_icon"></i>
+          </div>
+        </a>
+      </div>
+    </div>
+  <div class="box_contentmenu_background">
   </div>
-  <div class="menuright">
-    <span class=" pr-3 js_search"><i class="{{section.settings.icon_search_header_mobile}}"></i></span>
-    <a href="javascript:void(0)" title="" class="js_minicart"><i class="ti-shopping-cart"></i>
-      <span class="count_pr_incart enj-cartcount">{{cart.item_count }}</span>
-    </a>
-  </div>
-</div>
-<div class="box_contentmenu_background">
-</div>
-<div class="box_contentmenu">
-  <div class="tab_content_menu_mobile jsmenumobile container">
-
-     <div class="row nga justify-content-between">
-      <div class="col-lg-2 logo">
+  <div class="menu_moblie box_contentmenu jsmenumobile container">
+    <div class="tab_content_menu_mobile">
+     <div class="row nga justify-content-between ml-0 mr-0">
+      <div class="col-8 logo">
         <div class="text-left">           
           {% if settings.logo_svg1 !=blank %}
           <div class="logosvg" style="max-width:{{settings.hdv1_logo_maxwidth}}px;">
@@ -48,38 +79,40 @@
           {% endif %}          
         </div>
       </div>
+      <div class="col-4 crossicon">
+        <a href="javascript:void(0)" title="" class="menuleft">
+          <div class="iconmenu">
+            <i class="btn_icon"></i>
+          </div>
+        </a>
+      </div>
     </div>
 
-    <a href="javascript:void(0)" title="" class="menuleft">
-    <div class="iconmenu">
-      <i class="btn_icon"></i>
-    </div>
-  </a>
-<!--     <ul class="nav nav-tabs toptab_box_content list-unstyled mb-0" role="tablist">
-      <li class="toptab_li">
-        <a class="tab_navar active" href="#tab_menu_mobile" role="tab" data-toggle="tab">
-          <i class="{{section.settings.icon_tab_menu_mobile}}">
-          </i>
-          <span class="ml-3">{{ 'layout.navigation.menu' | t }}</span>
-        </a>
-      </li>
-      <li class="toptab_li">
-        <a class="tab_navar_right" href="#tab_account_mobile" role="tab" data-toggle="tab">
-          <i class="{{section.settings.icon_tab_login_mobile}}"></i>
-          <span class="ml-3">{{ 'customer.login.title' | t }}</span>
-        </a>
-      </li>
-    </ul> -->
+
+  <!--     <ul class="nav nav-tabs toptab_box_content list-unstyled mb-0" role="tablist">
+        <li class="toptab_li">
+          <a class="tab_navar active" href="#tab_menu_mobile" role="tab" data-toggle="tab">
+            <i class="{{section.settings.icon_tab_menu_mobile}}">
+            </i>
+            <span class="ml-3">{{ 'layout.navigation.menu' | t }}</span>
+          </a>
+        </li>
+        <li class="toptab_li">
+          <a class="tab_navar_right" href="#tab_account_mobile" role="tab" data-toggle="tab">
+            <i class="{{section.settings.icon_tab_login_mobile}}"></i>
+            <span class="ml-3">{{ 'customer.login.title' | t }}</span>
+          </a>
+        </li>
+      </ul> -->
     <div class="tab-content">
-      <div role="tabpanel" class="tab-pane show in active tab_children_menu" id="tab_menu_mobile">        
-
+      <div role="tabpanel" class="tab-pane show in active tab_children_menu" id="tab_menu_mobile">   
         <ul class="navbar-nav mr-auto">
           {% for link in linklists.main-menu.links %}
           <li class="nav-item dropdown">
               <a class="nav-link" href="{{ link.url }}">{{ link.title }}</a>
             {%- if link.links != blank -%}
-              <span class="dropdown-arrow"></span>
-               <ul class="dropdown-menu list-woman show">
+              <a href="#" class="chevron"><div class="dropdown-arrow rotate"></div></a>
+               <ul class="dropdown-menu list-woman active">
                 {% for child_link in link.links %}  
                 <li><a href= "{{ child_link.url }}">{{ child_link.title }}</a>
                 {% if child_link.links != blank %}
@@ -98,8 +131,9 @@
         </ul>
       </div>
       </div>
-    </div>
-    <div class="home_link">
-      <h5 class="link_btn"> Back to FC Goa Home </h5>
+      <div class="home_link">
+          <a class="link_btn"> Back to FC Goa Home </a>
+      </div>
     </div>
   </div>
+</div> 
