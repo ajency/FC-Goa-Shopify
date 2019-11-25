@@ -55,14 +55,14 @@
       </li>
     </ul>
   </div>
+  <div class="listwishlist text-right">
+  {% include 'add-wishlist' %}
+<!--         <a href="" class="ti-heart"></a> -->
+</div>
   <div class="info_new">
     <div class="title_pr_wishlist w-100">
       <div class="title">
         <h4 class="mb-0"><a href="{{ product.url | within: collection }}">{{ product.title }}</a></h4>
-      </div>
-      <div class="listwishlist text-right">
-        {% include 'add-wishlist' %}
-<!--         <a href="" class="ti-heart"></a> -->
       </div>
     </div>
 

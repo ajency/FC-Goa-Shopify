@@ -4,42 +4,39 @@ For more information on collection tags:
 - http://docs.shopify.com/themes/liquid-variables/collection
 {% endcomment %}
 {% if template contains 'collection.list' %}
-	{%- assign per_page = settings.nb_per_page -%}
+  {%- assign per_page = settings.nb_per_page -%}
 {% elsif template contains 'collection.24' %}
-	{%- assign per_page = 24 -%}
+  {%- assign per_page = 24 -%}
 {% elsif template contains 'collection.48' %}
-	{%- assign per_page = 48 -%}
+  {%- assign per_page = 48 -%}
 {% else %}
-	{%- assign per_page = settings.nb_per_page -%}
+  {%- assign per_page = settings.nb_per_page -%}
 {% endif %}
 
 {% paginate collection.products by section.settings.product_limit %}
 
-<section class="page_aboutus_v1 page_product_v2">
-<!--   {% if section.settings.enable_slideshow  %}
-  <div class="slide" style="background-image: url({% if section.settings.backgroud_slide_image != blank %}{{section.settings.backgroud_slide_image|img_url:'master'}}{% else %}//placehold.it/1920x500{% endif %})">
-    <div class="container text-center">
-      {% if section.settings.idname_collection != blank %}
-      <span class="text-uppercase" style="color: {{section.settings.idname_collection_color}};">{{section.settings.idname_collection}}</span>
-      {% endif %}
-      <h1 style="color:{{section.settings.title_page_blog_color}};">{{ collection.title }}</h1>
+<section class="octane page_aboutus_v1 page_product_v2">
+  <div class="container">
+  {% if section.settings.enable_slideshow  %}
+  <div class="slide" style="background-image: url(https://cdn.shopify.com/s/files/1/1505/6540/files/Big_Banner_03.jpg?454);">
+    <div class="container text-left">
+      <span> Collections </span>
+      <h1 class="mt-0">{{ collection.title }}!</h1>
     </div>
   </div>
   {% endif %}
-  {% if section.settings.product_template == "product_v1" %} -->
-  <div class="container">
+  {% if section.settings.product_template == "product_v1" %}
     <div class="page_title">
-      <h4 class="product_title"> All Products </h4>
+      <h4 class="product_title"> Collections -<span> Octane </span> </h4>
     </div>
   </div>
   <div class="category_product section-product-v1 mt-0">
     {% include 'filter-mobile' %}
     <div class="container">
       <div class="row">                    
-        <div class="{% if section.settings.collection_layout == "sidebar_none" %}col-lg-12 col-sm-12{% elsif section.settings.collection_layout == "sidebar_right" %}col-lg-9 {% elsif section.settings.collection_layout == "sidebar_left" %}col-lg-9 order-1  {% endif %} col-xs-12">
           <div class="row grid-uniform">
             {% for product in collection.products %}
-            <div class="{% if section.settings.products_per == "2" %}col-md-6{% elsif section.settings.products_per == "3" %}col-md-4{% elsif section.settings.products_per == "4" %}col-md-3{% elsif section.settings.products_per == "5" %}col-lg-2dot4{% endif %} col-sm-6 col-xs-{% if settings.mobile_products_per_row == "1" %}12{% elsif settings.mobile_products_per_row == "2" %}6{% endif %}">
+            <div class="{% if section.settings.products_per == "2" %}col-md-6{% elsif section.settings.products_per == "3" %}col-md-3{% elsif section.settings.products_per == "4" %}col-md-3{% elsif section.settings.products_per == "5" %}col-lg-2dot4{% endif %} col-sm-6 col-xs-{% if settings.mobile_products_per_row == "1" %}12{% elsif settings.mobile_products_per_row == "2" %}6{% endif %}">
               {% include 'product-item' %}
             </div>
             {% else %}
@@ -53,7 +50,6 @@ For more information on collection tags:
             </div>
             {% endif %}
           </div>
-        </div>        
         
         {% unless section.settings.collection_layout == "sidebar_none" %}
         <div class="{% if section.settings.collection_layout == "sidebar_right" %}col-lg-3 col-sm-4{% elsif section.settings.collection_layout == "sidebar_left" %}col-lg-3 col-lg-pull-9 col-sm-4 col-sm-pull-8{% endif %} col-xs-12">
@@ -99,7 +95,7 @@ For more information on collection tags:
                     </div>
                     <div class="check_pr">              
                       {% for link in linklists[section.settings.widget_cate_menu].links %}
-                      	<a href="{{ link.url }}" title="{{ link.title }}" >{{ link.title }}</a>
+                        <a href="{{ link.url }}" title="{{ link.title }}" >{{ link.title }}</a>
                        {% endfor %}
                     </div>
                   </div> <!-- end category -->
@@ -114,7 +110,7 @@ For more information on collection tags:
                       {% assign tag_value = tag | handleize %}
                       <li class="list-inline-item">
                         <input type="checkbox" value="{{ tag_value | split: '|' | first }}" {% if current_tags contains tag %}checked{% endif %}/>
-        				<a href="javascript:void(0)" title="{{tag}}" style="background-color: {{tag}};"></a>
+                <a href="javascript:void(0)" title="{{tag}}" style="background-color: {{tag}};"></a>
                       </li>
                       {% endfor %}                      
                     </ul>
@@ -132,7 +128,7 @@ For more information on collection tags:
                       {% assign tag_value = tag | handleize %}
                       <li class="list-inline-item">
                         <input type="checkbox" value="{{ tag_value | split: '|' | first }}" {% if current_tags contains tag %}checked{% endif %}/>
-        				<a href="javascript:void(0)" title="{{tag}}" > {{tag}}</a>
+                <a href="javascript:void(0)" title="{{tag}}" > {{tag}}</a>
                       </li>
                       {% endfor %}                      
                     </ul>
@@ -181,7 +177,7 @@ For more information on collection tags:
           </div>
           {% else %}
         <div class="col-lg-12 text-center">
-          	<h2 class="title-noproduct my-5 text-center">{{ 'products.general.no_product' | t }}</h2>
+            <h2 class="title-noproduct my-5 text-center">{{ 'products.general.no_product' | t }}</h2>
         </div>
           {% endfor %}
       </div>
@@ -208,7 +204,7 @@ For more information on collection tags:
 {
   "name": "Collection Page",
   "settings": [
-	{
+  {
       "type": "header",
       "content": "Banner"
     },
@@ -218,20 +214,20 @@ For more information on collection tags:
       "label": "Enable?",  
       "default": true
     },
-	{
+  {
       "type": "text",
       "id": "idname_collection",
       "label": "Name collection",
       "default": "Product"
     },
-	
-	{
+  
+  {
       "type": "image_picker",
       "id": "backgroud_slide_image",
       "label": "Background image slide",
       "info": "1920 x 500px recommended"
     },
-	{
+  {
       "type": "header",
       "content": "Setting Product"
     },
@@ -252,7 +248,7 @@ For more information on collection tags:
           "value": "4",
           "label": "4"
         },
-		{
+    {
           "value": "5",
           "label": "5"
         }
@@ -278,20 +274,20 @@ For more information on collection tags:
         }
       ],
       "default": "sidebar_left",
-	  "info": "Only Collection v1"
+    "info": "Only Collection v1"
     },
 
-	 
+   
 
-	{
+  {
       "type": "select",
       "id": "product_template",
       "options": [
-    	{
+      {
           "value": "product_v1",
           "label": "Collection v1"
         },
-    	{
+      {
           "value": "product_v2",
           "label": "Collection v2"
         }
@@ -299,9 +295,9 @@ For more information on collection tags:
       "label": "Select Template",
       "default": "product_v1"
     },
-	
-	
-	{
+  
+  
+  {
       "type": "range",
       "id": "product_limit",
       "label": "Limit product",
@@ -310,7 +306,7 @@ For more information on collection tags:
       "step": 1,
       "default": 8
     },
-	 {
+   {
       "type": "select",
       "id": "collection_size_filter_layout",
       "label": "filter size Layout v2",
