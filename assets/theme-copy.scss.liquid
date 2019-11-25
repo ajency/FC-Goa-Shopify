@@ -76,6 +76,152 @@
 	}
 }
 
+.menu_moblie{
+  .menuleft{
+    width: 100%;
+  }
+  .logo{
+    svg{
+        max-width: 100%;
+        height: auto;
+    }
+  }
+  &.box_contentmenu{
+    .crossicon{
+      position: absolute;
+      top: -10px;
+      right: 0;
+      .menuleft{
+        .active{
+              .btn_icon{
+                width: 0px;
+                &::before{
+                  top: 0;
+                  transform: rotate(-45deg);
+                  transition: 0.3s;
+                }
+                &::after{
+                  top: 0;
+                  transform: rotate(45deg);
+                  transition: 0.3s;
+                }
+              }
+          }
+        .btn_icon{
+          position: absolute;
+          right: 32px;
+          top: 32px;
+          width: 22px;
+          height: 22px;
+          transform: rotate(45deg);
+          &:before{
+            position: absolute;
+            left: 15px;
+            content: ' ';
+            height: 33px;
+            width: 0;
+            background-color: white;
+          }
+          &:after {
+            position: absolute;
+            left: 10px;
+              top: 10px;
+            content: ' ';
+            height: 22px;
+            width: 2px;
+            background-color: white;
+          }
+        }
+      }
+    }
+    .tab-content{
+        height: auto;
+        border-bottom: 1px solid #FF6600;
+        border-radius: 0;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        .navbar-nav{
+          .nav-item{
+            .changeColor{
+            color: #ff5b01;
+            font-weight: 400;
+          }
+            .dropdown-arrow{
+            width: 0px;
+            height: 0px;
+            border-left: solid 5px #ff5b01;
+            border-bottom: solid 5px transparent;
+            border-top: solid 5px transparent;
+              position: absolute;
+              top: 14px;
+              left: -14px;
+              &.rotate {
+                -moz-transition: all .5s linear;
+                -webkit-transition: all .5s linear;
+                transition: all .5s linear;
+            }
+            &.rotate.down {
+                -moz-transform:rotate(90deg);
+                -webkit-transform:rotate(90deg);
+                transform:rotate(90deg);
+            }
+          }
+            ul{
+              padding-top: 0;
+              li{
+              font-size: 16px;
+                line-height: 20px;
+                padding: 10px 0;
+                a{
+                  &:hover{
+                    border-left: 1px solid #FF6600;
+                    color: #FF6600 ;
+                    text-decoration: none;
+                    padding-left: 12px;
+                        transition: ease-in-out 0.3s;
+                  }
+                }
+              }
+            }
+          }
+        }
+    }
+    .home_link{
+      a{
+        color: #FF6600;
+        font-size: 16px;
+        font-weight: 600;
+      }
+    }
+  }
+  .menuright{
+    /*max-width: 100%;*/
+    width: auto;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      a{
+        width: auto;
+        span{
+          &.count_pr_incart{
+            position: absolute;
+            top: 22px;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            border-radius: 50%;
+            left: 38px;
+            font-size: 12px;
+            display: block;
+            background-color: #f50505;
+            font-family: Montserrat;
+            background: linear-gradient(108.28deg, #fb910b -62.31%, #ff2801 89.32%);
+          }
+      }
+      }
+  }
+}
 
 .product-listing{
 	.product-info{
@@ -86,4 +232,20 @@
 			color: #060E59;
 		}
 	}
+}
+
+.box_contentmenu_background {
+  @media (max-width: 1199.98px) and (min-width: 320px){
+      top: 0px;
+  }
+}
+.box_contentmenu{
+  @media (max-width: 1199.98px) and (min-width: 768px){
+      width: 45%;
+      top: 0px;
+  }
+  @media (max-width: 767px){
+    width: 80%;
+    top: 0;
+  }
 }
