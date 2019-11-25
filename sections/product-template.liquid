@@ -88,7 +88,7 @@
                       {% include 'swatch' with option %}
                       {% endif %}
                       {% endfor %}
-                      <div class="detail-attr qty-cart">
+                      <div class="detail-attr qty-cart d-none">
                         <div class="js-qty1" {% if section.settings.show_quantity %}{% else %}style="display:none;"{% endif %}>
                           <input type="number" size="4" title="Qty" value="1" min="1" id="Quantity" name="quantity" />
                         </div> 
@@ -109,7 +109,7 @@
                         <p class="mb-0">{{ product.description | strip_html | truncatewords: 28}}</p>
                       </div>
                     {% endif %}
-                    <div class="tags_share">                      
+                    <div class="tags_share d-none">                      
                       <ul class="list-unstyled product-meta-info">
 
                         {% if section.settings.show_sku %}
