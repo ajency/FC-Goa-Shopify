@@ -51,8 +51,8 @@
                 </div>
                 <div class="col-lg-5 col-md-6 right_detail">
                   <div class="detail">
-                    <h1 class="mb-0 title_section_all">{{product.title}}</h1>
-                    <div class="product-price price">
+                    <h1 class="mb-0 title_section_all text-blue">{{product.title}}</h1>
+                    <div class="product-price price text-blue">
                       {% capture price %}{{ product.price | money }}{% endcapture %}
                       {% if on_sale %}<del class="dark opaci title14 enj-product-price-compare price_nosale">{{ product.compare_at_price | money }}</del> {% endif %}
                       <span class="title18 color font-bold enj-product-price engoj_price_main price_sale">{{ price }}</span>
@@ -63,13 +63,9 @@
                       <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
                     </div>
                     {% endif %}
-                    {% if section.settings.show_sdes %}
-                    <div class="description">
-                      <p class="mb-0">{{ product.description | strip_html | truncatewords: 28}}</p>
-                    </div>
-                    {% endif %}
-                    <div class="ruler_couple">
-                    </div>
+                    
+                    <!-- <div class="ruler_couple">
+                    </div> -->
                     <form  action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="cart clearfix">
                       <select name="id" id="productSelect" class="product-single__variants">
                         {% for variant in product.variants %}
@@ -96,14 +92,20 @@
                       </div>
                       <div class="wishlist_addtocart">
                         <!--                         <a href="#" class="ti-heart" title="wishlist"></a> -->
-                        <button type="submit" class="shop-button bg-dark addcart-link font-bold text-uppercase enj-add-to-cart-btn engoj-btn-addtocart">
+                        <button type="submit" class="shop-button addcart-link enj-add-to-cart-btn engoj-btn-addtocart">
                           {{settings.pia_addcart_name}}
                         </button>
 
                       </div>                    
                     </form>
-                    <div class="ruler_couple">
-                    </div>
+                    <!-- <div class="ruler_couple">
+                    </div> -->
+                    {% if section.settings.show_sdes %}
+                      <div class="description">
+                        <h6 class="text-blue">Product Description: </h6>
+                        <p class="mb-0">{{ product.description | strip_html | truncatewords: 28}}</p>
+                      </div>
+                    {% endif %}
                     <div class="tags_share">                      
                       <ul class="list-unstyled product-meta-info">
 
