@@ -3,6 +3,23 @@
 .my-container{
 	max-width: 1180px;
 }
+
+/** Btn Css **/
+.action_btn{
+  text-align: center;
+  margin: 30px auto 40px;
+  a.link_btn{
+    background: #060E59;
+    font-size: 16px;
+    line-height: 20px;
+    color: white;
+    padding: 12px 30px;
+    text-decoration: none;
+  }
+}
+
+
+
 .menu_destop.header_v1{
 	.menu_right{
 		p{
@@ -70,6 +87,7 @@
 	.copyright{
 		font-size: 13px;
 		color: white;
+    max-width: 900px;
 		a{
 			color: white;
 		}
@@ -77,6 +95,12 @@
 }
 
 .menu_moblie{
+  .iconsec{
+    border-bottom: 1px solid #FF6600;
+    border-radius: 0;
+    padding-bottom: 24px;
+    margin-bottom: 15px;
+  }
   .menuleft{
     width: 100%;
   }
@@ -110,7 +134,7 @@
         .btn_icon{
           position: absolute;
           right: 32px;
-          top: 32px;
+          top: 14px;
           width: 22px;
           height: 22px;
           transform: rotate(45deg);
@@ -147,11 +171,11 @@
             font-weight: 400;
           }
             .dropdown-arrow{
-            width: 0px;
-            height: 0px;
-            border-left: solid 5px #ff5b01;
-            border-bottom: solid 5px transparent;
-            border-top: solid 5px transparent;
+              width: 0px;
+              height: 0px;
+              border-left: solid 5px #ff5b01;
+              border-bottom: solid 5px transparent;
+              border-top: solid 5px transparent;
               position: absolute;
               top: 14px;
               left: -14px;
@@ -224,15 +248,57 @@
 }
 
 .product-listing{
-	.product-info{
-		a{
-			font-weight: 500;
-			font-size: 16px;
-			line-height: 20px;
-			color: #060E59;
-		}
-	}
+  .product-info{
+    .product-title{
+      height: 50px;
+      line-height: 20px;
+      a{
+        font-weight: 500;
+        font-size: 16px;
+        color: #060E59;
+        text-transform: capitalize;
+        &:hover{
+          text-decoration: none;
+        }
+      }
+      @media (max-width: 767px){
+        text-align: center;
+        height: 25px;
+      }
+    }
+    .product-price{
+      ins{
+        font-size: 14px;
+        line-height: 17px;
+        color: #060E59;
+        text-decoration: none;
+      }
+      @media (max-width: 767px){
+        text-align: center;
+      }
+    }
+  }
+  .product-extra-link{
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    color: black;
+    &:hover{
+      a{
+        text-decoration: none;
+      }
+    }
+  }
+
+  .product-thumb{
+    background: #F5F5F5;
+    padding: 24px;
+  }
+  .quickview-link{
+    display: none;
+  }
 }
+
 
 .box_contentmenu_background {
   @media (max-width: 1199.98px) and (min-width: 320px){
