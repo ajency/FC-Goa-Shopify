@@ -535,7 +535,7 @@ $('.slick_teams').slick({
   }
 
   
-  $('.product-img-box').slick({
+$('.product-img-box').slick({
   slidesToShow: 1,
   slidesToScroll: 1,
   arrows: false,
@@ -549,7 +549,17 @@ $('.box-thumbnail-pr').slick({
   asNavFor: '.product-img-box',
   dots: false,
   infinite: false,
-  focusOnSelect: true
+  focusOnSelect: true,
+  responsive: [
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        arrows: true,
+      }
+    }
+  ]
 });
 function filetrdestop(){
     
