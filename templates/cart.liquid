@@ -9,12 +9,12 @@ For info on test orders:
 <section>
   <div class="content-pages cart_edit">
     <div class="container">
-      <div class="content-about content-cart-page woocommerce">
-        <h2 class="title30 dosis-font text-uppercase font-bold dark">{{ 'cart.general.title' | t }}</h2>
+      <div class="content-about content-cart-page woocommerce 111">
+        <h2 class="title-36 dosis-font font-bold text-blue my-40">{{ 'cart.general.title' | t }}</h2>
         {% if cart.item_count > 0 %}
         <form action="/cart" method="post" novalidate class="cart table-wrap table-cart-form">
           <div class="table-responsive">
-            <table class="shop_table cart table table--responsive  table-hover table_cart">
+            <table class="shop_table cart table table--responsive table_cart">
               {% if cart.item_count > 0 %}
               <form action="/cart" method="post" novalidate>
                 <tbody>
@@ -24,7 +24,7 @@ For info on test orders:
                       <a href="{{ item.url }}"><img  src="{{ item | img_url: 'small' }}" alt="{{ item.title | escape }}"/></a>					
                     </td>
                     <td class="product-name" data-title="Product">
-                      <a href="{{ item.url }}">{{ item.product.title }}</a>	
+                      <a class="text-blue" href="{{ item.url }}">{{ item.product.title }}</a>	
                       {% unless item.variant.title contains 'Default' %}
                       <small style="display: block; color: #959595;">{{ item.variant.title }}</small>
                       {% endunless %}
@@ -32,17 +32,17 @@ For info on test orders:
                       <p>{{ item.vendor }}</p>
                       {% endif %}
                     </td>
-                    <td data-label="Price" class="product-price" data-title="Price">
+                    <!-- <td data-label="Price" class="product-price" data-title="Price">
                       <span class="amount">{{ item.price | money }}</span>					
-                    </td>
-                    <td data-label="Quantity" class="product-quantity" data-title="Quantity">
+                    </td> -->
+                    <td data-label="Quantity" class="product-quantity text-right pr-0" data-title="Quantity">
                       <input type="number" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" min="0">
                     </td>
-                    <td data-label="Total" class="product-subtotal text-right" data-title="Total">
-                      <span class="amount">{{ item.line_price | money }}</span>					
+                    <td data-label="Total" class="product-subtotal text-right text-blue pr-4" data-title="Total">
+                      <span class="amount font-weight-normal text-blue">{{ item.line_price | money }}</span>					
                     </td>
                     <td class="product-remove">
-                      <a class="remove" href="/cart/change?line={{ forloop.index }}&amp;quantity=0"><i class="ti-close"></i></a>
+                      <a class="remove" href="/cart/change?line={{ forloop.index }}&amp;quantity=0"><i class="ti-close text-blue"></i></a>
                     </td>
                   </tr>
                   {% endfor %}
@@ -52,8 +52,26 @@ For info on test orders:
               {% endif %}
             </table>
           </div>
+
+          <div class="row my-40">
+            <div class="col-lg-8">
+              <div class="shipping mt-0">
+                  <label class="text-blue mb-3">{{ 'cart.general.note' | t }}</label>
+                  <textarea name="note" class="input-full border-blue" id="CartSpecialInstructions" rows="8" placeholder="Write your message here...">{{ cart.note }}</textarea>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="bottom_carrt text-blue">
+                  <h5 class="m-0"><span class="total-title">{{ 'cart.label.total' | t }} :</span>{{ cart.total_price | money }}</h5>
+                  <div class="update_chechout d-flex">
+                    <input type="submit" value="{{ 'cart.general.update' | t }}" name="update_cart" class="button edit w-50 text-left btn-bg-white rounded-0">
+                    <a class="checkout-button button alt wc-forward w-50 btn-bg-blue" href="/checkout">{{ 'cart.general.checkout' | t }}</a>
+                  </div>
+              </div>  
+            </div>
+          </div>
          
-          <div class="col-lg-12 shipping text-center">
+          <!-- <div class="col-lg-12 shipping text-center">
             <label>{{ 'cart.general.note' | t }}</label>
             <textarea name="note" class="input-full" id="CartSpecialInstructions" rows="8" >{{ cart.note }}</textarea>
           </div>
@@ -66,7 +84,7 @@ For info on test orders:
                 <a class="checkout-button button alt wc-forward bg-color" href="/checkout">{{ 'cart.general.checkout' | t }}</a>
               </div>
             </div>
-          </div>
+          </div> -->
       
         </form>
         {% else %}
