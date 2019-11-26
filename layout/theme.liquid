@@ -39,9 +39,7 @@
   {{ 'timber_2.scss.css' | asset_url | stylesheet_tag }}
   {% endif %}
 
-  {{ 'banner.scss.css' | asset_url | stylesheet_tag }}
-  {{ 'cart.scss.css' | asset_url | stylesheet_tag }}
-  {{ 'helper.scss.css' | asset_url | stylesheet_tag }}
+ 
   {{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
   {{ 'themify-icons.css' | asset_url | stylesheet_tag }}
   {{ 'font-awesome.min.css' | asset_url | stylesheet_tag }}
@@ -54,6 +52,8 @@
 
   <!-- Ajency Styles -->
   {{ 'banner.scss.css' | asset_url | stylesheet_tag }}
+  {{ 'cart.scss.css' | asset_url | stylesheet_tag }}
+  {{ 'helper.scss.css' | asset_url | stylesheet_tag }}
   {{ 'theme-copy.scss.css' | asset_url | stylesheet_tag }}
 
 
@@ -129,8 +129,9 @@ Add the page template as a class for easy page or template specific styling.
       <h1 class="sr-only">{{shop.name}}</h1>
       {% endif %}
 
+      <div class="site-content">
       {{ content_for_layout }}
-
+      </div>
       {% section 'footer' %}
 
 <!--       <a href="#" class="scroll-top dark"><i class="fa fa-angle-up"></i></a> -->

@@ -45,7 +45,7 @@
                     {% for image in product.images %}
                     <div class="engoj-nav-item">
                       <a href="javascript:void(0)" class="thumbnail">
-                        <img class="img-fluid" src="{{ image.src | product_img_url: '145px' }}" alt="{{product.title}}" title="{{product.title}}"/>
+                        <img class="img-fluid" src="{{ image.src | product_img_url: 'master' }}" alt="{{product.title}}" title="{{product.title}}"/>
                       </a>
                     </div>
                     {% endfor %}                              
