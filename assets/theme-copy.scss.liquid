@@ -7,7 +7,7 @@
 /** Btn Css **/
 .action_btn{
   text-align: center;
-  margin: 30px auto 40px;
+  margin: 40px auto;
   a.link_btn{
     background: #060E59;
     font-size: 16px;
@@ -17,7 +17,15 @@
     text-decoration: none;
   }
 }
-
+ 
+.fc_link{
+  span{
+    img{
+      width: 17px;
+      margin-right: 10px;
+    }
+  }
+} 
 
 
 .menu_destop.header_v1{
@@ -73,25 +81,33 @@
 	.tnc{
 		a{
 			text-decoration: underline;
-			font-size: 13px;
+			font-size: 12px;
 			color: white;
 		}
 	}
 	.email{
-		font-size: 13px;
+		font-size: 12px;
 		color: white;
 		a{
 			color: white;
 		}
 	}
 	.copyright{
-		font-size: 13px;
+		font-size: 12px;
 		color: white;
     max-width: 900px;
 		a{
 			color: white;
 		}
+    @media (max-width: 991px){
+      padding-top: 20px;
+    }
 	}
+  i{
+    &.fa-facebook-official , &.fa-instagram{
+      font-size: 24px;
+    }
+  }
 }
 
 .menu_moblie{
@@ -224,6 +240,46 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
+      .accout_login{
+        a{
+          font-size: 22px;
+          color: #FA693A;
+          display: inline-block;
+          text-decoration: none;
+          position: relative;
+          line-height: 2;
+        }
+        .login_box {
+          position: absolute;
+          top: 60px;
+          left: 50px;
+          background: #fff;
+          padding: 10px 30px;
+          box-shadow: 1px 5px 8px 0.5px rgba(0,0,0,0.2);
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.5s ease;
+          text-align: left;
+          &.active{
+            opacity: 1;
+            visibility: visible;
+            transition: all 0.5s ease;
+            top: 60px;
+            left: -38px;
+            z-index: 9999;
+          }
+          ul{
+            li{ 
+              a{
+                text-decoration: none;
+                color: #909090;
+                font-size: 13px;
+                text-transform: uppercase;
+              }
+            }
+          }
+        }
+      }
       a{
         width: auto;
         span{
@@ -263,7 +319,6 @@
       }
       @media (max-width: 767px){
         text-align: center;
-        height: 25px;
       }
     }
     .product-price{
@@ -282,10 +337,13 @@
     position: absolute;
     top: 10px;
     right: 30px;
-    color: black;
-    &:hover{
-      a{
+    a{
+      color: #422755;
+      &:hover{
         text-decoration: none;
+      }
+      @media (max-width: 767px){
+        font-size: 2rem;
       }
     }
   }
