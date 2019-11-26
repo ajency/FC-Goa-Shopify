@@ -17,12 +17,15 @@
     text-decoration: none;
   }
 }
- 
+  
 .fc_link{
   span{
     img{
       width: 17px;
       margin-right: 10px;
+      @media (max-width: 991px){
+        margin-bottom: 8px;
+      }
     }
   }
 } 
@@ -249,12 +252,15 @@
       justify-content: flex-end;
       .accout_login{
         a{
-          font-size: 22px;
+          /*font-size: 22px;*/
           color: #FA693A;
           display: inline-block;
           text-decoration: none;
           position: relative;
           line-height: 2;
+          img{
+            max-width: 23px;
+          }
         }
         .login_box {
           position: absolute;
@@ -289,16 +295,19 @@
       }
       a{
         width: auto;
+        img{
+          max-width: 23px;
+        }
         span{
           &.count_pr_incart{
             position: absolute;
-            top: 10px;
+            top: 13px;
             width: 20px;
             height: 20px;
             line-height: 20px;
             text-align: center;
             border-radius: 50%;
-            left: 38px;
+            left: 39px;
             font-size: 12px;
             display: block;
             background-color: #f50505;
