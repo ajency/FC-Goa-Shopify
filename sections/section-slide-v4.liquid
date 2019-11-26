@@ -1,6 +1,6 @@
 <div data-section-id="{{ section.id }}" data-section-type="section-slide-v4" style="{% if section.settings.margin_top != blank %}margin-top: {{section.settings.margin_top}}px;{%endif%} {% if section.settings.margin_bottom != blank %}margin-bottom: {{section.settings.margin_bottom}}px;{% endif %} {% if section.settings.sections_layout == "dark" %}background: {{section.settings.sections_bg_color}};{% endif %}">
   <div class="section-slide-v4">
-    <div class="container-fluid px-0">
+    <div class="container">
       <div class="side-v4">       
         {% if section.blocks.size > 0 %}
         {% for block in section.blocks %}
@@ -12,15 +12,15 @@
             {% else %}
             <img src="//placehold.it/1920x990" class="img-fluid" alt="slideshow">
             {% endif %}
-            <ul class="list-unstyled mb-0">
+            <!-- <ul class="list-unstyled mb-0">
               <li><a href="" class="ti-twitter-alt"></a></li>
               <li><a href="" class="ti-facebook"></a></li>
               <li><a href="" class="ti-google"></a></li>
               <li><a href="" class="ti-dribbble"></a></li>
-            </ul>
+            </ul> -->
             <div class="box-content">              
               {% if block.settings.block_description_top != blank %}
-              <span style="color:{{block.settings.block_color_description_top}}">{{ block.settings.block_description_top }}</span>
+              <h4 style="color:{{block.settings.block_color_description_top}}">{{ block.settings.block_description_top }}</h4>
               {% endif %}
               
               {% if block.settings.block_title != blank %}              
@@ -28,7 +28,7 @@
               {% endif %}
               
               {% if block.settings.block_description_bottom != blank %}
-              <p style="color:{{block.settings.block_color_description}};">{{block.settings.block_description_bottom}}</p>
+              <h1 style="color:{{block.settings.block_color_description}};">{{block.settings.block_description_bottom}}</h1>
               {% endif %}
               
               {% if block.settings.block_buton != blank %}
