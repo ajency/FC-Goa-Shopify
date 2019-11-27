@@ -32,12 +32,12 @@ If you do, the pagination of results will be broken.
     <div class="search_text text-center">
       {% if search.performed %}
       {% if search.results_count == 0 %}
-      <h3 class="text-uppercase h5">Search - <span>"{{ search.terms | escape }}"</span></h3>
+      <h3 class="h5">Search - <span>"{{ search.terms | escape }}"</span></h3>
       {% else %}
-      <h3 class="text-uppercase h5">Search - <span>"{{ search.terms | escape }}"</span></h3>
+      <h3 class="h5">Search - <span>"{{ search.terms | escape }}"</span></h3>
       {% endif %}
       {% else %}
-      <h3 class="text-uppercase h5">{{ 'general.search.title' | t }}</h3>
+      <h3 class="h5">{{ 'general.search.title' | t }}</h3>
       {% endif %}
     </div>
   </div>
