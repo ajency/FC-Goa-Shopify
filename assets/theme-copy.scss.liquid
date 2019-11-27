@@ -491,15 +491,36 @@
     .slide{
       background-position: top;
       height: 430px;
-      padding-left: 50px;
+      position: relative;
       span{
+        font-size: 24px;
+        position: absolute;
+        left: 44px;
+        top: 100px;
         &:before{
           display: none;
-        }      
+        }
+        @media (max-width: 767px){
+          font-size: 18px;
+        }
+        @media (min-width: 1700px) {
+          top: 134px;
+        }     
       }
       h1{
         font-size: 60px;
         color: #FF6600;
+        position: absolute;
+        left: 44px;
+        @media (max-width: 767px){
+          display: none;
+        }
+      }
+      @media (max-width: 767px){
+        height: auto;
+      }
+      @media (max-width: 576px){
+        padding: 100px 0;
       }
     }
     .page_title{
@@ -511,6 +532,22 @@
         span{
           color: #FF6600;
         }
+      }
+      @media (max-width: 767px){
+        display: none;
+      }
+    }
+    .mob_page_title{
+      padding: 40px 0;
+      color: #060E59;
+      p{
+        font-size: 12px;
+      }
+      h2{
+        font-size: 24px;
+      }
+      @media (min-width: 768px){
+        display: none;
       }
     }
   }
