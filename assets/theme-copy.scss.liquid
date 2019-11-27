@@ -1,9 +1,5 @@
 /** Ajency Styles **/
 
-.my-container{
-	max-width: 1180px;
-}
-
 /** Btn Css **/
 .action_btn{
   text-align: center;
@@ -125,6 +121,12 @@
 }
 
 .menu_moblie{
+  z-index: 999999;
+  >.row{
+    @media (max-width: 399px){
+      padding: 0;
+    }
+  }
   .iconsec{
     border-bottom: 1px solid #FF6600;
     border-radius: 0;
@@ -352,6 +354,9 @@
       padding-right: 0;
     }
   }
+  @media (max-width: 767px){
+    overflow: hidden;
+  }
 }
 
 .product-listing{
@@ -446,6 +451,7 @@
       .title{
         width: 100%;
         h4{
+          height: 45px;
           a{
             font-weight: 500;
             font-size: 16px;
@@ -565,9 +571,9 @@
         input[type="text"]{
           border-bottom: 1px solid #909090;
           border-radius: 0;
-          width: 65%;
+          width: 80%;
           color: #060E59;
-          @media (max-width: 575px){
+          @media (max-width: 767px){
             width: 100%;
           }
         }
@@ -579,7 +585,7 @@
           color: white;
           text-decoration: none;
           padding: 6px;
-          @media (max-width: 575px){
+          @media (max-width: 767px){
             max-width: 100%;
             width: 40%;
             padding: 10px 13px;
@@ -587,7 +593,7 @@
           }
         }
       }
-      @media (max-width: 575px){
+      @media (max-width: 767px){
         text-align: center;
       }
     }
