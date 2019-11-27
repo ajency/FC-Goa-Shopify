@@ -630,31 +630,48 @@
         input[type="text"]{
           border-bottom: 1px solid #909090;
           border-radius: 0;
-          width: 80%;
+          width: 86%;
           color: #060E59;
           @media (max-width: 767px){
             width: 100%;
           }
+          @media (max-width: 1199px) and (min-width: 768px){
+            width: 80%;
+          }
         }
         button{
-          width: 18%;
+          width: 13%;
           background: #060E59;
           font-size: 16px;
-          line-height: 20px;
+          line-height: 36px;
           color: white;
           text-decoration: none;
-          padding: 6px;
+          text-align: inherit;
+          padding: 0 12px;
           @media (max-width: 767px){
             max-width: 100%;
-            width: 40%;
-            padding: 10px 13px;
+            width: 36%;
+            padding: 3px 13px;
             margin: 15px;
+            text-align: left;
+          }
+          @media (max-width: 1199px) and (min-width: 768px){
+            width: 19%;
           }
         }
       }
       @media (max-width: 767px){
         text-align: center;
       }
+    }
+    @media (max-width: 1400px) and (min-width: 768px){
+      width: 75%;
+    }
+    @media (max-width: 575px){
+      width: 92%;
+    }
+    @media (max-width: 767px){
+      padding: 40px 25px 15px;
     }
   }
 }
