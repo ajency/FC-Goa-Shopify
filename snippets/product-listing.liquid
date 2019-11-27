@@ -12,7 +12,6 @@
 
 
 <div class="product-listing category_product section-product-v1 mt-4">
-{% include 'filter-mobile' %}
 <div class="container">
 		<div class="row grid-uniform product-grid">
 		  {% for product in collections['all'].products limit: max_products %}
@@ -69,7 +68,7 @@
 		  {% endfor %}
 		</div>
 	    <div class="action_btn">
-    		<a class="link_btn" href="#"> Show All</a>
+    		<a class="link_btn" href="https://fc-goa.myshopify.com/collections/all"> Show All</a>
     	</div> 
     </div>       
   </div>
