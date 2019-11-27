@@ -66,7 +66,11 @@
 			a.nav-link{
 				padding: 0 20px;
 				text-transform: capitalize;
-		    	position: relative;
+	    	position: relative;
+        &:before{
+          content:"";
+          display: none;
+        }
 			}
 			span.dropdown-arrow{
 				width: 0; 
@@ -429,6 +433,39 @@
   .product-thumb{
     background: #F5F5F5;
     padding: 24px;
+    position: relative;
+    ul{
+      position: absolute;
+      transform: translate(-50%);
+      left: 50%;
+      bottom: -10%;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.5s ease;
+      background: #fff;
+      box-shadow: 0 15px 25px rgba(0,0,0,0.08);
+      border-radius: 70px;
+      li{
+        &:first-child{
+          border-right: 1px solid #ccc;
+        }
+        a{
+          font-size: 18px;
+          color: #000;
+          text-decoration: none;
+          display: block;
+          padding: 12px 20px 5px 20px;
+        }
+      }
+    }
+    &:hover{
+      ul{
+        opacity: 1;
+        visibility: visible;
+        bottom: 5%;
+        transition: all 0.5s ease;
+      }
+    }
   }
   .quickview-link{
     display: none;
