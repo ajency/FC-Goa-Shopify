@@ -444,6 +444,7 @@
     .info_new{
       position: relative;
       .title{
+        width: 100%;
         h4{
           a{
             font-weight: 500;
@@ -452,17 +453,28 @@
             text-transform: capitalize;
             padding-bottom: 20px;
           }
+          @media (max-width: 575px){
+            float: none;
+          }
         }
       }
       .price_product{
         .price_sale{
           font-weight: normal;
           font-size: 14px;
-          line-height: 17px;
+          line-height: 0;
           color: #060E59;
           position: absolute;
           bottom: 0;
+          left: 0;
+          right: 0;
+          @media(max-width: 575px){
+            text-align: center;
+          }
         }
+      }
+      @media (max-width: 575px){
+        text-align: center;
       }
     }
     .listwishlist{
