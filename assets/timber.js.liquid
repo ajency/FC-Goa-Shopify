@@ -605,3 +605,42 @@ $(timber.init);
         }
     });
   });
+
+// refresh
+    $(window).ready(function(){
+      var width = $(window).width();
+      if(width<=1199){
+        // Show hide popover
+        $(".nav-item .chevron").parent().click(function(){
+            $(this).find(".dropdown-menu").slideToggle("fast");
+            $(".rotate").toggleClass("down");
+            // return false;
+        });
+      }
+    });
+
+
+    $(window).resize(function(){
+       var width = $(window).width();
+      if(width<=1199){
+        // Show hide popover
+        $(".nav-item .chevron").parent().unbind('click');
+        $(".nav-item .chevron").parent().click(function(){
+            $(this).find(".dropdown-menu").slideToggle("fast");
+            $(".rotate").toggleClass("down");
+            // return false;
+        });
+      }else{
+        $(".nav-item ").parent().unbind('click');
+      }
+    });
+
+    $(document).ready(function(){
+      $(".nav-item .nav-link").click(function() {
+        $(this).toggleClass("changeColor");
+      });
+    });
+
+
+
+

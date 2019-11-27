@@ -32,6 +32,9 @@
         }
       }
     }
+    @media (max-width: 991px){
+      background: none;
+    }
   }
 } 
 .ti-heart{
@@ -55,6 +58,7 @@
 		position: absolute;
 		bottom: 0;
 		right: 0;
+    margin-bottom: 15px;
 		.nav-item{
 			display: flex;
 		    line-height: 3;
@@ -212,9 +216,13 @@
         .navbar-nav{
           .nav-item{
             .changeColor{
-            color: #ff5b01;
-            font-weight: 400;
-          }
+              color: #ff5b01;
+              font-weight: 400;
+              }
+              a{
+                color: white;
+                padding-left: 24px;
+              }
             .dropdown-arrow{
               width: 0px;
               height: 0px;
@@ -223,7 +231,7 @@
               border-top: solid 5px transparent;
               position: absolute;
               top: 14px;
-              left: -14px;
+              left: 2px;
               &.rotate {
                 -moz-transition: all .5s linear;
                 -webkit-transition: all .5s linear;
@@ -235,25 +243,30 @@
                 transform:rotate(90deg);
             }
           }
-            ul{
-              padding-top: 0;
-              li{
+          ul{
+            padding-top: 0;
+            background: none;
+            border: 0;
+            li{
               font-size: 16px;
-                line-height: 20px;
-                padding: 10px 0;
-                a{
-                  &:hover{
-                    border-left: 1px solid #FF6600;
-                    color: #FF6600 ;
-                    text-decoration: none;
-                    padding-left: 12px;
-                        transition: ease-in-out 0.3s;
-                  }
+              line-height: 0;
+              padding: 10px 0;
+              padding: 0px 15px 0;
+              margin-top: -6px;
+              a{
+                color: white;
+                &:hover{
+                  border-left: 1px solid #FF6600;
+                  color: #FF6600 ;
+                  text-decoration: none;
+                  margin-left: 18px;
+                  transition: ease-in-out 0.3s;
                 }
               }
             }
           }
         }
+      }
     }
     .home_link{
       a{
