@@ -86,6 +86,7 @@
 
 
 #footer_v1{
+  background: linear-gradient(95.88deg,#600f47 -2.96%,#060e66 89.32%);
   position: relative;
   z-index: 999999;
 	.tnc{
@@ -112,6 +113,9 @@
     @media (max-width: 991px){
       padding-top: 20px;
     }
+    @media (max-width: 767px){
+      padding-top: 15px;
+    }
 	}
   i{
     &.fa-facebook-official , &.fa-instagram{
@@ -135,8 +139,13 @@
         max-width: 100%;
         height: auto;
     }
+    @media (max-width: 475px){
+      padding-left: 0;
+    }
   }
   &.box_contentmenu{
+    background: linear-gradient(-90deg,#600f47 -2.96%,#060e66 89.32%);
+    transition: transform .6s ease-in-out;
     .crossicon{
       position: absolute;
       top: -10px;
@@ -278,8 +287,17 @@
             visibility: visible;
             transition: all 0.5s ease;
             top: 60px;
-            left: -38px;
+            left: 24px;
             z-index: 9999;
+            @media (min-width: 999px) and (max-width: 1199px){
+              left: 70px;
+            }
+            @media(max-width: 767px){
+              left: -24px;
+            }
+            @media (max-width: 575px){
+              left: -60px;
+            }
           }
           ul{
             li{ 
@@ -301,21 +319,39 @@
         span{
           &.count_pr_incart{
             position: absolute;
-            top: 13px;
+            top: 10px;
             width: 20px;
             height: 20px;
             line-height: 20px;
             text-align: center;
             border-radius: 50%;
-            left: 39px;
+            left: 38px;
             font-size: 12px;
             display: block;
             background-color: #f50505;
             font-family: Montserrat;
             background: linear-gradient(108.28deg, #fb910b -62.31%, #ff2801 89.32%);
+            @media (max-width: 425px){
+              left: 32px;
+            }
           }
         }
       }
+      .js_search{
+        padding: 9px 15px 0;
+        @media (max-width: 425px){
+          padding: 9px 10px 0 15px;
+        }
+      }
+      .js_minicart{
+        padding: 0 15px;
+        @media (max-width: 425px){
+          padding: 0 15px 0 10px;
+        }
+      }
+    @media (max-width: 475px){
+      padding-right: 0;
+    }
   }
 }
 
