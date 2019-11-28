@@ -102,19 +102,27 @@
   background: linear-gradient(95.88deg,#600f47 -2.96%,#060e66 89.32%);
   position: relative;
   z-index: 999999;
-	.tnc{
+	.tnc , .policy{
 		a{
 			text-decoration: underline;
 			font-size: 12px;
 			color: white;
 		}
 	}
+  .policy{
+    @media (min-width: 992px){
+      padding-left: 18px;
+    }
+  }
 	.email{
 		font-size: 12px;
 		color: white;
 		a{
 			color: white;
 		}
+    @media (min-width: 992px){
+      padding-top: 3px;
+    }
 	}
 	.copyright{
 		font-size: 12px;
@@ -134,6 +142,11 @@
     &.fa-facebook-official , &.fa-instagram , &.fa-youtube-play{
       font-size: 24px;
     }
+  }
+  .footer-padding-top{
+    position: absolute;
+    bottom: 12px;
+    right: 0;
   }
 }
 
