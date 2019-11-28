@@ -1714,6 +1714,19 @@
         "default": "\/collections\/all"
       },
       {
+        "type": "text",
+        "id": "icon_youtube_vf1",
+        "label": "Icon youtube",
+        "default": "ti-youtube",
+        "info": "[Get icon in here](https:\/\/themify.me\/themify-icons)"
+      },
+      {
+        "type": "url",
+        "id": "icon_youtube_vf1_url",
+        "label": "URL youtube",
+        "default": "\/collections\/all"
+      },
+      {
         "type": "header",
         "content": "SETTING FOOTER COLUMN 2"
       },

@@ -1,3 +1,10 @@
+{% if
+  settings.social_youtube_link  != blank
+%}
+{%- assign social_icons = true -%}
+{% endif %}
+
+
 <footer id="footer_v1" class="footer_v1">
   <div class="container">
     <div class="top_footer pb-0">
@@ -18,10 +25,10 @@
           <div class="text-center text-lg-left">
             <div class="row">
               <div class="col-lg-4 col-md-12">
-                <p class="text-lg-left tnc"> <a href="#" title="Terms and Conditions"> Terms & Consitions - FC Goa Shop </a></p>
+                <p class="text-lg-left tnc"> <a href="https://fcgoa.in/terms-and-conditions" title="Terms and Conditions" target="_blank"> Terms & Consitions - FC Goa Shop </a></p>
               </div>
               <div class="col-lg-4 col-md-12">
-                <p class="text-lg-left tnc"> <a href="#" title="Refund Policy"> Refund Policy - FC Goa Shop </a></p>
+                <p class="text-lg-left tnc"> <a href="https://fc-goa.myshopify.com/pages/refund-policy" title="Refund Policy"> Refund Policy - FC Goa Shop </a></p>
               </div>
               <div class="col-lg-4 col-md-12">
                 <p class="text-lg-left email"> Contact Us :<a href="mailto:support@fcgoa.in" title=""> support@fcgoa.in</a></p>
@@ -58,13 +65,23 @@
                   <a href="{{settings.icon_dribbble_vf1_url}}" title="" target="_blank" class="{{settings.icon_dribbble_vf1}}"></a>
                 </li> 
                 {% endif %}
+                {% if settings.icon_youtube_vf1 != blank %}
+                <li class="list-inline-item mr-0">
+                  <a class="" href="{{settings.icon_youtube_vf1_url}}" title="" title="" target="_blank"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                </li>
+                {% endif %}
               </ul>
             </div>
           </div>  
         </div>
-        <div class="copyright pb-0">
+        {% if settings.fv1_bottom_copyright != blank %}
+          <p class="mb-0 pb-0 copyright text-center text-lg-left">{{settings.fv1_bottom_copyright}}</p>
+          {% else %}
+          <p class="mb-0 pb-0 copyright text-center text-lg-left">Copyright &copy; {{ 'now' | date: "%Y" }} <a  class="white" href="https://maxcolt-store-demo.myshopify.com" title="maxcolt" target="_blank">Maxcolt</a>. All Rights Reserved.</p>
+        {% endif %}
+  <!--       <div class="copyright pb-0">
           <p class="mb-0 pb-0 copyright text-center text-lg-left"> &copy; 2019-20 Goan Football Club | <a  class="white" href="#" title="FC Goa" target="_blank"> FC Goa </a>. All rights reserved. No part of this iste may be reproduced without our written permission.</p>
-        </div>
+        </div> -->
 <!--         <div class="col-lg-4 col-md-6 footer-padding-top d-none d-md-block d-lg-none">
           <div class="row">
             <div class="col-lg-6 col-md-6 towcol text-center text-md-left">
