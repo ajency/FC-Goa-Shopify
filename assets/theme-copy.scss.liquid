@@ -120,6 +120,9 @@
 		a{
 			color: white;
 		}
+    @media (max-width: 991px){
+      margin-top: 4px;
+    }
     @media (min-width: 992px){
       padding-top: 3px;
     }
@@ -144,9 +147,14 @@
     }
   }
   .footer-padding-top{
-    position: absolute;
-    bottom: 12px;
-    right: 0;
+    @media (min-width: 1200px){
+      position: absolute;
+      bottom: 12px;
+      right: 0;
+    }
+    @media (min-width: 992px) and (max-width: 1199px){
+      bottom: 0px;
+    }
   }
 }
 
@@ -660,7 +668,7 @@
           color: white;
           text-decoration: none;
           text-align: inherit;
-          padding: 0 12px;
+          padding: 4px 12px 2px;
           @media (max-width: 767px){
             max-width: 100%;
             width: 36%;
@@ -678,7 +686,7 @@
       }
     }
     @media (max-width: 1400px) and (min-width: 768px){
-      width: 75%;
+      width: 70%;
     }
     @media (max-width: 575px){
       width: 92%;
