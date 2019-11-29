@@ -174,3 +174,25 @@
         font-size: 16px !important;
     }
 }
+
+.product-popup.engo-popup{
+    align-items: flex-start;
+    .close_search{
+        top: 5px;
+    }
+    .content{
+        position: relative;
+        top: 230px;
+        @media (max-width: 767px) {
+            top: 140px;
+        }
+    }
+}
+
+.mini-product-item{
+    .success-message{
+        &::before{
+            display: none;
+        }
+    }
+}
