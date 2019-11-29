@@ -43,8 +43,8 @@
 }
 
 .menu_destop.header_v1{
-  position: relative;
-  z-index: 999999;
+/*  position: relative;
+  z-index: 999999;*/
 	.menu_right{
 		p{
 		    color: white;
@@ -100,8 +100,8 @@
 
 #footer_v1{
   background: linear-gradient(95.88deg,#600f47 -2.96%,#060e66 89.32%);
-  position: relative;
-  z-index: 999999;
+/*  position: relative;
+  z-index: 999999;*/
 	.tnc , .policy{
 		a{
 			text-decoration: underline;
@@ -159,7 +159,7 @@
 }
 
 .menu_moblie{
-  z-index: 999999;
+/*  z-index: 999999;*/
   >.row{
     @media (max-width: 399px){
       padding: 0;
@@ -401,6 +401,11 @@
       padding-right: 0;
     }
   }
+  .menu_mobilescroll{
+    width: 55% !important;
+    top: 0;
+    left: 0 !important;
+  }
   @media (max-width: 767px){
     overflow: hidden;
   }
@@ -567,6 +572,10 @@
       position: absolute;
       top: 10px;
       right: 28px;
+      @media (max-width: 991px) and (min-width: 768px){
+        top: 4px;
+        right: 22px;
+      }
     }
   }
 }
