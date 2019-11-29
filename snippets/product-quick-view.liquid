@@ -16,7 +16,7 @@
         <div class="br-product-detail__container detail-info">
           <div class="product-shop product-info-main">
             <div class="product-item">
-              <h2 class="product-name product-title title24 text-uppercase dark font-bold dosis-font"><a>&nbsp;</a></h2>
+              <h2 class="product-name product-title mb-0 title_section_all text-blue"><a>&nbsp;</a></h2>
 
               <div class="details clearfix">
                 <form action="/cart/add" method="post" class="variants CartContainer">
@@ -25,16 +25,13 @@
                     <span class="price_sale quickview price title18 color font-bold"></span>
                   </div>
 
-                  <p class="des description desc product-desc"></p>
-
-                  
                   <select name='id' style="display:none;" class="engoj-except-select2">
 
                   </select>
 
-                  <div class="product-actions">
-                    <div class="product-quantity">
-                      <label>{{ 'products.product.quantity' | t }}</label>
+                  <div class="product-actions mt-md-5 mt-3">
+                    <div class="product-quantity  d-none">
+                      <label class="d-none">{{ 'products.product.quantity' | t }}</label>
                       
                       <div class="quantity-all js-qty">
                         <span  class='qtyminus' data-field='quantity'><i class="fa fa-minus"></i></span>
@@ -42,14 +39,19 @@
                         <span class='qtyplus' data-field='quantity'><i class="fa fa-plus"></i></span>
                       </div>
                       <div class="total-price product-price">
-                        <label class="engoc_subtt_qw">{{ 'products.general.subtotal_price' | t }}:</label>
+                        <label class="engoc_subtt_qw d-none">{{ 'products.general.subtotal_price' | t }}:</label>
                         <span class="sub_total_price"></span>
                       </div>
                     </div>
 
                     <div class="actions">
-                      <button type="submit" class="btn-addToCart shop-button bg-dark addcart-link font-bold text-uppercase">{{ 'products.product.add_to_cart' | t }}</button>
+                      <button type="submit" class="btn-addToCart shop-button addcart-link btn-basic pl-10 font-bold btn-bg-blue rounded-0">{{ 'products.product.add_to_cart' | t }}</button>
                     </div>
+                  </div>
+
+                  <div class="mt-md-5 mt-3">
+                    <h6 class="text-blue">Product Description: </h6>
+                    <p class="des description desc product-desc"></p>
                   </div>
                   
                 </form>
