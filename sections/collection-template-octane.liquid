@@ -39,7 +39,7 @@ For more information on collection tags:
     <div class="container">
           <div class="row grid-uniform">
             {% for product in collection.products %}
-            <div class="{% if section.settings.products_per == "2" %}col-md-6{% elsif section.settings.products_per == "3" %}col-md-3{% elsif section.settings.products_per == "4" %}col-md-3{% elsif section.settings.products_per == "5" %}col-lg-2dot4{% endif %} col-sm-6 col-xs-{% if settings.mobile_products_per_row == "1" %}12{% elsif settings.mobile_products_per_row == "2" %}6{% endif %}">
+            <div class="column-padding {% if section.settings.products_per == "2" %}col-md-6{% elsif section.settings.products_per == "3" %}col-md-3{% elsif section.settings.products_per == "4" %}col-md-3{% elsif section.settings.products_per == "5" %}col-lg-2dot4{% endif %} col-sm-6 col-xs-{% if settings.mobile_products_per_row == "1" %}12{% elsif settings.mobile_products_per_row == "2" %}6{% endif %}">
               {% include 'product-item' %}
             </div>
             {% else %}
