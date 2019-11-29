@@ -21,19 +21,19 @@
 <input type="hidden" name="contact[tags]" value="{{ value }}" />
 
 <button data-toggle="tooltip" data-placement="top" title="{{settings.pia_wishlist_name}}">
-<i class="{{settings.pia_wishlist}}" ></i>
+<i class="heart fa fa-heart-o"></i>
 </button>
 
 {% endform %}
 
 {% else %}
 <a href="/pages/wish-list" data-toggle="tooltip" data-placement="top" title="{{ 'wishlist.general.added' | t }}" >
-<i class="{{settings.pia_wishlist}}"></i>
+<i class="heart fa fa-heart-o"></i>
 </a>
 {% endif %}
 
 {% else %}
 <a href="/account/login" data-toggle="tooltip" data-placement="top" title="{{settings.pia_wishlist_name}}">
-<i class="{{settings.pia_wishlist}}"></i>
+<i class="heart fa fa-heart-o"></i>
 </a>
 {% endif %}
