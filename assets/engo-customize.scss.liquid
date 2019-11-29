@@ -674,7 +674,7 @@ span.qtyplus:hover{
 color: #000;
 }
 p.des.description.desc.product-desc{
-  color: #898989;
+  color: #000;
   margin-top: 10px;
 }
 .product-actions{
@@ -688,10 +688,7 @@ p.des.description.desc.product-desc{
 }
 .tshopify-popup .product-name a {
     text-decoration: none;
-    line-height: 24px;
-    font-size: 20px;
-  	font-family:"roboto";
-  	color:#000;
+    color: #060E59;
 }
 .quantity-all.js-qty{
   max-width: 120px !important;
@@ -894,7 +891,12 @@ margin-top:10px
 .tshopify-popup .prices span.price,
 .tshopify-popup .total-price span.sub_total_price
 {
-	color: #000;
+  color: #060E59;
+  @media (min-width: 768px) {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 29px;
+  }
 }
 /* ========================================
 13. Popup Ajax AddtoCart
