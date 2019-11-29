@@ -43,8 +43,8 @@
 }
 
 .menu_destop.header_v1{
-/*  position: relative;
-  z-index: 999999;*/
+  position: relative;
+  z-index: 999999;
 	.menu_right{
 		p{
 		    color: white;
@@ -402,9 +402,11 @@
     }
   }
   .menu_mobilescroll{
-    width: 55% !important;
-    top: 0;
-    left: 0 !important;
+    @media (min-width: 576px){
+      width: 55% !important;
+      top: 0;
+      left: 0 !important;
+    }
   }
   @media (max-width: 767px){
     overflow: hidden;
@@ -778,4 +780,8 @@
 }
 .fa-heart{
   color: #f50505;
+}
+.column-padding{
+  padding-left: 10px;
+  padding-right: 10px;
 }
