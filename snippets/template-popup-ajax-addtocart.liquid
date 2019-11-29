@@ -9,20 +9,21 @@
   <div class="overlay"></div>
   <div class="content">
     <a href="javascript:void(0)" class="close-window">
-      <i class="fa fa-close"></i>
+      <!-- <i class="fa fa-close"></i> -->
+      <span class="ti-close close_search position-relative"></span>
     </a>
     <div class="mini-product-item row">
       <div class="col-md-4 col-sm-3 product-image f-left">
         <img alt="img" class="img-fluid" src="{{'favicon.png' | asset_url}}"/>
       </div>
-      <div class="col-md-8 col-sm-9 f-left">
+      <div class="col-md-8 col-sm-9 f-left d-flex flex-column justify-content-center">
         <div class="product-info f-left">
           <p class="product-name text-blue"></p>
           <p class="success-message text-green">{{ 'popup.cart' | t }}</p>
         </div>
         <div class="actions">
           <button class="continue-shopping shop-button btn-bg-blue" onclick="javascript:void(0)">{{ 'popup.continue' | t }}</button>
-          <button class="shop-button btn-bg-blue" onclick="window.location='/cart'">{{ 'popup.goto_cart' | t }}</button>
+          <button class="shop-button btn-bg-blue text-left" onclick="window.location='/cart'">{{ 'popup.goto_cart' | t }}</button>
         </div>  
       </div>
     </div>

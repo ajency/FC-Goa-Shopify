@@ -26,7 +26,7 @@ For info on test orders:
                     <td class="product-name" data-title="Product">
                       <a class="text-blue" href="{{ item.url }}">{{ item.product.title }}</a>	
                       {% unless item.variant.title contains 'Default' %}
-                      <small style="display: block; color: #959595;">{{ item.variant.title }}</small>
+                      <small style="display: block; color: #959595;">({{ item.variant.title }})</small>
                       {% endunless %}
                       {% if settings.cart_vendor_enable %}
                       <p>{{ item.vendor }}</p>
@@ -35,10 +35,10 @@ For info on test orders:
                     <!-- <td data-label="Price" class="product-price" data-title="Price">
                       <span class="amount">{{ item.price | money }}</span>					
                     </td> -->
-                    <td data-label="Quantity" class="product-quantity text-right pr-0" data-title="Quantity">
+                    <td data-label="Quantity" class="product-quantity text-right" data-title="Quantity">
                       <input type="number" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" min="0">
                     </td>
-                    <td data-label="Total" class="product-subtotal text-right text-blue pr-4" data-title="Total">
+                    <td data-label="Total" class="product-subtotal text-left text-blue pr-4 pl-md-4" data-title="Total">
                       <span class="amount font-weight-normal text-blue">{{ item.line_price | money }}</span>					
                     </td>
                     <td class="product-remove">
@@ -62,7 +62,7 @@ For info on test orders:
             </div>
             <div class="col-lg-4">
               <div class="bottom_carrt text-blue">
-                  <h5 class="m-0"><span class="total-title">{{ 'cart.label.total' | t }} :</span>{{ cart.total_price | money }}</h5>
+                  <h5 class="m-0"><span class="total-title text-capitalize">{{ 'cart.label.total' | t }} :</span>{{ cart.total_price | money }}</h5>
                   <div class="update_chechout d-flex">
                     <input type="submit" value="{{ 'cart.general.update' | t }}" name="update_cart" class="button edit w-50 text-left btn-bg-white rounded-0">
                     <a class="checkout-button button alt wc-forward w-50 btn-bg-blue" href="/checkout">{{ 'cart.general.checkout' | t }}</a>
@@ -91,7 +91,7 @@ For info on test orders:
         {% comment %}
         The cart is empty
         {% endcomment %}
-        <p>{{ 'cart.general.empty_cart' | t }} {{ 'cart.general.continue_browsing_html' | t }}</p>
+        <p class="text-center">{{ 'cart.general.empty_cart' | t }} {{ 'cart.general.continue_browsing_html' | t }}</p>
         {% endif %}
       </div>	
     </div>
