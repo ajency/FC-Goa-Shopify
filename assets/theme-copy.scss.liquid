@@ -102,8 +102,8 @@
 
 #footer_v1{
   background: linear-gradient(95.88deg,#600f47 -2.96%,#060e66 89.32%);
-/*  position: relative;
-  z-index: 999999;*/
+  position: relative;
+  z-index: 9999;
 	.tnc , .policy{
 		a{
 			text-decoration: underline;
@@ -140,7 +140,7 @@
       max-width: 760px;
     }
     @media (max-width: 991px){
-      padding-top: 15px;
+      padding-top: 30px;
     }
 	}
   i{
@@ -406,15 +406,16 @@
       padding-right: 0;
     }
   }
-  .menu_mobilescroll{
-    @media (min-width: 576px){
-      width: 55% !important;
-      top: 0;
-      left: 0 !important;
-    }
-  }
   @media (max-width: 767px){
     overflow: hidden;
+  }
+  .menu_mobilescroll{
+    @media (max-width: 1199.98px) and (min-width: 768px){
+      width: 45%;
+    }
+    @media (max-width: 767px){
+      width: 80%;
+    }
   }
 }
 
@@ -450,8 +451,8 @@
   }
   .product-extra-link{
     position: absolute;
-    top: 5px;
-    right: 22px;
+    top: 6px;
+    right: 20px;
     a{
       color: #422755;
       &:hover{
@@ -460,6 +461,9 @@
       @media (max-width: 767px){
         font-size: 2rem;
       }
+    }
+    @media (max-width: 767px){
+      top: -4px;
     }
   }
 
@@ -577,15 +581,15 @@
     }
     .listwishlist{
       position: absolute;
-      top: 5px;
-      right: 22px;
+      top: 6px;
+      right: 20px;
     }
   }
 }
 
 
 .octane{
-  .container{
+  .oct_container{
     @media(max-width: 575px){
       max-width: 575px;
       padding: 0;
@@ -602,12 +606,14 @@
         font-size: 24px;
         position: absolute;
         left: 44px;
-        top: 100px;
+        top: 160px;
+        font-weight: normal;
         &:before{
           display: none;
         }
         @media (max-width: 767px){
           font-size: 18px;
+          top: 90px;
         }
         @media (min-width: 1700px) {
           top: 134px;
@@ -617,6 +623,7 @@
         font-size: 60px;
         color: #FF6600;
         position: absolute;
+        top: 200px;
         left: 44px;
         @media (max-width: 767px){
           display: none;
@@ -728,8 +735,8 @@
     }
     .listwishlist {
       position: absolute;
-      top: 5px;
-      right: 22px;
+      top: 10px;
+    right: 22px;
     }
     .info_new{
       .title{
@@ -796,6 +803,9 @@
 .heart {
   color: #060E59;
   font-size: 18px;
+  @media (max-width: 767px){
+    font-size: 24px;
+  }
 }
 .fa-heart{
   color: #f50505;
@@ -803,4 +813,13 @@
 .column-padding{
   padding-left: 10px;
   padding-right: 10px;
+}
+.elem-visibility{
+  position: relative;
+  z-index: 99999;
+}
+.product-detail{
+  .slick-prev:before, .slick-next:before{
+    font-size: 40px;
+  }
 }

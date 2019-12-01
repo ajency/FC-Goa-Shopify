@@ -920,6 +920,9 @@ margin-top:10px
          outline: none;
       }
     }
+    @media (max-width: 575px){
+      justify-content: center;
+    }
   }
 }
 .engo-popup{
@@ -1045,6 +1048,9 @@ margin-top:10px
       margin-right: 10px;
       font-size: 12px;
     }
+    @media (min-width: 576px){
+      text-align: left;
+    }
   }
 
   &.loading{
@@ -1065,6 +1071,9 @@ margin-top:10px
     line-height: 29px;
     text-transform: capitalize;
     font-weight: 400;
+    @media (min-width: 576px){
+      text-align: left;
+    }
   }
 
   .product-image{
@@ -2668,13 +2677,10 @@ input:focus {
       visibility: visible;
       top: 28vh;
       transition: all 0.5s ease;
-          z-index: 99999;
-        @media (max-width: 1199px){
-          top: 20vh;
-        }
-        @media (max-width: 767px){
-          top: 11vh;
-        }
+      z-index: 99999;
+      @media (max-width: 1199px){
+        top: 20vh;
+      }
     }
 
     .search_content {
@@ -2699,7 +2705,7 @@ input:focus {
         border-bottom: 1px solid #e1e1e1;
 
         input {
-          padding: 7px 10px;
+          padding: 7px 10px 7px 0;
           border: none;
           width: 88%;
           color: #6d6c6c;
@@ -3629,7 +3635,7 @@ input:focus {
                 a {
                   text-decoration: none;
                   font-size: 14px;
-                  font-family: $font-secondary;
+                  font-family: $font-primary;
                   color: #999;
 
                   &:hover {
@@ -3729,7 +3735,7 @@ input:focus {
               text-decoration:none;
               color:$color-text;
               font-size: 13px;
-              font-family:$font-secondary;
+              font-family:$font-primary;
               text-transform: uppercase;
             }
           }
@@ -5668,7 +5674,7 @@ input:focus {
         font-size: 16px;
         text-decoration: none;
         color: #000;
-        font-family: $font-secondary;
+        font-family: $font-primary;
         position: relative;
         font-weight: 600;
 
@@ -5746,7 +5752,7 @@ input:focus {
         font-size: 16px;
         text-decoration: none;
         color: #000;
-        font-family: $font-secondary;
+        font-family: $font-primary;
         position: relative;
         font-weight: 600;
 
@@ -5900,7 +5906,7 @@ input:focus {
       font-size: 16px;
       text-decoration: none;
       color: #000;
-      font-family: $font-secondary;
+      font-family: $font-primary;
       position: relative;
       font-weight: 600;
 
@@ -6925,7 +6931,7 @@ input:focus {
 
     span {
       font-size: 16px;
-      font-family: $font-secondary;
+      font-family: $font-primary;
       font-weight: 600;
       display: inline-block;
       position: relative;
@@ -16959,6 +16965,7 @@ input:focus {
               padding-right: 30px;
               padding-left: 30px;
               margin-left: 30px;
+              margin-right: 30px;
             }
           }
 
