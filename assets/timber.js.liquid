@@ -641,7 +641,18 @@ $(timber.init);
       });
     });
 
-$(".heart.fa").click(function() {
-  $(this).toggleClass("fa-heart fa-heart-o");
-  e.preventDefault();
-});
+    $(".heart.fa").click(function() {
+      $(this).toggleClass("fa-heart fa-heart-o");
+      e.preventDefault();
+    });
+
+
+$(document).ready(function() {
+    $(".dropdown-menu  li a").each(function() {
+      //console.log($(this).attr('href'));
+      if ((window.location.pathname.indexOf($(this).attr('href'))) > -1) {
+          $(this).parent().addClass('activeMenuItem');
+      }
+  });
+})
+

@@ -102,8 +102,8 @@
 
 #footer_v1{
   background: linear-gradient(95.88deg,#600f47 -2.96%,#060e66 89.32%);
-  position: relative;
-  z-index: 9999;
+/*  position: relative;
+  z-index: 999999;*/
 	.tnc , .policy{
 		a{
 			text-decoration: underline;
@@ -406,9 +406,6 @@
       padding-right: 0;
     }
   }
-  @media (max-width: 767px){
-    overflow: hidden;
-  }
   .menu_mobilescroll{
     @media (max-width: 1199.98px) and (min-width: 768px){
       width: 45%;
@@ -416,6 +413,9 @@
     @media (max-width: 767px){
       width: 80%;
     }
+  }
+  @media (max-width: 767px){
+    /*overflow: hidden;*/
   }
 }
 
@@ -451,8 +451,8 @@
   }
   .product-extra-link{
     position: absolute;
-    top: 6px;
-    right: 20px;
+    top: 5px;
+    right: 22px;
     a{
       color: #422755;
       &:hover{
@@ -589,11 +589,10 @@
 
 
 .octane{
-  .oct_container{
+ .oct_container{
     @media(max-width: 575px){
       max-width: 575px;
       padding: 0;
-      margin: 0;
     }
   }
   &.page_aboutus_v1 {
@@ -623,7 +622,6 @@
         font-size: 60px;
         color: #FF6600;
         position: absolute;
-        top: 200px;
         left: 44px;
         @media (max-width: 767px){
           display: none;
@@ -736,7 +734,7 @@
     .listwishlist {
       position: absolute;
       top: 10px;
-    right: 22px;
+      right: 22px;
     }
     .info_new{
       .title{
@@ -803,8 +801,8 @@
 .heart {
   color: #060E59;
   font-size: 18px;
-  @media (max-width: 767px){
-    font-size: 24px;
+    @media (max-width: 767px){
+      font-size: 24px;
   }
 }
 .fa-heart{
@@ -822,4 +820,10 @@
   .slick-prev:before, .slick-next:before{
     font-size: 40px;
   }
+}
+.activeMenuItem a{
+  border-left: 1px solid #FF6600;
+  color: #FF6600 !important;
+  text-decoration: none;
+  margin-left: 18px;
 }

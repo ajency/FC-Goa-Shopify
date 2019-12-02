@@ -16,7 +16,7 @@ For more information on collection tags:
 {% paginate collection.products by section.settings.product_limit %}
 
 <section class="octane page_aboutus_v1 page_product_v2">
-  <div class="container oct_container">
+  <div class="container oct_container"> 
   {% if section.settings.enable_slideshow  %}
   <div class="slide" style="background-image: url({% if collection.image %}{{ collection.image | img_url: 'master' }}{% endif %})">
     <div class="container text-left">
