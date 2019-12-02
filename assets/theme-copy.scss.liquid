@@ -420,6 +420,11 @@
       width: 100%;
     }
   }
+  @media (min-width: 768px) {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
   @media (max-width: 767px){
     /*overflow: hidden;*/
   }
@@ -841,7 +846,10 @@
   margin-left: 18px;
 }
 
-body{
+body{  
+  @media (min-width: 768px) {
+    padding-top: 98px;
+  }
   @media (min-width: 1200px) {
     padding-top: 123px;
   }
