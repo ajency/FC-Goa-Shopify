@@ -29,7 +29,7 @@ into an external JS file
               </div>
               
             </div>
-            <div class="row justify-content-center">
+            <div class="row justify-content-center py-4">
               	<div class="col-md-8 col-12 ">
 
                 {% comment %}
@@ -87,14 +87,14 @@ into an external JS file
                       <input type="text" id="AddressPhoneNew" class="input-full" name="address[phone]" value="{{ form.phone }}">
                     </div>
                   </div>
-
-                  <p class="text-right">
-                    {{ form.set_as_default_checkbox }}
-                    <label for="address_default_address_new" class="inline">{{ 'customer.addresses.set_default' | t }}</label>
-                  </p>
-
-                  <p class="text-right"><input type="submit" class="btn-dark link-v1 rt edit" value="{{ 'customer.addresses.add' | t }}"></p>
-                  <p class="text-right"><a href="#" onclick="Shopify.CustomerAddress.toggleNewForm(); return false;" class="link-v1 color-brand">{{ 'customer.addresses.cancel' | t }}</a></p>
+                    <p class="text-left">
+                      {{ form.set_as_default_checkbox }}
+                      <label for="address_default_address_new" class="inline">{{ 'customer.addresses.set_default' | t }}</label>
+                    </p>
+                  <div class="action_block">
+                    <p class=""><input type="submit" class="btn-dark link-v1 rt edit" value="{{ 'customer.addresses.add' | t }}"></p>
+                    <p class=""><a href="#" onclick="Shopify.CustomerAddress.toggleNewForm(); return false;" class="link-v1 color-brand">{{ 'customer.addresses.cancel' | t }}</a></p>
+                  </div>
 
           
                   {% endform %}
