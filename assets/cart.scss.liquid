@@ -76,8 +76,14 @@
                                 border: 1px solid #E0E0E0;
                                 .js-qty__adjust{
                                     color: #060E59;
+                                    font-weight: 900;
                                     .icon{
                                         color: #060E59;
+                                    }
+                                    span{
+                                        &::before{
+                                            font-weight: 900;
+                                        }
                                     }
                                 }
                                 .js-qty__adjust--minus{
@@ -159,11 +165,17 @@
         }
 		input.button{
 			text-align: left;
-			padding: 10px 20px;
+            padding: 10px 20px;
+            padding-left: 10px;
 		}
 		.checkout-button{
-			margin-left: 10px;
-		}
+            margin-left: 10px;
+            padding-left: 10px !important;
+        }
+        @media (min-width: 768px) {
+            max-width: 340px;
+            margin-left: auto;
+        }
 	}
 }
 

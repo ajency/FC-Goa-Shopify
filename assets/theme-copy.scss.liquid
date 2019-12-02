@@ -43,8 +43,10 @@
 }
 
 .menu_destop.header_v1{
-  position: relative;
+  position: fixed;
   z-index: 999999;
+  top: 0;
+  width: 100%;
 	.menu_right{
 		p{
 		    color: white;
@@ -406,12 +408,15 @@
       padding-right: 0;
     }
   }
+  @media (max-width: 767px){
+    overflow-x: hidden;
+  }
   .menu_mobilescroll{
     @media (max-width: 1199.98px) and (min-width: 768px){
       width: 45%;
     }
     @media (max-width: 767px){
-      width: 80%;
+      width: 100%;
     }
   }
   @media (max-width: 767px){
@@ -521,7 +526,7 @@
       top: 0px;
   }
   @media (max-width: 767px){
-    width: 80%;
+    width: 100%;
     top: 0;
   }
 }
