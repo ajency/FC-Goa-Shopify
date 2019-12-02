@@ -159,7 +159,8 @@
 							height: auto;
 						}
 						@media (max-width: 767px) {
-							height: auto;
+							height: 140px;
+							object-fit: contain;
 						}
 					}
 					.box-thumbnail-pr{
@@ -167,7 +168,11 @@
 						margin-right: -10px;
 						.slick-list{
 							.slick-track{
-								//margin-left: 0;
+								.slick-slide{
+									@media (max-width: 767px) {
+										text-align: center;
+									}
+								}
 							}
 						}
 						.slick-arrow{

@@ -43,8 +43,10 @@
 }
 
 .menu_destop.header_v1{
-  position: relative;
+  position: fixed;
   z-index: 999999;
+  top: 0;
+  width: 100%;
 	.menu_right{
 		p{
 		    color: white;
@@ -821,5 +823,11 @@
 .product-detail{
   .slick-prev:before, .slick-next:before{
     font-size: 40px;
+  }
+}
+
+body{
+  @media (min-width: 1200px) {
+    padding-top: 123px;
   }
 }
