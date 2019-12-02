@@ -349,7 +349,7 @@
       }
     },
     "customer": {
-      "account": "Account infomation",
+      "account": "Account information",
       "logged_in_as_html": "Logged in as {{ first_name }}",
       "log_out": "Logout",
       "log_in": "Login",
