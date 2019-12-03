@@ -2740,6 +2740,7 @@ input:focus {
   position: relative;
   /*z-index: 2;*/
   transition: background-color 0.5s ease 0s, padding 0.5s ease 0s;
+  z-index: 99999;
   &.menu_mobilescroll {
     background-color: {{settings.bgmenu_mobile}};
     -webkit-animation: animations 1s ease;
@@ -2751,7 +2752,7 @@ input:focus {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 9999;
+    z-index: 99999;
   }
    &.engoc-disable-sticky{
     position: unset;

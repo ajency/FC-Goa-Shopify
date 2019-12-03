@@ -6,6 +6,7 @@
         {% for block in section.blocks %}
         {% if block.type == "image" %}
         <div class="itemv4">
+            <a style="color:{{block.settings.block_color_description}};" href="{{block.settings.block_url}}">
           <div class="picture-side3">
             {% if block.settings.block_banerimage != blank %}
             <img src="{{block.settings.block_banerimage | img_url: 'master'}}" class="img-fluid" alt="">
@@ -29,10 +30,11 @@
               {% endif %}
               
               {% if block.settings.block_buton != blank %}
-              <a style="color:{{block.settings.block_color_description}};" href="{{block.settings.block_url}}">{{ block.settings.block_buton }}</a>
+              
               {% endif %}
             </div>
           </div>
+          </a>
         </div>
         {% endif %}
         {% endfor %}
