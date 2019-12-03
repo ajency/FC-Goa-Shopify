@@ -63,12 +63,12 @@
     <div class="ajaxcart__qty">
       <button type="button" class="ajaxcart__qty-adjust ajaxcart__qty--minus icon-fallback-text" data-id="{{id}}" data-qty="{{itemMinus}}">
         <span class="icon icon-minus" aria-hidden="true"></span>
-        <span class="ti-minus"></span>
+        <span><i class="fa fa-minus pt-1" aria-hidden="true"></i></span>
       </button>
       <input type="text" class="ajaxcart__qty-num" value="{{itemQty}}" min="0" data-id="{{id}}" aria-label="quantity" pattern="[0-9]*">
       <button type="button" class="ajaxcart__qty-adjust ajaxcart__qty--plus icon-fallback-text" data-id="{{id}}" data-qty="{{itemAdd}}">
         <span class="icon icon-plus" aria-hidden="true"></span>
-        <span class="ti-plus"></span>
+        <span><i class="fa fa-plus" aria-hidden="true"></i></span>
       </button>
     </div>
   {% endraw %}
@@ -78,13 +78,13 @@
     <div class="js-qty">
       <button type="button" class="js-qty__adjust js-qty__adjust--minus icon-fallback-text" data-id="{{id}}" data-qty="{{itemMinus}}">
         <span class="icon icon-minus" aria-hidden="true"></span>
-        <span class="ti-minus"></span>
+        <span><i class="fa fa-minus pt-1" aria-hidden="true"></i></span>
       </button>
       <input type="text" class="js-qty__num" value="{{itemQty}}" min="1" data-id="{{id}}" aria-label="quantity" pattern="[0-9]*" name="{{inputName}}" id="{{inputId}}">
       <button type="button" class="js-qty__adjust js-qty__adjust--plus icon-fallback-text" data-id="{{id}}" data-qty="{{itemAdd}}">
         <span class="icon icon-plus" aria-hidden="true"></span>
-        <span class="ti-plus"></span>
+        <span><i class="fa fa-plus" aria-hidden="true"></i></span>
       </button>
     </div>
-  {% endraw %}
+  {% endraw %} 
   </script>
