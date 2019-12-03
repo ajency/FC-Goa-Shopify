@@ -781,13 +781,14 @@ margin-top:10px
     position: relative;
     background: #fff;
     min-width: 490px;
-
     -webkit-transition: all 300ms ease-in-out;
     -moz-transition: all 300ms ease-in-out;
     -ms-transition: all 300ms ease-in-out;
     -o-transition: all 300ms ease-in-out;
     transition: all 300ms ease-in-out;
-
+    @media (max-width: 500px) {
+      min-width: 100%;
+    }
   }
   @media (max-width: 1500px){
     .content{
@@ -811,6 +812,9 @@ margin-top:10px
 
     .content{
       max-height: 100%;
+      @media (max-width: 991px) {
+        overflow-y: scroll;
+      }
     }
     .overlay{
       width: 100%;

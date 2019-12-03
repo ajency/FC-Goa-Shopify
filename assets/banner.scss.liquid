@@ -400,6 +400,14 @@
 .quickview-product{
 	.product-single{
 		box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
+		.wishlist-icon{
+			a{
+				@media (max-width: 767px) {
+					top: 30px;
+					right: 35px;
+				}
+			}
+		}
 		.featured-image{
 			a.product-photo{
 				background-color: #F5F5F5;
@@ -420,6 +428,12 @@
 			span{
 				position: relative;
 				top: 5px;
+			}
+		}
+		@media (max-width: 767px) {
+			text-align: center;
+			.swatch{
+				justify-content: center;
 			}
 		}
 	}
