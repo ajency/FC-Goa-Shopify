@@ -106,7 +106,7 @@
                     {% if section.settings.show_sdes %}
                       <div class="description">
                         <h6 class="text-blue">Product Description: </h6>
-                        <p class="mb-0">{{ product.description | strip_html | truncatewords: 28}}</p>
+                        <p class="mb-0">{{ product.description | strip_html }}</p>
                       </div>
                     {% endif %}
                     <div class="tags_share d-none">                      
