@@ -4,7 +4,7 @@
 .action_btn{
   text-align: center;
   margin: 40px auto 60px;
-  a.link_btn{
+  a.link_btn , .reset_password{
     background: #060E59;
     font-size: 16px;
     line-height: 20px;
@@ -30,7 +30,7 @@ a.to-cart{
     font-size: 12px;
     &:hover{
       text-decoration: none;
-    }
+    } 
     span{
       img{
         width: 20px;
@@ -895,12 +895,24 @@ body{
   }
 }
 .login_regester {
-  button{
+  button , .register-button{
     background: #060E59;
     font-size: 16px;
     line-height: 20px;
     color: white;
     padding: 12px 30px;
     text-decoration: none;
+  }
+}
+
+.custom-reset-password{
+  input, textarea, select{
+    border: none;
+    border-bottom: 1px solid #E0E0E0;
+    box-sizing: border-box;
+    border-radius: 2px;
+    color: #000;
+    font-size: 1rem;
+    margin-bottom: 1rem;
   }
 }
