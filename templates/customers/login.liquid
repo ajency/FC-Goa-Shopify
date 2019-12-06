@@ -1,8 +1,16 @@
 <div class="login_regester">
   <div class="container">
-    <div class="row justify-content-between">      
-      <div class="col-lg-5 login mb-5">
-        <div class="CustomerLoginForm">
+    {% comment %}
+      If a user has successfully requested a new password, the form.posted_successfully? variable
+      is set to true within the 'recover_customer_password' form only. Within that form you'll see
+      us assign a variable 'reset_success' to true, which is used in JS to show our success message.
+    {% endcomment %}
+    <div class="note form-success" id="ResetSuccess" style="display:none;">
+      {{ 'customer.recover_password.success' | t }}
+    </div> 
+    <div class="row justify-content-between">    
+      <div class="col-lg-5 login"> 
+        <div class="CustomerLoginForm mb-4">
         <h1 class="mb-0 title_login text-center"><i class="mr-3 ti-user"></i>{{ 'customer.login.title' | t }}</h1>        
         {% form 'customer_login' %}
         {{ form.errors | default_errors }}
@@ -38,22 +46,27 @@
           </div>
         </div>
         {% endform %} 
-        
-        {% form 'recover_customer_password' %}
-         {{ form.errors | default_errors }}
-         {% comment %}
-         Assign variable to be used after timber.init() is run in theme.liquid
-         {% endcomment %}
-         {% if form.posted_successfully? %}
-         {% assign resetPassword = true %}
-         {% endif %}
-         <div class="RecoverPasswordForm" style="display: none;">
+
+        {% comment %}
+          This page uses JavaScript to show/hide the recover password form
+        {% endcomment %}
+         <div class="RecoverPasswordForm mb-4" style="display: none;">
            <div class="block-login">
              <h2 class="title24 text-center title-form-account"><i class="mr-3 ti-reload"></i>{{ 'customer.recover_password.title' | t }}</h2>
+              {% form 'recover_customer_password' %}
+                {{ form.errors | default_errors }}
+              {% comment %}
+                Assign variable to be used after timber.init() is run in theme.liquid
+              {% endcomment %}
+              {% if form.posted_successfully? %}
+              {% assign resetPassword = true %}
+              {% endif %}
              <div class="form-group row">
-               <label class="col-sm-3">{{ 'customer.login.email' | t }}</label>
+                <label for="RecoverEmail" class="col-sm-3 mb-0 py-2">{{ 'customer.login.email' | t }}</label>
+                <!-- <label class="col-sm-3">{{ 'customer.login.email' | t }}</label> -->
                <div class="col-sm-9">
-                 <input type="email" class="form-control" placeholder="{{ 'customer.login.email' | t }}" name="customer[email]" {% if form.email %} value="{{ form.email }}"{% endif %} required>
+                <!-- <input type="email" class="form-control" placeholder="{{ 'customer.login.email' | t }}" name="customer[email]" {% if form.email %} value="{{ form.email }}"{% endif %} required> -->
+                <input type="email" value="" class="form-control" name="email" id="RecoverEmail" placeholder="{{ 'customer.login.email' | t }}" autocorrect="off" autocapitalize="off">
                </div>
              </div>
              <div class="text-center mt-5">
@@ -64,11 +77,11 @@
                  <a class="HideRecoverPasswordLink" style="cursor: pointer;" class="color">{{ 'customer.recover_password.cancel' | t }}</a>
                </div>
              </div>
+            {% endform %}
            </div>
          </div>
-         {% endform %}
       </div>
-      <div class="col-lg-6 register">
+      <div class="col-lg-6 register mb-4">
         <h1 class="mb-0 title_login text-center"><i class="mr-3 ti-pencil-alt"></i>{{ 'customer.register.title' | t }}</h1>
          {% form 'create_customer' %}
          {{ form.errors | default_errors }}
@@ -97,3 +110,26 @@
     </div>
   </div>
 </div>
+
+<script>
+  /*
+    Show/hide the recover password form when requested.
+  */
+  function showRecoverPasswordForm() {
+    document.getElementById('RecoverPasswordForm').style.display = 'block';
+    document.getElementById('CustomerLoginForm').style.display='none';
+  }
+
+  function hideRecoverPasswordForm() {
+    document.getElementById('RecoverPasswordForm').style.display = 'none';
+    document.getElementById('CustomerLoginForm').style.display = 'block';
+  }
+
+  // Allow deep linking to the recover password form
+  if (window.location.hash == '#recover') { showRecoverPasswordForm() }
+
+  // reset_success is only true when the reset form is
+  {% if reset_success %}
+    document.getElementById('ResetSuccess').style.display = 'block';
+  {% endif %}
+</script>
