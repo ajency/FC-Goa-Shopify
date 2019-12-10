@@ -595,7 +595,7 @@ a.to-cart{
           font-size: 14px;
           line-height: 0;
           color: #060E59;
-          position: absolute;
+          /*position: absolute;*/
           bottom: 0;
           left: 0;
           right: 0;
@@ -923,5 +923,38 @@ body{
   margin: 0 auto 35px;
   @media (max-width: 767px){
     max-width: 100%;
+  }
+}
+
+.price-striked , .price_nosale{
+  font-size: 14px;
+  color: #767676;
+  padding: 0 10px;
+}
+.price_nosale {
+  @media (max-width: 991px) and (min-width: 768px){
+    padding: 0;
+    margin-right: 0 !important;
+  }
+}
+.two-column-products{
+  .product_pricing{
+    display: flex;
+    s{
+      padding: 0 10px;
+      font-size: 14px;
+      @media (max-width: 991px) and (min-width: 768px){
+        padding: 0;
+      }
+      @media (max-width: 499px){
+        padding: 0;
+      }
+    }
+    @media (max-width: 991px) and (min-width: 768px){
+      display: block;
+    }
+    @media (max-width: 499px){
+      display: block;
+    }
   }
 }

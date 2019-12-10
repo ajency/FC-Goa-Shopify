@@ -16,8 +16,15 @@
                         <div class="col-6 d-flex align-items-center">
                             <div class="product-data text-white py-3 py-md-5 pr-3 w-100">
                                 <h4 class="mb-4 font-weight-regular">{{section.settings.product_title_left}}</h4>
-                                <div class="product-price font-size-18 font-weight-light mb-4">
-                                    {{section.settings.product_left_price}}
+                                <div class="product_pricing">
+                                  <div class="product-price font-size-18 font-weight-light mb-2">
+                                      {{section.settings.product_left_price}}
+                                  </div>
+                                  {% if section.settings.product_left_compare_price != '' %} 
+                                  <div class="product-price font-weight-light mb-3">
+                                      <s>{{section.settings.product_left_compare_price}}</s>
+                                  </div>
+                                  {% endif %} 
                                 </div>
                                 <div class="product-add-cart">
                                     <a href="{{ section.settings.product_left_link }}" class="btn btn-basic btn-white pl-10 rounded-0 text-left">{{section.settings.buttom_shop_now}}</a>
@@ -42,8 +49,15 @@
                         <div class="col-6 d-flex align-items-center">
                             <div class="product-data text-white py-3 py-md-5 pr-3 w-100">
                                 <h4 class="mb-4 font-weight-regular">{{section.settings.product_right_title}}</h4>
-                                <div class="product-price font-size-18 font-weight-light mb-4">
-                                    {{section.settings.product_right_price}}
+                                <div class="product_pricing">
+                                  <div class="product-price font-size-18 font-weight-light mb-2">
+                                      {{section.settings.product_right_price}}
+                                  </div> 
+                                  {% if section.settings.product_right_compare_price != '' %} 
+                                  <div class="product-price font-weight-light mb-3">
+                                      <s>{{section.settings.product_right_compare_price}}</s>
+                                  </div>
+                                  {% endif %} 
                                 </div>                                
                                 <div class="product-add-cart">
                                     <a href="{{section.settings.product_right_url}}" class="btn btn-basic btn-white pl-10 rounded-0 text-left">{{section.settings.right_buttom_shop_now}}</a>
@@ -86,6 +100,12 @@
     },
     {
       "type": "text",
+      "id": "product_left_compare_price",
+      "label": "Product compare price",
+      "default": "Product compare price"
+    },
+    {
+      "type": "text",
       "id": "buttom_shop_now",
       "label": "Button text",
       "default": "Buy now"
@@ -117,6 +137,12 @@
       "id": "product_right_price",
       "label": "Product price",
       "default": "Product price"
+    },
+    {
+      "type": "text",
+      "id": "product_right_compare_price",
+      "label": "Product compare price",
+      "default": "Product compare price"
     },
     {
       "type": "text",

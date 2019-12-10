@@ -30,9 +30,9 @@
     <a href="{{product.url}}">
       <img src="{{ product.featured_image.src | img_url: 'master' }}" class="img-fluid w-100" alt="{{ product.featured_image.alt | escape }}">
     </a>
-    {% if settings.show_sale_label and on_sale %}
+<!--     {% if settings.show_sale_label and on_sale %}
     <span style="color:{{settings.sale_label_text_color}};background-color:{{settings.sale_label_background_color}};">{{settings.title_sale_pr}}</span>    
-    {% endif %}
+    {% endif %} -->
     <ul class="list-icon list-unstyled d-flex align-items-center text-center mb-0">
       <li>
         <a href="javascript:void(0)" data-id="{{ product.handle }}" class="engoj_btn_quickview"><i class="{{settings.pia_quickview}}"></i></a>
@@ -71,8 +71,9 @@
     </div>
     <div class="price_product">
       {% capture price %}{{ product.price | money }}{% endcapture %}
-      {% if on_sale %} <span class="price_nosale">{{ product.compare_at_price | money }}</span> {% endif %}
       <span class="price_sale">{% if product.price_varies %}{{ 'products.general.from_text_html' | t: price: price }}{% else %}{{ price }}{% endif %}</span>        
+      {% if on_sale %} <span class="price_nosale">{{ product.compare_at_price | money }}</span> {% endif %}
+
     </div>
     <div class="star_product">
       <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
