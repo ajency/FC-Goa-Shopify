@@ -39,7 +39,8 @@ For info on test orders:
                       <input type="number" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" min="0">
                     </td>
                     <td data-label="Total" class="product-subtotal text-left text-blue pr-4 pl-md-4" data-title="Total">
-                      <span class="amount font-weight-normal text-blue">{{ item.line_price | money }}</span>					
+                      <span class="amount font-weight-normal text-blue">{{ item.line_price | money }}</span>
+                      <s><span class="price_nosale text-nowrap pl-0 pr-0">{{ item.variant.compare_at_price | money }}</span></s>				
                     </td>
                     <td class="product-remove">
                       <a class="remove" href="/cart/change?line={{ forloop.index }}&amp;quantity=0"><i class="ti-close text-blue"></i></a>
